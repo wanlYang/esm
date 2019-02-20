@@ -28,7 +28,7 @@ public class SpringRedisConfig {
     /**
      * 配置jedis
      * @author:YangBin
-     * @date:2019年1月22日
+     * @date:2019年2月20日
      * @version:V1.0
      * @param maxIdle
      * @param maxWaitMillis
@@ -51,7 +51,7 @@ public class SpringRedisConfig {
     /**
      * redis密码
      * @author:YangBin
-     * @date:2019年1月22日
+     * @date:2019年2月20日
      * @version:V1.0
      * @return
      * @return:RedisPassword
@@ -64,7 +64,7 @@ public class SpringRedisConfig {
     /**
      * redis服务中心 2.0
      * @author:YangBin
-     * @date:2019年1月22日
+     * @date:2019年2月20日
      * @version:V1.0
      * @return
      * @return:JedisConnectionFactory
@@ -88,7 +88,7 @@ public class SpringRedisConfig {
     /**
      * 配置jedis链接工厂 2.0
      * @author:YangBin
-     * @date:2019年1月22日
+     * @date:2019年2月20日
      * @version:V1.0
      * @param redisStandaloneConfiguration
      * @return
@@ -103,7 +103,7 @@ public class SpringRedisConfig {
     /**
      * 手动设置 key  与 value的序列化方式
      * @author:YangBin
-     * @date:2019年1月22日
+     * @date:2019年2月20日
      * @version:V1.0
      * @return
      * @return:StringRedisSerializer
@@ -129,7 +129,7 @@ public class SpringRedisConfig {
     /**
      * 配置jedis模板 
      * @author:YangBin
-     * @date:2019年1月22日
+     * @date:2019年2月20日
      * @version:V1.0
      * @param jedisConnectionFactory
      * @param keySerializer
@@ -154,7 +154,7 @@ public class SpringRedisConfig {
     /**
      * 也可以StringRedisTemplate  专注于String的操作
      * @author:YangBin
-     * @date:2019年1月22日
+     * @date:2019年2月20日
      * @version:V1.0
      * @param jedisConnectionFactory
      * @param keySerializer
