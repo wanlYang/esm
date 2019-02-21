@@ -448,4 +448,14 @@ iframe {
     padding-left: 15px;
     padding-right: 15px;
   }
-} 
+}
+.clearfloat:after{
+  display: block;
+  content: "";
+  clear: both;
+}
+.registsendcode{
+  position: absolute;
+  top: 35%;
+  right: 0;
+}

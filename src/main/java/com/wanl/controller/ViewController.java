@@ -29,4 +29,18 @@ public class ViewController {
         return "login";
     }
 
+    /**
+     * 注册页面
+     * @Author YangBin
+     * @Date 8:48 2019/2/21
+     * @Param []
+     * @version v1.0
+     * @return java.lang.String
+     **/
+    @RequestMapping(value = "/regist",method = RequestMethod.GET)
+    public String regist(){
+
+        return "regist";
+    }
+
 }
