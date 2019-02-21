@@ -37,6 +37,26 @@ function sendCode() {
     console.log("验证码发送");
 }
 
+function time(btn) {
+    var wait = 60;
+    if (wait == 0) {
+        btn.removeAttribute("disabled");
+        btn.value = "获取验证码";
+        wait = 60;
+        $("#sendCode").bind("click",function () {
+            sendCode();
+            time($("#sendCode"));
+        })
+    } else {
+        btn.setAttribute("disabled", true);
+        btn.value = wait + "秒后重新获取";
+        wait--;
+        setTimeout(function () {
+                time(btn);
+        },
+        1000)
+    }
+}
 function isSendCode(phone){
     if(!(/^1[34578]\d{9}$/.test(phone))){
         $("#sendCode").unbind();
@@ -45,6 +65,7 @@ function isSendCode(phone){
         $("#sendCode").removeClass("layui-btn-disabled");
         $("#sendCode").bind("click",function () {
             sendCode();
+            time($("#sendCode"));
         })
     }
 }
