@@ -102,4 +102,10 @@ public interface EsmConstant {
     String CONTENT_TYPE_APP_JSON_UTF_8 = "application/json;charset=utf-8";
     String CONTENT_TYPR_TEXT_HTML_UTF_8 = "text/html;charset=utf-8";
 
+    String SEND_CODE_SUCCESS = "00000";
+
+    String SMS_CODE = "smsCode";
+    String TEMP_PHONE = "TEMP_PHONE";
+
+    String DEFAUTL_HEAD_IMG = "DEFAUTL_HEAD_IMG";
 }

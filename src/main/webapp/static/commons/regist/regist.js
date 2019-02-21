@@ -1,8 +1,9 @@
-layui.use(['form', 'layer', 'jquery'], function () {
-    var form = layui.form,
-        layer = parent.layer === undefined ? layui.layer : top.layer
+var $,element,layer;
+layui.use(['form', 'layer', 'jquery',"element"], function () {
+    var form = layui.form;
+    layer = parent.layer === undefined ? layui.layer : top.layer;
+    element = layui.element;
     $ = layui.jquery;
-
     form.verify({
         password : function(value, item){
             if(value.length < 6){
@@ -20,36 +21,84 @@ layui.use(['form', 'layer', 'jquery'], function () {
             }
         }
     })
-
-    $("#sendCode").unbind();
-
     //注册按钮
     form.on("submit(regist)", function (data) {
-        console.log(data);
-
+        $(this).text("请稍后...").attr("disabled", "disabled").addClass("layui-disabled");
+        var index = layer.msg('注册中,请稍候', {
+            icon: 16,
+            time: false,
+            shade: 0.8
+        });
+        $.ajax({
+            type: "POST",
+            url: getRealPath() + "/user/regist/submit",
+            data:data.field,
+            complete: function (XMLHttpRequest, textStatus) {
+                layer.close(index);
+                $("#registButton").text("注 册").removeAttr("disabled").removeClass("layui-disabled");
+            },
+            success: function(result) {
+                if(result.status == 200){
+                    layer.msg("注册成功!");
+                    setTimeout(function(){
+                        window.location.href = getRealPath() + "/login";
+                    },1000);
+                }else if(result.status == -2001 || result.status == -3001){
+                    layer.msg(result.message);
+                }else if (result.status == -4011){
+                    layer.msg(result.message);
+                }else if (result.status == -4056){
+                    layer.msg(result.message);
+                }else if (result.status == -5210 || result.status == -6031){
+                    layer.msg(result.message);
+                }else if (result.status == -7652){
+                    layer.msg(result.message);
+                }else if (result.status == -7653){
+                    layer.msg(result.message);
+                }else{
+                    layer.msg(result.message);
+                }
+            },
+            error: function () {
+                layer.msg("出现错误,请尝试刷新页面!");
+            }
+        })
         return false;
     })
 
 
 
 })
-function sendCode() {
-    console.log("验证码发送");
+function sendCode(sendButton) {
+    $.ajax({
+        type: "POST",
+        url: getRealPath() + "/message/send/phone/code",
+        data:{"phone":$("#phone").val()},
+        success: function(result) {
+            layer.msg(result.message);
+            if(result.data == '00000'){
+                $("#phone").attr("disabled","disabled");
+                time(sendButton);
+                $("#registButton").removeAttr("disabled");
+            }
+        }
+    });
 }
 
+var wait = 60;
 function time(btn) {
-    var wait = 60;
     if (wait == 0) {
-        btn.removeAttribute("disabled");
-        btn.value = "获取验证码";
+        btn.removeClass("layui-btn-disabled");
+        btn.text("获取验证码");
         wait = 60;
-        $("#sendCode").bind("click",function () {
-            sendCode();
-            time($("#sendCode"));
+        $("#phone").removeAttr("disabled");
+        btn.bind("click",function () {
+            sendCode(btn);
         })
     } else {
-        btn.setAttribute("disabled", true);
-        btn.value = wait + "秒后重新获取";
+        btn.addClass("layui-btn-disabled");
+        btn.text(wait + "秒后重新获取");
+        btn.unbind();
         wait--;
         setTimeout(function () {
                 time(btn);
@@ -64,8 +113,7 @@ function isSendCode(phone){
     }else{
         $("#sendCode").removeClass("layui-btn-disabled");
         $("#sendCode").bind("click",function () {
-            sendCode();
-            time($("#sendCode"));
+            sendCode($("#sendCode"));
         })
     }
 }
