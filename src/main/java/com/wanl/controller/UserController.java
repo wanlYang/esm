@@ -37,14 +37,16 @@ public class UserController {
     @ResponseBody
     public Result regist(User user, String phoneCode, String confirmPassword, HttpServletRequest request, HttpServletResponse response){
         Result registResult = userService.regist(user, phoneCode, confirmPassword);
-        String cookie = CookieUtil.getCookie(request, EsmConstant.SMS_CODE, false);
-        String tempPhone = (String)redisCacheManager.get(EsmConstant.TEMP_PHONE);
-        if (tempPhone != null){
-            redisCacheManager.del(EsmConstant.TEMP_PHONE);
-        }
-        if (cookie != null){
-            redisCacheManager.del(cookie);
-            CookieUtil.delCookie(response,request,EsmConstant.SMS_CODE);
+        if (registResult.getStatus().intValue() == EsmConstant.STATUS_OK){
+            String cookie = CookieUtil.getCookie(request, EsmConstant.SMS_CODE, false);
+            String tempPhone = (String)redisCacheManager.get(EsmConstant.TEMP_PHONE);
+            if (tempPhone != null){
+                redisCacheManager.del(EsmConstant.TEMP_PHONE);
+            }
+            if (cookie != null){
+                redisCacheManager.del(cookie);
+                CookieUtil.delCookie(response,request,EsmConstant.SMS_CODE);
+            }
         }
         try {
             Thread.sleep(2000);

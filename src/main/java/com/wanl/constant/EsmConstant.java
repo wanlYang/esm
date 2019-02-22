@@ -110,4 +110,5 @@ public interface EsmConstant {
     String DEFAUTL_HEAD_IMG = "DEFAUTL_HEAD_IMG";
     String USER_ID = "USER_ID";
     String ACCOUNT_ID = "ACCOUNT_ID";
+    int STATUS_OK = 200;
 }

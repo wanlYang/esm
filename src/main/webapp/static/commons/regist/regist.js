@@ -19,6 +19,11 @@ layui.use(['form', 'layer', 'jquery',"element"], function () {
             if(!(/^1[34578]\d{9}$/.test(value))){
                 return "手机号码有误，请重填";
             }
+        },
+        phoneCode : function (value, item) {
+            if(value.length < 6){
+                return "验证码长度不能小于6位";
+            }
         }
     })
     //注册按钮
@@ -43,18 +48,6 @@ layui.use(['form', 'layer', 'jquery',"element"], function () {
                     setTimeout(function(){
                         window.location.href = getRealPath() + "/login";
                     },1000);
-                }else if(result.status == -2001 || result.status == -3001){
-                    layer.msg(result.message);
-                }else if (result.status == -4011){
-                    layer.msg(result.message);
-                }else if (result.status == -4056){
-                    layer.msg(result.message);
-                }else if (result.status == -5210 || result.status == -6031){
-                    layer.msg(result.message);
-                }else if (result.status == -7652){
-                    layer.msg(result.message);
-                }else if (result.status == -7653){
-                    layer.msg(result.message);
                 }else{
                     layer.msg(result.message);
                 }
@@ -70,6 +63,7 @@ layui.use(['form', 'layer', 'jquery',"element"], function () {
 
 })
 function sendCode(sendButton) {
+    time(sendButton);
     $.ajax({
         type: "POST",
         url: getRealPath() + "/message/send/phone/code",
@@ -78,7 +72,6 @@ function sendCode(sendButton) {
             layer.msg(result.message);
             if(result.data == '00000'){
                 $("#phone").attr("disabled","disabled");
-                time(sendButton);
             }
         }
     });

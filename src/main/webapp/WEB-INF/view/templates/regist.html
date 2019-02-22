@@ -38,14 +38,14 @@
                 <div class="wrap-input100 validate-input m-b-15" data-validate="请输入手机号">
                     <span class="label-input100">手机号</span>
                     <input class="input100" type="text" name="phone" id="phone" onchange="isSendCode(this.value)" lay-verify="required|phone" placeholder="请输入手机号">
-                    <span class="focus-input100" data-symbol="&#xf190;"></span>
+                    <span class="focus-input100" data-symbol="&#xf196;"></span>
                 </div>
 
                 <div class="wrap-input100 validate-input" data-validate="验证码">
                     <div style="float: left">
                         <span class="label-input100">验证码</span>
-                        <input class="input100" type="password" name="phoneCode" lay-verify="required|number" placeholder="验证码">
-                        <span class="focus-input100" data-symbol="&#xf190;"></span>
+                        <input class="input100" type="text" name="phoneCode" lay-verify="required|number|phoneCode" placeholder="验证码">
+                        <span class="focus-input100" data-symbol="&#xf191;"></span>
                     </div>
                     <div class="clearfloat">
                         <span id="sendCode" class="layui-btn layui-btn-lg layui-btn-radius layui-btn-normal layui-btn-disabled registsendcode">获取验证码</span>

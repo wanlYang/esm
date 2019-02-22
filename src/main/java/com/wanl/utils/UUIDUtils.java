@@ -25,16 +25,16 @@ public class UUIDUtils {
 		return UUID.randomUUID().toString().replace("-", "");
 	}
 	public static void main(String[] args) {
-		System.out.println(UUID.randomUUID().toString());
+		System.out.println(generateNumberUUID(EsmConstant.ACCOUNT_ID));
 	}
 
 
 	public static String generateNumberUUID(String type) {
 		String no = "";
-		int num[] = new int[10];
+		int num[] = new int[9];
 		int c = 0;
-		for (int i = 0; i < 10; i++) {
-			num[i] = new Random().nextInt(9) + 1;
+		for (int i = 0; i < 9; i++) {
+			num[i] = new Random().nextInt(10) + 1;
 			c = num[i];
 			for (int j = 0; j < i; j++) {
 				if (num[j] == c) {

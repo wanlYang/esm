@@ -66,11 +66,11 @@ public class UserServiceImpl implements UserService {
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
         String cookie = CookieUtil.getCookie(request, EsmConstant.SMS_CODE, false);
         if (cookie == null){
-            return new Result(-2001,"验证码过期!",0,null);
+            return new Result(-2001,"验证码无效!",0,null);
         }
         String code = (String)redisCacheManager.get(cookie);
         if (code == null){
-            return new Result(-3001,"验证码过期!",0,null);
+            return new Result(-3001,"验证码无效!",0,null);
         }
         if (!phoneCode.equals(code)){
             return new Result(-4011,"验证码输入错误!",0,null);
@@ -80,7 +80,7 @@ public class UserServiceImpl implements UserService {
         }
         String tempPhone = (String)redisCacheManager.get(EsmConstant.TEMP_PHONE);
         if (tempPhone == null){
-            new Result(-5210,"手机号异常!",0,null);
+            new Result(-5210,"请刷新重试!",0,null);
         }
         if (!tempPhone.equals(user.getPhone())){
             new Result(-6031,"手机号异常!",0,null);
