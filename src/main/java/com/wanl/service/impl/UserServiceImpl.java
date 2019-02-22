@@ -95,11 +95,11 @@ public class UserServiceImpl implements UserService {
         }
         String decoder = Base64Util.decoder(MD5Util.MD5Encode(user.getPassword()));
         user.setPassword(decoder);
-        user.setId(UUIDUtils.generateShortUUID());
+        user.setId(UUIDUtils.generateNumberUUID(EsmConstant.USER_ID));
         user.setHeadImg(PropertiesConfig.getPropertyValue(EsmConstant.DEFAUTL_HEAD_IMG));
         user.setAge(0);
         Account account = new Account();
-        account.setId(UUIDUtils.generateShortUUID());
+        account.setId(UUIDUtils.generateNumberUUID(EsmConstant.ACCOUNT_ID));
         account.setUser(user);
         account.setBalance(0.00);
         Integer insertUserIsOk = userMapper.create(user);

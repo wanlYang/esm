@@ -1,5 +1,8 @@
 package com.wanl.utils;
 
+import com.wanl.constant.EsmConstant;
+
+import java.util.Random;
 import java.util.UUID;
 
 public class UUIDUtils {
@@ -26,23 +29,31 @@ public class UUIDUtils {
 	}
 
 
-	public static String[] chars = new String[] { "a", "b", "c", "d", "e", "f",
-			"g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s",
-			"t", "u", "v", "w", "x", "y", "z", "0", "1", "2", "3", "4", "5",
-			"6", "7", "8", "9", "A", "B", "C", "D", "E", "F", "G", "H", "I",
-			"J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V",
-			"W", "X", "Y", "Z" };
-
-
-	public static String generateShortUUID() {
-		StringBuffer shortBuffer = new StringBuffer();
-		String uuid = UUID.randomUUID().toString().replace("-", "");
-		for (int i = 0; i < 8; i++) {
-			String str = uuid.substring(i * 4, i * 4 + 4);
-			int x = Integer.parseInt(str, 16);
-			shortBuffer.append(chars[x % 0x3E]);
+	public static String generateNumberUUID(String type) {
+		String no = "";
+		int num[] = new int[10];
+		int c = 0;
+		for (int i = 0; i < 10; i++) {
+			num[i] = new Random().nextInt(9) + 1;
+			c = num[i];
+			for (int j = 0; j < i; j++) {
+				if (num[j] == c) {
+					i--;
+					break;
+				}
+			}
 		}
-		return shortBuffer.toString();
+		if (num.length > 0) {
+			for (int i = 0; i < num.length; i++) {
+				no += num[i];
+			}
+		}
+		if (type.equals(EsmConstant.USER_ID)){
+			String wanl = "wanl";
+			return wanl += no;
+		}
+		String wanl = "ac";
+		return wanl += no;
 
 	}
 }

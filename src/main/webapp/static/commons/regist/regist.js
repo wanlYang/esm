@@ -79,7 +79,6 @@ function sendCode(sendButton) {
             if(result.data == '00000'){
                 $("#phone").attr("disabled","disabled");
                 time(sendButton);
-                $("#registButton").removeAttr("disabled");
             }
         }
     });

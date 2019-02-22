@@ -108,4 +108,6 @@ public interface EsmConstant {
     String TEMP_PHONE = "TEMP_PHONE";
 
     String DEFAUTL_HEAD_IMG = "DEFAUTL_HEAD_IMG";
+    String USER_ID = "USER_ID";
+    String ACCOUNT_ID = "ACCOUNT_ID";
 }
