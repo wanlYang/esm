@@ -21,6 +21,11 @@ public class Result {
 
     private Object data;
 
+    public Result(Integer status, String message) {
+        this.status = status;
+        this.message = message;
+    }
+
     public Integer getStatus() {
         return status;
     }

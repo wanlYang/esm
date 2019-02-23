@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * 用户登陆注册相关实例操作
@@ -54,6 +55,18 @@ public class UserController {
             e.printStackTrace();
         }
         return registResult;
+    }
+
+    @RequestMapping(value = "/login/submit",method = RequestMethod.POST)
+    @ResponseBody
+    public Result login(String username, String password, HttpSession session){
+        Result loginResult = userService.login(username,password);
+        if (loginResult.getStatus().intValue() == EsmConstant.STATUS_OK){
+            session.setAttribute(EsmConstant.USER_SESSION,loginResult.getData());
+            session.setMaxInactiveInterval(60 * 10);
+        }
+
+        return loginResult;
     }
 
 }

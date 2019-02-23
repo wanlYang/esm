@@ -111,4 +111,5 @@ public interface EsmConstant {
     String USER_ID = "USER_ID";
     String ACCOUNT_ID = "ACCOUNT_ID";
     int STATUS_OK = 200;
+    String USER_SESSION = "USER_SESSION";
 }

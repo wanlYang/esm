@@ -1,6 +1,7 @@
 package com.wanl.mapper;
 
 import com.wanl.entity.User;
+import org.apache.ibatis.annotations.Param;
 
 /**
  * @Title: UserMapper.java
@@ -46,7 +47,7 @@ public interface UserMapper {
     User findUserByPhone(String phone);
 
     /**
-     * 获取用户ID
+     * 获取用户根据ID
      * @Author YangBin
      * @Date 18:48 2019/2/21
      * @Param [userId]
@@ -55,4 +56,14 @@ public interface UserMapper {
      * @return com.wanl.entity.User
      **/
     User findUserById(String userId);
+
+    /**
+     * 根据用户名密码获取用户
+     * @Author YangBin
+     * @Date 9:55 2019/2/23
+     * @Param [username, password]
+     * @version v1.0
+     * @return com.wanl.entity.User
+     **/
+    User findUserByNamePass(@Param("username") String username, @Param("password") String password);
 }

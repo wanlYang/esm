@@ -8,10 +8,7 @@ import com.wanl.entity.User;
 import com.wanl.mapper.UserMapper;
 import com.wanl.service.AccountService;
 import com.wanl.service.UserService;
-import com.wanl.utils.Base64Util;
-import com.wanl.utils.CookieUtil;
-import com.wanl.utils.MD5Util;
-import com.wanl.utils.UUIDUtils;
+import com.wanl.utils.*;
 import com.wanl.utils.redis.RedisCacheManager;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -80,10 +77,10 @@ public class UserServiceImpl implements UserService {
         }
         String tempPhone = (String)redisCacheManager.get(EsmConstant.TEMP_PHONE);
         if (tempPhone == null){
-            new Result(-5210,"请刷新重试!",0,null);
+            return new Result(-5210,"请刷新重试!",0,null);
         }
         if (!tempPhone.equals(user.getPhone())){
-            new Result(-6031,"手机号异常!",0,null);
+            return new Result(-6031,"手机号异常!",0,null);
         }
         User userByUsername = userMapper.findUserByUsername(user.getUsername());
         if(userByUsername != null){
@@ -105,8 +102,40 @@ public class UserServiceImpl implements UserService {
         Integer insertUserIsOk = userMapper.create(user);
         Integer insertAccountIsOk = accountService.create(account);
         if (insertUserIsOk.intValue() == 0 || insertAccountIsOk.intValue() == 0){
-            new Result(-200,"注册失败!",0,null);
+            return new Result(-200,"注册失败!",0,null);
         }
         return new Result(200,"注册成功!",0,null);
+    }
+
+    /**
+     * 登陆验证
+     *
+     * @param username 用户名
+     * @param password 密码
+     * @return com.wanl.entity.Result
+     * @Author YangBin
+     * @Date 9:46 2019/2/23
+     * @Param [username, password]
+     * @version v1.0
+     **/
+    @Override
+    public Result login(String username, String password) {
+        if (!StringUtils.isNotBlank(username) && !StringUtils.isNotBlank(password)){
+            return new Result(-1011,"参数为空!");
+        }
+        User userByUsername = userMapper.findUserByUsername(username);
+        if (userByUsername == null){
+            return new Result(-1012,"还用户名尚未注册!");
+        }
+        String decoder = Base64Util.decoder(MD5Util.MD5Encode(password));
+        User userByNamePass = userMapper.findUserByNamePass(username, decoder);
+        if (userByNamePass == null){
+            return new Result(-1013,"密码错误!");
+        }
+        boolean hmset = redisCacheManager.hmset(userByNamePass.getId(), EntityUtils.entityToMap(userByNamePass), 60 * 10);
+        if (!hmset){
+            new Result(-1014,"对不起!设置信息有误!请稍后再试!");
+        }
+        return new Result(200,"登陆成功!",0,userByNamePass);
     }
 }

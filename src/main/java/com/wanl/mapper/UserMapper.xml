@@ -13,6 +13,9 @@
     <select id="findUserById" resultMap="userResultMap" parameterType="int">
       SELECT * FROM esm_user WHERE id = #{userId};
     </select>
+    <select id="findUserByNamePass" resultMap="userResultMap">
+      SELECT * FROM esm_user WHERE username = #{username} AND password = #{password}
+    </select>
     <resultMap id="userResultMap" type="User">
         <id column="id" property="id"></id>
         <result column="username" property="username"></result>

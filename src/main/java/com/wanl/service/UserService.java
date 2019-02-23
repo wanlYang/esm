@@ -27,4 +27,16 @@ public interface UserService {
      **/
     Result regist(User user, String phoneCode, String confirmPassword);
 
+    /**
+     * 登陆验证
+     * @Author YangBin
+     * @Date 9:46 2019/2/23
+     * @Param [username, password]
+     * @param password 密码
+     * @param username 用户名
+     * @version v1.0
+     * @return com.wanl.entity.Result
+     **/
+    Result login(String username,String password);
+
 }
