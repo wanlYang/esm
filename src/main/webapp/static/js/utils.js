@@ -1,29 +1,29 @@
 ﻿layui.use(['jquery','layer'], function () {
     var $ = layui.jquery,
     	layer = layui.layer;
-    // $(document).ajaxComplete(function (event, obj, settings) {
-    //     var resultCom = eval("(" + obj.responseText + ")");
-    //     if (resultCom.status == -1001) {
-    //     	var index = layer.open({
-    //             type: 1
-    //             ,title: '提示'
-    //             ,shade: 0
-    //             ,content: '<div style="padding:20px;line-height: 20px;font-weight:600;background: #c3fbcf;"><div style="font-size: 16px;">对不起出现了异常!<br>异常信息:</div><div style="word-wrap: break-word;word-break: normal;word-break:break-all;">'+resultCom.message+'</div></div>'
-    //             ,btn: ['关闭全部'] // 只是为了演示
-    //             ,yes: function(){
-    //             	layer.close(index);
-    //             	layer.closeAll();
-    //             }
-    //             ,zIndex: layer.zIndex // 重点1
-    //             ,success: function(layero){
-    //               layer.setTop(layero); // 重点2
-    //             }
-    //         });
-    //     }
-    //     if (resultCom.message == 'timeout') { // 超时标识
-    //         parent.location.href = getRealPath() + '/admin/login'; // 跳转到登录页面
-    //     }
-    // });
+    $(document).ajaxComplete(function (event, obj, settings) {
+        var resultCom = eval("(" + obj.responseText + ")");
+        if (resultCom.status == -1001) {
+        	var index = layer.open({
+                type: 1
+                ,title: '提示'
+                ,shade: 0
+                ,content: '<div style="padding:20px;line-height: 20px;font-weight:600;background: #c3fbcf;"><div style="font-size: 16px;">对不起出现了异常!<br>异常信息:</div><div style="word-wrap: break-word;word-break: normal;word-break:break-all;">'+resultCom.message+'</div></div>'
+                ,btn: ['关闭全部'] // 只是为了演示
+                ,yes: function(){
+                	layer.close(index);
+                	layer.closeAll();
+                }
+                ,zIndex: layer.zIndex // 重点1
+                ,success: function(layero){
+                  layer.setTop(layero); // 重点2
+                }
+            });
+        }
+        // if (resultCom.message == 'timeout') { // 超时标识
+        //     parent.location.href = getRealPath() + '/admin/login'; // 跳转到登录页面
+        // }
+    });
     // var token = $("meta[name='_csrf']", parent.document).attr("content");
     // var header = $("meta[name='_csrf_header']", parent.document).attr("content");
     // $(document).ajaxSend(function (e, xhr, options) {

@@ -132,10 +132,10 @@ public class UserServiceImpl implements UserService {
         if (userByNamePass == null){
             return new Result(-1013,"密码错误!");
         }
-        boolean hmset = redisCacheManager.hmset(userByNamePass.getId(), EntityUtils.entityToMap(userByNamePass), 60 * 10);
-        if (!hmset){
-            new Result(-1014,"对不起!设置信息有误!请稍后再试!");
-        }
+//        boolean hmset = redisCacheManager.hmset(userByNamePass.getId(), EntityUtils.entityToMap(userByNamePass), 60 * 10);
+//        if (!hmset){
+//            new Result(-1014,"对不起!设置信息有误!请稍后再试!");
+//        }
         return new Result(200,"登陆成功!",0,userByNamePass);
     }
 }
