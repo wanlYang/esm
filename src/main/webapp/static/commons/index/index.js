@@ -31,6 +31,9 @@ layui.use(['form', 'layer', 'jquery',"element"], function () {
     // 页面下拉固定楼层导航
     $('.floor-nav').smartFloat();
     $('.to-top').toTop({position:false});
+
+
+
 })
 
 

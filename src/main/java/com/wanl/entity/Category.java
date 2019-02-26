@@ -20,7 +20,7 @@ public class Category {
     /**
      * 父ID
      */
-    private Integer parent_id;
+    private Integer parentId;
 
     /**
      * 标题
@@ -50,12 +50,12 @@ public class Category {
         this.id = id;
     }
 
-    public Integer getParent_id() {
-        return parent_id;
+    public Integer getParentId() {
+        return parentId;
     }
 
-    public void setParent_id(Integer parent_id) {
-        this.parent_id = parent_id;
+    public void setParentId(Integer parentId) {
+        this.parentId = parentId;
     }
 
     public String getTitle() {
@@ -94,7 +94,7 @@ public class Category {
     public String toString() {
         return "Category{" +
                 "id=" + id +
-                ", parent_id=" + parent_id +
+                ", parentId=" + parentId +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
                 ", display=" + display +
