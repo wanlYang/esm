@@ -27,11 +27,15 @@ public class CateGoryController {
     private CategoryService categoryService;
 
     @ResponseBody
-    @RequestMapping(value = "/list",method = RequestMethod.GET)
+    @RequestMapping(value = "/list")
     public Result getCateGory(){
 
         List<Category> categories = categoryService.getCateGory();
-
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return new Result(200,"获取成功!",0,categories);
     }
 
