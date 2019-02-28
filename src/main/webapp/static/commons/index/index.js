@@ -32,6 +32,7 @@ layui.use(['form', 'layer', 'jquery', "element"], function () {
     $('.floor-nav').smartFloat();
     $('.to-top').toTop({position: false});
 
+    //获取导航数据
     $.ajax({
         url: getRealPath() + "/category/list",
         type: 'GET',
@@ -51,7 +52,6 @@ layui.use(['form', 'layer', 'jquery', "element"], function () {
                     $.each(item.children, function (index, itemChild) {
                         flag += 1;
                         cateHtml += '<li>' + itemChild.title + '</li>';
-                        console.log(flag)
                         if (flag == 4) {
                             return false;
                         }
@@ -83,23 +83,6 @@ layui.use(['form', 'layer', 'jquery', "element"], function () {
             layer.msg("出现错误,请尝试刷新页面!");
         }
     });
-    //data为json数据
-    //parent为要组合成html的容器
-    function showAll(data, parent) {
-        $.each(data.children, function (index, fatherLi) {//遍历数据集
-            var li1 = $("<li class='" + fatherLi.liClass + "'><a href='" + fatherLi.link + "'><i class=" + fatherLi.iClass + "></i>" + fatherLi.label + "</a></li>");//没有children的初始li结构
-            var li2 = $("<li class='" + fatherLi.liClass + "'><a href='" + fatherLi.link + "'><i class=" + fatherLi.iClass + "></i>" + fatherLi.label + "<span class='" + fatherLi.spanClass + "'><i class='" + fatherLi.spanChildIClass + "'></i></span>" + "</a></li>");//有children的初始li结构
-            //console.log($(li1).html());
-            //console.log($(li2).html());
-            if (fatherLi.children.length > 0) { //如果有子节点，则遍历该子节点
-                var ul = $("<ul class='" + fatherLi.children[0].ulClass + "'></ul>");
-                $(li2).append(ul).appendTo(parent);//将li的初始化选择好，并马上添加带类名的ul子节点，并且将这个li添加到父亲节点中
-                showAll(fatherLi.children[0], $(li2).children().eq(1));//将空白的ul作为下一个递归遍历的父亲节点传入，递归调用showAll函数
-            } else {
-                $(li1).appendTo(parent);//如果该节点没有子节点，则直接将该节点li以及文本创建好直接添加到父亲节点中
-            }
-        });
-    }
 
 })
 
