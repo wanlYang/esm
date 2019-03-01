@@ -24,4 +24,14 @@ public interface CategoryMapper {
      * @return java.util.List<com.wanl.entity.Category>
      **/
     List<Category> findAll();
+
+    /**
+     * 根据ID获取
+     * @Author YangBin
+     * @Date 9:00 2019/3/1
+     * @Param [id]
+     * @version v1.0
+     * @return com.wanl.entity.Category
+     **/
+    Category findCateById(Integer id);
 }

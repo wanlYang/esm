@@ -11,4 +11,7 @@
         <result column="description" property="description"></result>
         <result column="display" property="display"></result>
     </resultMap>
+    <select id="findCateById" resultMap="categoryResultMap">
+        SELECT * FROM esm_cate WHERE id = #{id}
+    </select>
 </mapper>

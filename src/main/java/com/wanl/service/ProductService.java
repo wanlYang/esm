@@ -1,5 +1,7 @@
 package com.wanl.service;
 
+import com.wanl.entity.Product;
+
 import java.util.List;
 
 /**
@@ -13,5 +15,13 @@ import java.util.List;
 public interface ProductService {
 
 
-
+    /**
+     * 获取爆款商品
+     * @Author YangBin
+     * @Date 8:32 2019/3/1
+     * @Param []
+     * @version v1.0
+     * @return java.util.List<com.wanl.entity.Product>
+     **/
+    List<Product> getHotproduct();
 }

@@ -1,10 +1,15 @@
 package com.wanl.controller;
 
+import com.wanl.entity.Product;
 import com.wanl.entity.Result;
+import com.wanl.service.ProductService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
 
 /**
  * 首页控制器
@@ -17,7 +22,8 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class IndexController {
 
-
+    @Autowired
+    private ProductService productService;
 
     @RequestMapping(value = "/",method = RequestMethod.GET)
     public ModelAndView index(){
@@ -28,6 +34,8 @@ public class IndexController {
 
     @RequestMapping(value = "/index/hot/product")
     public Result getHotProduct(){
+
+        List<Product> products = productService.getHotproduct();
 
         return null;
     }
