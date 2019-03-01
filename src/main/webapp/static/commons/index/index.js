@@ -40,44 +40,48 @@ layui.use(['form', 'layer', 'jquery', "element"], function () {
 
         },
         success: function (res) {
-            var cateHtml = '';
-            var flag = 0;
-            $.each(res.data, function (index, item) {
-                cateHtml += '<div class="cat-box">';
-                cateHtml += '<div class="title">';
-                cateHtml += '<i class="layui-icon layui-icon-component"></i> ' + item.title + '';
-                cateHtml += '</div>';
-                cateHtml += '<ul class="cat-list clearfix">';
-                if (item.children != null) {
-                    $.each(item.children, function (index, itemChild) {
-                        flag += 1;
-                        cateHtml += '<li>' + itemChild.title + '</li>';
-                        if (flag == 4) {
-                            return false;
-                        }
-                    })
-                    flag = 0;
-                }
-                cateHtml += '</ul>';
-                cateHtml += '<div class="cat-list__deploy">';
-                cateHtml += '<div class="deploy-box">';
-                $.each(item.children, function (index, itemChild) {
-                    cateHtml += '<div class="genre-box clearfix">';
-                    cateHtml += '<span class="title">' + itemChild.title + '</span>';
-                    cateHtml += '<div class="genre-list">';
-                    if (itemChild.children != null) {
-                        $.each(itemChild.children, function (index, three) {
-                            cateHtml += '<a href="">' + three.title + '</a>';
+            if (res.status == 200) {
+                var cateHtml = '';
+                var flag = 0;
+                $.each(res.data, function (index, item) {
+                    cateHtml += '<div class="cat-box">';
+                    cateHtml += '<div class="title">';
+                    cateHtml += '<i class="layui-icon layui-icon-component"></i> ' + item.title + '';
+                    cateHtml += '</div>';
+                    cateHtml += '<ul class="cat-list clearfix">';
+                    if (item.children != null) {
+                        $.each(item.children, function (index, itemChild) {
+                            flag += 1;
+                            cateHtml += '<li>' + itemChild.title + '</li>';
+                            if (flag == 4) {
+                                return false;
+                            }
                         })
+                        flag = 0;
                     }
+                    cateHtml += '</ul>';
+                    cateHtml += '<div class="cat-list__deploy">';
+                    cateHtml += '<div class="deploy-box">';
+                    $.each(item.children, function (index, itemChild) {
+                        cateHtml += '<div class="genre-box clearfix">';
+                        cateHtml += '<span class="title">' + itemChild.title + '</span>';
+                        cateHtml += '<div class="genre-list">';
+                        if (itemChild.children != null) {
+                            $.each(itemChild.children, function (index, three) {
+                                cateHtml += '<a href="">' + three.title + '</a>';
+                            })
+                        }
+                        cateHtml += '</div>';
+                        cateHtml += '</div>';
+                    })
+                    cateHtml += '</div>';
                     cateHtml += '</div>';
                     cateHtml += '</div>';
                 })
-                cateHtml += '</div>';
-                cateHtml += '</div>';
-                cateHtml += '</div>';
-            })
-            $("#categoryBox").html(cateHtml);
+                $("#categoryBox").html(cateHtml);
+            }else{
+                layer.msg("出现错误,请尝试刷新页面!");
+            }
         },
         error: function () {
             layer.msg("出现错误,请尝试刷新页面!");
@@ -91,8 +95,9 @@ layui.use(['form', 'layer', 'jquery', "element"], function () {
 
         },
         success: function (result) {
+            if (result.status == 200){
 
-
+            }
         },
         error: function () {
             layer.msg("出现错误,请尝试刷新页面!");
