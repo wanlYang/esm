@@ -41,7 +41,7 @@ public class ProductServiceImpl implements ProductService {
 
         setProductImages(hotProducts);
 
-        return null;
+        return hotProducts;
     }
 
     /**
@@ -59,4 +59,5 @@ public class ProductServiceImpl implements ProductService {
             product.setFirstProductImage(imagesByProductId.get(0));
         }
     }
+
 }

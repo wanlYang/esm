@@ -84,6 +84,21 @@ layui.use(['form', 'layer', 'jquery', "element"], function () {
         }
     });
 
+    $.ajax({
+        url: getRealPath() + "/index/hot/product",
+        type: 'GET',
+        complete: function (XMLHttpRequest, textStatus) {
+
+        },
+        success: function (result) {
+
+
+        },
+        error: function () {
+            layer.msg("出现错误,请尝试刷新页面!");
+        }
+    });
+
 })
 
 

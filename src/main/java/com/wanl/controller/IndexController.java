@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -33,11 +34,15 @@ public class IndexController {
     }
 
     @RequestMapping(value = "/index/hot/product")
+    @ResponseBody
     public Result getHotProduct(){
-
         List<Product> products = productService.getHotproduct();
-
-        return null;
+        Result result = new Result();
+        result.setMessage("获取成功!");
+        result.setStatus(200);
+        result.setCount(0);
+        result.setData(products);
+        return result;
     }
 
 }
