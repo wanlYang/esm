@@ -53,7 +53,7 @@ layui.use(['form', 'layer', 'jquery', "element"], function () {
                         $.each(item.children, function (index, itemChild) {
                             flag += 1;
                             cateHtml += '<li>' + itemChild.title + '</li>';
-                            if (flag == 4) {
+                            if (flag == 2) {
                                 return false;
                             }
                         })
@@ -64,14 +64,7 @@ layui.use(['form', 'layer', 'jquery', "element"], function () {
                     cateHtml += '<div class="deploy-box">';
                     $.each(item.children, function (index, itemChild) {
                         cateHtml += '<div class="genre-box clearfix">';
-                        cateHtml += '<span class="title">' + itemChild.title + '</span>';
-                        cateHtml += '<div class="genre-list">';
-                        if (itemChild.children != null) {
-                            $.each(itemChild.children, function (index, three) {
-                                cateHtml += '<a href="">' + three.title + '</a>';
-                            })
-                        }
-                        cateHtml += '</div>';
+                        cateHtml += '<a style="text-decoration:none;"><span class="title">' + itemChild.title + '</span></a>';
                         cateHtml += '</div>';
                     })
                     cateHtml += '</div>';

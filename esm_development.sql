@@ -11,7 +11,7 @@
  Target Server Version : 50624
  File Encoding         : 65001
 
- Date: 02/03/2019 14:57:25
+ Date: 02/03/2019 21:12:36
 */
 
 SET NAMES utf8mb4;
@@ -134,9 +134,9 @@ CREATE TABLE `esm_orderitem`  (
   INDEX `product_id`(`product_id`) USING BTREE,
   INDEX `user_id`(`user_id`) USING BTREE,
   INDEX `order_id`(`order_id`) USING BTREE,
-  CONSTRAINT `esm_orderitem_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `esm_product` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `esm_orderitem_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `esm_user` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  CONSTRAINT `esm_orderitem_ibfk_3` FOREIGN KEY (`order_id`) REFERENCES `esm_order` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+  CONSTRAINT `esm_orderitem_ibfk_3` FOREIGN KEY (`order_id`) REFERENCES `esm_order` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `esm_orderitem_ibfk_4` FOREIGN KEY (`product_id`) REFERENCES `esm_product` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
@@ -161,12 +161,17 @@ sub_title` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT 
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `cate_id`(`cate_id`) USING BTREE,
   CONSTRAINT `esm_product_ibfk_1` FOREIGN KEY (`cate_id`) REFERENCES `esm_cate` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 82522960 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of esm_product
 -- ----------------------------
-INSERT INTO `esm_product` VALUES (1, 16, '钟灵记【绯烟】日常汉服女对襟上襦改良齐腰襦裙吊带中国风春夏秋', '齐腰襦裙吊带中国风春夏秋', 115.00, 198.00, 0, 'productimg\\2019\\2\\S-001-1_b.jpg', '钟灵记【绯烟】日常汉服女对襟上襦改良齐腰襦裙吊带中国风春夏秋', 1, 1, 99, '2019-02-28 09:12:16');
+INSERT INTO `esm_product` VALUES (82522957, 16, '钟灵记般若齐胸襦裙对襟齐腰汉服女改良春夏秋冬装传统绿重工大摆', '传统绿重工大摆', 188.00, 288.00, 0, 'productimg\\2019\\3\\82522957\\TB2LfR1ceSSBuNjy0FlXXbBpVXa_!!411005513.jpg', '钟灵记般若齐胸襦裙对襟齐腰汉服女改良春夏秋冬装传统绿重工大摆', 1, 1, 99, '2019-03-02 19:57:33');
+INSERT INTO `esm_product` VALUES (82522958, 20, '如梦霓裳汉服女装交领襦裙翎羽大袖孔雀绣花春夏季原创日常新款', '女装交领襦裙翎羽大袖孔雀绣花', 189.00, 259.00, 0, 'productimg\\2019\\3\\82522958\\O1CN01EnfbZP1IuVwGs11zG_!!4194630953.jpg_430x430q90.jpg', '如梦霓裳汉服女装交领襦裙翎羽大袖孔雀绣花春夏季原创日常新款', 1, 1, 99, '2019-03-21 20:49:00');
+INSERT INTO `esm_product` VALUES (82522959, 20, '重回汉唐汉服女 襦裙行香子传统日常交领齐腰襦裙民族风绣花春装', '交领齐腰襦裙民族风绣花春装', 136.00, 189.00, 0, 'productimg\\2019\\3\\82522959\\O1CN01ZiO0Lm1vZgvtURT4Z_!!0-item_pic.jpg_430x430q90.jpg', '重回汉唐汉服女 襦裙行香子传统日常交领齐腰襦裙民族风绣花春装', 1, 1, 99, '2019-03-02 21:02:38');
+INSERT INTO `esm_product` VALUES (86626581, 16, '钟灵记【绯烟】日常汉服女对襟上襦改良齐腰襦裙吊带中国风春夏秋', '齐腰襦裙吊带中国风春夏秋', 115.00, 198.00, 0, 'productimg\\2019\\3\\O1CN01kxDaD71qb00nTJNEL_!!0-item_pic.jpg', '钟灵记【绯烟】日常汉服女对襟上襦改良齐腰襦裙吊带中国风春夏秋', 1, 1, 99, '2019-02-28 09:12:16');
+INSERT INTO `esm_product` VALUES (87754945, 16, '雀灵汉服齐腰襦裙广袖大袖衫刺绣孔雀古装仙女裙大学生春夏秋冬装', '雀灵汉服齐腰襦裙广袖大袖衫刺绣孔雀古装仙女裙大学生春夏秋冬装', 148.00, 256.00, 0, 'productimg\\2019\\3\\O1CN01GXZnzl1b673yDgh7R_!!1766643415.jpg', '雀灵汉服齐腰襦裙广袖大袖衫刺绣孔雀古装仙女裙大学生春夏秋冬装', 1, 1, 99, '2019-03-15 19:41:45');
+INSERT INTO `esm_product` VALUES (88715736, 16, '钟灵记原创雀灵汉服女齐胸襦裙仙女裙齐腰吊带非 古风春夏秋冬款', '原创雀灵汉服女齐胸襦裙仙女裙齐腰吊带', 198.00, 245.00, 0, 'productimg\\2019\\3\\O1CN01ZCTDIk1qb00nuS2CM_!!0-item_pic.jpg', '灵记原创雀灵汉服女齐胸襦裙仙女裙齐腰吊带非 古风春夏秋冬款', 1, 1, 99, '2019-03-02 19:34:37');
 
 -- ----------------------------
 -- Table structure for esm_product_img
@@ -179,16 +184,44 @@ CREATE TABLE `esm_product_img`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `product_id`(`product_id`) USING BTREE,
   CONSTRAINT `esm_product_img_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `esm_product` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 34 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of esm_product_img
 -- ----------------------------
-INSERT INTO `esm_product_img` VALUES (1, 1, 'productimg\\2019\\2\\S-001-1_s.jpg');
-INSERT INTO `esm_product_img` VALUES (2, 1, 'productimg\\2019\\2\\S-001-2_b.jpg');
-INSERT INTO `esm_product_img` VALUES (3, 1, 'productimg\\2019\\2\\S-001-2_s.jpg');
-INSERT INTO `esm_product_img` VALUES (4, 1, 'productimg\\2019\\2\\S-001-3_b.jpg');
-INSERT INTO `esm_product_img` VALUES (5, 1, 'productimg\\2019\\2\\S-001-1_b.jpg');
+INSERT INTO `esm_product_img` VALUES (1, 86626581, 'productimg\\2019\\3\\TB2GcVcb_dYBeNkSmLyXXXfnVXa_!!411005513.jpg');
+INSERT INTO `esm_product_img` VALUES (2, 86626581, 'productimg\\2019\\3\\O1CN01kxDaD71qb00nTJNEL_!!0-item_pic.jpg');
+INSERT INTO `esm_product_img` VALUES (3, 86626581, 'productimg\\2019\\3\\TB2L4.1g_lYBeNjSszcXXbwhFXa_!!411005513.jpg');
+INSERT INTO `esm_product_img` VALUES (4, 86626581, 'productimg\\2019\\3\\TB2NNr5bFooBKNjSZPhXXc2CXXa_!!411005513.jpg');
+INSERT INTO `esm_product_img` VALUES (5, 86626581, 'productimg\\2019\\3\\TB22M7JbOMnBKNjSZFCXXX0KFXa_!!411005513.jpg');
+INSERT INTO `esm_product_img` VALUES (6, 86626581, 'productimg\\2019\\3\\TB27736dljTBKNjSZFwXXcG4XXa_!!411005513.jpg');
+INSERT INTO `esm_product_img` VALUES (7, 88715736, 'productimg\\2019\\3\\O1CN01Tzbped1qb008WHxm8_!!411005513.jpg');
+INSERT INTO `esm_product_img` VALUES (8, 88715736, 'productimg\\2019\\3\\O1CN01Wfhi9X1qb009Iudm7_!!411005513.jpg');
+INSERT INTO `esm_product_img` VALUES (9, 88715736, 'productimg\\2019\\3\\O1CN01ZCTDIk1qb00nuS2CM_!!0-item_pic.jpg');
+INSERT INTO `esm_product_img` VALUES (10, 88715736, 'productimg\\2019\\3\\TB2.DNYtHBmpuFjSZFAXXaQ0pXa_!!411005513.jpg');
+INSERT INTO `esm_product_img` VALUES (11, 88715736, 'productimg\\2019\\3\\TB2Ilexot0opuFjSZFxXXaDNVXa_!!411005513.jpg');
+INSERT INTO `esm_product_img` VALUES (12, 88715736, 'productimg\\2019\\3\\TB2O8k7u80lpuFjSszdXXcdxFXa_!!411005513.jpg');
+INSERT INTO `esm_product_img` VALUES (13, 87754945, 'productimg\\2019\\3\\O1CN01GXZnzl1b673yDgh7R_!!1766643415.jpg');
+INSERT INTO `esm_product_img` VALUES (14, 87754945, 'productimg\\2019\\3\\O1CN01JuJak91b673woXq7c_!!1766643415.jpg');
+INSERT INTO `esm_product_img` VALUES (15, 87754945, 'productimg\\2019\\3\\O1CN01vfRbF21b673W52gXf_!!1766643415.png');
+INSERT INTO `esm_product_img` VALUES (16, 87754945, 'productimg\\2019\\3\\O1CN01YuxbAK1b673X5N9Bq_!!1766643415.png');
+INSERT INTO `esm_product_img` VALUES (17, 87754945, 'productimg\\2019\\3\\O1CN011b6725tLwCMHlDF_!!1766643415.png');
+INSERT INTO `esm_product_img` VALUES (18, 82522957, 'productimg\\2019\\3\\82522957\\O1CN017cFOfj1qb00o29HaD_!!0-item_pic.jpg');
+INSERT INTO `esm_product_img` VALUES (19, 82522957, 'productimg\\2019\\3\\82522957\\TB2.DNYtHBmpuFjSZFAXXaQ0pXa_!!411005513.jpg');
+INSERT INTO `esm_product_img` VALUES (20, 82522957, 'productimg\\2019\\3\\82522957\\TB2.ePTcrSYBuNjSspfXXcZCpXa_!!411005513.jpg');
+INSERT INTO `esm_product_img` VALUES (21, 82522957, 'productimg\\2019\\3\\82522957\\TB2_U_jer9YBuNjy0FgXXcxcXXa_!!411005513.jpg');
+INSERT INTO `esm_product_img` VALUES (22, 82522957, 'productimg\\2019\\3\\82522957\\TB2HOeLakomBKNjSZFqXXXtqVXa_!!411005513.jpg');
+INSERT INTO `esm_product_img` VALUES (23, 82522957, 'productimg\\2019\\3\\82522957\\TB2LfR1ceSSBuNjy0FlXXbBpVXa_!!411005513.jpg');
+INSERT INTO `esm_product_img` VALUES (24, 82522958, 'productimg\\2019\\3\\82522958\\O1CN01EnfbZP1IuVwGs11zG_!!4194630953.jpg_430x430q90.jpg');
+INSERT INTO `esm_product_img` VALUES (25, 82522958, 'productimg\\2019\\3\\82522958\\O1CN01UR0ANd1IuVwFOP2FU_!!4194630953.jpg_430x430q90.jpg');
+INSERT INTO `esm_product_img` VALUES (26, 82522958, 'productimg\\2019\\3\\82522958\\O1CN01wb3ytz1IuVwERMevX_!!4194630953.jpg_430x430q90.jpg');
+INSERT INTO `esm_product_img` VALUES (27, 82522958, 'productimg\\2019\\3\\82522958\\O1CN013YJden1IuVwFcF5IV_!!4194630953.jpg_430x430q90.jpg');
+INSERT INTO `esm_product_img` VALUES (28, 82522958, 'productimg\\2019\\3\\82522958\\O1CN017nHxHG1IuVwE2ndvW_!!4194630953.jpg_430x430q90.jpg');
+INSERT INTO `esm_product_img` VALUES (29, 82522959, 'productimg\\2019\\3\\82522959\\O1CN01ZiO0Lm1vZgvtURT4Z_!!0-item_pic.jpg_430x430q90.jpg');
+INSERT INTO `esm_product_img` VALUES (30, 82522959, 'productimg\\2019\\3\\82522959\\TB1t0uDdbSYBuNjSspiYXFNzpXa_M2.SS2_430x430q90.jpg');
+INSERT INTO `esm_product_img` VALUES (31, 82522959, 'productimg\\2019\\3\\82522959\\TB2J.sTmY_I8KJjy1XaXXbsxpXa_!!2835046187.jpg_430x430q90.jpg');
+INSERT INTO `esm_product_img` VALUES (32, 82522959, 'productimg\\2019\\3\\82522959\\TB2WbpZqQCWBuNjy0FaXXXUlXXa_!!2835046187.jpg_430x430q90.jpg');
+INSERT INTO `esm_product_img` VALUES (33, 82522959, 'productimg\\2019\\3\\82522959\\TB24j6kjVGWBuNjy0FbXXb4sXXa_!!2835046187.jpg_430x430q90.jpg');
 
 -- ----------------------------
 -- Table structure for esm_property
@@ -201,7 +234,7 @@ CREATE TABLE `esm_property`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `cate_id`(`cate_id`) USING BTREE,
   CONSTRAINT `esm_property_ibfk_1` FOREIGN KEY (`cate_id`) REFERENCES `esm_cate` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of esm_property
@@ -210,6 +243,12 @@ INSERT INTO `esm_property` VALUES (1, 16, '品牌');
 INSERT INTO `esm_property` VALUES (2, 16, '上市年份季节');
 INSERT INTO `esm_property` VALUES (3, 16, '尺码');
 INSERT INTO `esm_property` VALUES (4, 16, '颜色分类');
+INSERT INTO `esm_property` VALUES (5, 20, '品牌');
+INSERT INTO `esm_property` VALUES (6, 20, '尺码');
+INSERT INTO `esm_property` VALUES (8, 20, '货号');
+INSERT INTO `esm_property` VALUES (9, 20, '上市年份季节');
+INSERT INTO `esm_property` VALUES (10, 20, '材质成分');
+INSERT INTO `esm_property` VALUES (11, 20, '颜色分类');
 
 -- ----------------------------
 -- Table structure for esm_propertyvalue
@@ -223,17 +262,41 @@ CREATE TABLE `esm_propertyvalue`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `product_id`(`product_id`) USING BTREE,
   INDEX `property_id`(`property_id`) USING BTREE,
-  CONSTRAINT `esm_propertyvalue_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `esm_product` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  CONSTRAINT `esm_propertyvalue_ibfk_2` FOREIGN KEY (`property_id`) REFERENCES `esm_property` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+  CONSTRAINT `esm_propertyvalue_ibfk_2` FOREIGN KEY (`property_id`) REFERENCES `esm_property` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `esm_propertyvalue_ibfk_3` FOREIGN KEY (`product_id`) REFERENCES `esm_product` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB AUTO_INCREMENT = 29 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of esm_propertyvalue
 -- ----------------------------
-INSERT INTO `esm_propertyvalue` VALUES (1, 1, 1, '钟灵记');
-INSERT INTO `esm_propertyvalue` VALUES (2, 1, 2, '2018年春季');
-INSERT INTO `esm_propertyvalue` VALUES (3, 1, 3, 'XS S M L XL');
-INSERT INTO `esm_propertyvalue` VALUES (4, 1, 4, '上襦一件 下裙一件 吊带一件 上襦1件 下裙1件 吊带1件 吊带1件. 下裙1件. 上襦一件.');
+INSERT INTO `esm_propertyvalue` VALUES (1, 86626581, 1, '钟灵记');
+INSERT INTO `esm_propertyvalue` VALUES (2, 86626581, 2, '2018年春季');
+INSERT INTO `esm_propertyvalue` VALUES (3, 86626581, 3, 'XS S M L XL');
+INSERT INTO `esm_propertyvalue` VALUES (4, 86626581, 4, '上襦一件 下裙一件 吊带一件 上襦1件 下裙1件 吊带1件 吊带1件. 下裙1件. 上襦一件.');
+INSERT INTO `esm_propertyvalue` VALUES (5, 88715736, 1, '钟灵记');
+INSERT INTO `esm_propertyvalue` VALUES (6, 88715736, 2, '2017年春季');
+INSERT INTO `esm_propertyvalue` VALUES (7, 88715736, 3, 'XS S M L XL');
+INSERT INTO `esm_propertyvalue` VALUES (8, 88715736, 4, '齐胸裙（不含上襦、批帛） 吊带一件 上襦1件 齐腰下裙一件 上襦一件 齐胸裙（不含上襦、批帛) 齐腰下裙1件 吊带1件');
+INSERT INTO `esm_propertyvalue` VALUES (9, 87754945, 1, '钟灵记');
+INSERT INTO `esm_propertyvalue` VALUES (10, 87754945, 2, ' 2017年春季');
+INSERT INTO `esm_propertyvalue` VALUES (11, 87754945, 3, 'XS S M L XL');
+INSERT INTO `esm_propertyvalue` VALUES (12, 87754945, 4, '齐胸裙（不含上襦、批帛） 吊带一件 上襦1件 齐腰下裙一件 上襦一件 齐胸裙（不含上襦、批帛) 齐腰下裙1件 吊带1件');
+INSERT INTO `esm_propertyvalue` VALUES (13, 82522957, 1, '钟灵记');
+INSERT INTO `esm_propertyvalue` VALUES (14, 82522957, 2, '2018年春季');
+INSERT INTO `esm_propertyvalue` VALUES (15, 82522957, 3, 'M+ S+ XS S M L 均码');
+INSERT INTO `esm_propertyvalue` VALUES (16, 82522957, 4, '上襦一件 齐胸下裙一件 齐腰下裙 齐胸下裙1件 上襦一件. 齐胸下裙一件. 齐腰下裙1件');
+INSERT INTO `esm_propertyvalue` VALUES (17, 82522958, 5, '如梦霓裳');
+INSERT INTO `esm_propertyvalue` VALUES (18, 82522958, 6, '155 160 165 170');
+INSERT INTO `esm_propertyvalue` VALUES (19, 82522958, 8, '襦裙[翎羽]');
+INSERT INTO `esm_propertyvalue` VALUES (20, 82522958, 9, '2018年冬季');
+INSERT INTO `esm_propertyvalue` VALUES (21, 82522958, 10, ' 其他100%');
+INSERT INTO `esm_propertyvalue` VALUES (22, 82522958, 11, ' 黑色上襦.一件 现货 黑色上襦.一件 预售 30天左右发货 白色上襦.一件 现货 白色上襦.一件 预售 30天左右发货 肉色上襦.一件 现货 肉色上襦.一件 预售 30天左右发货 黑红下裙.一件 现货 黑红下裙.一件 预售 30天左右发货 浅蓝下裙.一件 现货 浅蓝下裙.一件 预售 30天左右发货');
+INSERT INTO `esm_propertyvalue` VALUES (23, 82522959, 5, '重回汉唐');
+INSERT INTO `esm_propertyvalue` VALUES (24, 82522959, 6, '155 160 165 170');
+INSERT INTO `esm_propertyvalue` VALUES (25, 82522959, 8, 'HFJY1235');
+INSERT INTO `esm_propertyvalue` VALUES (26, 82522959, 9, ' 2018年春季');
+INSERT INTO `esm_propertyvalue` VALUES (27, 82522959, 10, ' 聚对苯二甲酸乙二酯(涤纶)100%');
+INSERT INTO `esm_propertyvalue` VALUES (28, 82522959, 11, ' 仅浅肉粉上襦 现货 仅浅肉粉上襦 预售 仅深红色下裙  现货 仅深红色下裙 预售');
 
 -- ----------------------------
 -- Table structure for esm_review
