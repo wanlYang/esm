@@ -205,7 +205,7 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551532726716" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551533044960" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../apache-tomcat-9.0.13/webapps/esm" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -404,6 +404,7 @@
       <workItem from="1551399769937" duration="5284000" />
       <workItem from="1551491394700" duration="3605000" />
       <workItem from="1551504530392" duration="5397000" />
+      <workItem from="1551532662738" duration="409000" />
     </task>
     <task id="LOCAL-00001" summary="V06">
       <created>1550645108003</created>
@@ -503,16 +504,23 @@
       <option name="project" value="LOCAL" />
       <updated>1551520928163</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="V23">
+      <created>1551532790116</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1551532790116</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="76901000" />
+    <option name="totallyTimeSpent" value="77310000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21268657" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21481876" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -522,7 +530,7 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49840087" weight="0.20600858" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4978678" weight="0.20600858" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39914164" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -530,7 +538,7 @@
       <window_info anchor="bottom" id="Spring" order="7" />
       <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50159913" side_tool="true" weight="0.23390558" />
+      <window_info active="true" anchor="bottom" id="Event Log" order="10" sideWeight="0.5021322" side_tool="true" visible="true" weight="0.23390558" />
       <window_info anchor="bottom" id="Java Enterprise" order="11" />
       <window_info anchor="bottom" id="Database Changes" order="12" />
       <window_info anchor="bottom" id="Version Control" order="13" />
@@ -538,7 +546,7 @@
       <window_info anchor="bottom" id="Messages" order="15" weight="0.18093175" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="1" weight="0.25" />
-      <window_info anchor="right" id="Maven" order="2" visible="true" weight="0.141258" />
+      <window_info anchor="right" id="Maven" order="2" weight="0.23240939" />
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
       <window_info anchor="right" id="Database" order="5" weight="0.32995737" />
@@ -600,7 +608,8 @@
     <MESSAGE value="V20" />
     <MESSAGE value="V21" />
     <MESSAGE value="V22" />
-    <option name="LAST_COMMIT_MESSAGE" value="V22" />
+    <MESSAGE value="V23" />
+    <option name="LAST_COMMIT_MESSAGE" value="V23" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -627,13 +636,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wanl/service/CategoryService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="484">
-          <caret line="25" column="19" selection-start-line="25" selection-start-column="19" selection-end-line="25" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/wanl/entity/Category.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1672">
@@ -856,7 +858,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/esm_development.sql" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/wanl/controller/CateGoryController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="638">
@@ -1075,6 +1076,18 @@
         <state relative-caret-position="792">
           <caret line="36" column="39" selection-start-line="36" selection-start-column="39" selection-end-line="36" selection-end-column="39" />
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/esm_development.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4356">
+          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-6737" />
       </provider>
     </entry>
   </component>
