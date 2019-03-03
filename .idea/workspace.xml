@@ -6,7 +6,10 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="93cca3ae-8a97-4f5e-90ef-f6d54e194a6e" name="Default Changelist" comment="" />
+    <list default="true" id="93cca3ae-8a97-4f5e-90ef-f6d54e194a6e" name="Default Changelist" comment="V28">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/esm_development.sql" beforeDir="false" afterPath="$PROJECT_DIR$/esm_development.sql" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -237,7 +240,7 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551611591445" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551612814617" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../apache-tomcat-9.0.13/webapps/esm" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -437,7 +440,7 @@
       <workItem from="1551491394700" duration="3605000" />
       <workItem from="1551504530392" duration="5397000" />
       <workItem from="1551532662738" duration="409000" />
-      <workItem from="1551610589235" duration="885000" />
+      <workItem from="1551610589235" duration="1926000" />
     </task>
     <task id="LOCAL-00001" summary="V06">
       <created>1550645108003</created>
@@ -551,11 +554,18 @@
       <option name="project" value="LOCAL" />
       <updated>1551610717756</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="V28">
+      <created>1551611623376</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1551611623376</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="78195000" />
+    <option name="totallyTimeSpent" value="79236000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
@@ -586,7 +596,7 @@
       <window_info anchor="bottom" id="Messages" order="15" weight="0.18093175" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="1" weight="0.25" />
-      <window_info anchor="right" id="Maven" order="2" visible="true" weight="0.23240939" />
+      <window_info anchor="right" id="Maven" order="2" weight="0.23240939" />
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
       <window_info anchor="right" id="Database" order="5" weight="0.32995737" />
@@ -650,7 +660,8 @@
     <MESSAGE value="V22" />
     <MESSAGE value="V23" />
     <MESSAGE value="V24" />
-    <option name="LAST_COMMIT_MESSAGE" value="V24" />
+    <MESSAGE value="V28" />
+    <option name="LAST_COMMIT_MESSAGE" value="V28" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1119,16 +1130,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/esm_development.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4356">
-          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-6737" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/esm_development.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-16895">
+          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+        </state>
       </provider>
     </entry>
   </component>
