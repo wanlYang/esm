@@ -24,9 +24,9 @@ public class Product {
 
     private String subTitle;
 
-    private Double price;
+    private String price;
 
-    private Double oldPrice;
+    private String oldPrice;
 
     private Integer buyCount;
 
@@ -78,19 +78,19 @@ public class Product {
         this.subTitle = subTitle;
     }
 
-    public Double getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(Double price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 
-    public Double getOldPrice() {
+    public String getOldPrice() {
         return oldPrice;
     }
 
-    public void setOldPrice(Double oldPrice) {
+    public void setOldPrice(String oldPrice) {
         this.oldPrice = oldPrice;
     }
 

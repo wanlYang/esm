@@ -14,4 +14,7 @@
     <select id="findCateById" resultMap="categoryResultMap">
         SELECT * FROM esm_cate WHERE id = #{id}
     </select>
+    <select id="findCateByParentId" resultMap="categoryResultMap">
+        SELECT * FROM esm_cate WHERE parent_id = #{cateParentId}
+    </select>
 </mapper>

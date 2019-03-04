@@ -15,7 +15,7 @@ import java.util.List;
 public interface ProductMapper {
 
     /**
-     * 获取劲爆人们商品
+     * 获取劲爆热门商品
      * @Author YangBin
      * @Date 9:22 2019/3/1
      * @Param []
@@ -29,9 +29,19 @@ public interface ProductMapper {
      * @Author YangBin
      * @Date 9:22 2019/3/1
      * @Param []
+     * @param id ID
      * @version v1.0
      * @return com.wanl.entity.Product
      **/
     Product findProductById(Integer id);
 
+    /**
+     * 获取一个分类下的所有商品
+     * @Author YangBin
+     * @Date 23:25 2019/3/4
+     * @Param [id]
+     * @version v1.0
+     * @return java.util.List<com.wanl.entity.Product>
+     **/
+    List<Product> findProductByCategoryId(Integer id);
 }

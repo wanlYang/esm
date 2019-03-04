@@ -69,4 +69,11 @@ public class UserController {
         return loginResult;
     }
 
+    @RequestMapping(value = "/logout",method = RequestMethod.GET)
+    public String logout(HttpSession session){
+        session.removeAttribute(EsmConstant.USER_SESSION);
+        session.invalidate();
+        return "index";
+    }
+
 }

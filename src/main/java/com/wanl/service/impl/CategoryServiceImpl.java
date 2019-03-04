@@ -1,5 +1,6 @@
 package com.wanl.service.impl;
 
+import com.wanl.constant.EsmConstant;
 import com.wanl.entity.Category;
 import com.wanl.mapper.CategoryMapper;
 import com.wanl.service.CategoryService;
@@ -71,5 +72,46 @@ public class CategoryServiceImpl implements CategoryService {
             return null;
         }
         return childCateList;
+    }
+
+    /**
+     * 获取襦裙子分类
+     *
+     * @return java.util.List<com.wanl.entity.Category>
+     * @Author YangBin
+     * @Date 23:04 2019/3/4
+     * @Param []
+     * @version v1.0
+     **/
+    @Override
+    public List<Category> getSkirt() {
+        return getCategory(EsmConstant.CATE_SKIRT);
+    }
+
+    /**
+     * 获取衣裳子分类
+     *
+     * @return java.util.List<com.wanl.entity.Category>
+     * @Author YangBin
+     * @Date 23:59 2019/3/4
+     * @Param []
+     * @version v1.0
+     **/
+    @Override
+    public List<Category> getClothes() {
+        return getCategory(EsmConstant.CATE_CLOTHES);
+    }
+    public List<Category> getCategory(Integer id){
+        List<Category> categories = categoryMapper.findAll();
+        List<Category> categoriesList = new ArrayList<>();
+        for (int i = 0; i < categories.size(); i++){
+            if (categories.get(i).getParentId().intValue() == id.intValue()) {
+                categoriesList.add(categories.get(i));
+            }
+        }
+        for (Category category:categoriesList) {
+            category.setChildren(treeCategory(categories,category.getId()));
+        }
+        return categoriesList;
     }
 }

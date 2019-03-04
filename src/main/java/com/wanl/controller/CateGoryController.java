@@ -39,4 +39,19 @@ public class CateGoryController {
         return new Result(200,"获取成功!",0,categories);
     }
 
+    @ResponseBody
+    @RequestMapping(value = "/list/skirt")
+    public Result getSkirt(){
+        List<Category> categories = categoryService.getSkirt();
+
+        return new Result(200,"获取成功!",0,categories);
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/list/clothes")
+    public Result getClothes(){
+        List<Category> categories = categoryService.getClothes();
+
+        return new Result(200,"获取成功!",0,categories);
+    }
 }

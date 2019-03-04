@@ -24,4 +24,24 @@ public interface ProductService {
      * @return java.util.List<com.wanl.entity.Product>
      **/
     List<Product> getHotproduct();
+
+    /**
+     * 随机获取襦裙类商品
+     * @Author YangBin
+     * @Date 23:18 2019/3/4
+     * @Param []
+     * @version v1.0
+     * @return java.util.List<com.wanl.entity.Product>
+     **/
+    List<Product> getSkirtProduct();
+
+    /**
+     * 随机获取衣裳类商品
+     * @Author YangBin
+     * @Date 0:12 2019/3/5
+     * @Param []
+     * @version v1.0
+     * @return java.util.List<com.wanl.entity.Product>
+     **/
+    List<Product> getClothesProduct();
 }

@@ -24,4 +24,24 @@ public interface CategoryService {
      * @return java.util.List<com.wanl.entity.Category>
      **/
     List<Category> getCateGory();
+
+    /**
+     * 获取襦裙子分类
+     * @Author YangBin
+     * @Date 23:04 2019/3/4
+     * @Param []
+     * @version v1.0
+     * @return java.util.List<com.wanl.entity.Category>
+     **/
+    List<Category> getSkirt();
+
+    /**
+     * 获取衣裳子分类
+     * @Author YangBin
+     * @Date 23:59 2019/3/4
+     * @Param []
+     * @version v1.0
+     * @return java.util.List<com.wanl.entity.Category>
+     **/
+    List<Category> getClothes();
 }

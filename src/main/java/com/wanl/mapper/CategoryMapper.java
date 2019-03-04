@@ -34,4 +34,15 @@ public interface CategoryMapper {
      * @return com.wanl.entity.Category
      **/
     Category findCateById(Integer id);
+
+    /**
+     * 根据父类ID获取全部子分类
+     * @Author YangBin
+     * @Date 23:21 2019/3/4
+     * @Param [cateSkirt]
+     * @param cateParentId 父类ID
+     * @version v1.0
+     * @return java.util.List<com.wanl.entity.Category>
+     **/
+    List<Category> findCateByParentId(Integer cateParentId);
 }

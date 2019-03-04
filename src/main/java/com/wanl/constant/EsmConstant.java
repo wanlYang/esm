@@ -112,4 +112,6 @@ public interface EsmConstant {
     String ACCOUNT_ID = "ACCOUNT_ID";
     int STATUS_OK = 200;
     String USER_SESSION = "USER_SESSION";
+    Integer CATE_SKIRT = 15;
+    Integer CATE_CLOTHES = 21;
 }
