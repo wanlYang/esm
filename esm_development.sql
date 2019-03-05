@@ -11,7 +11,7 @@
  Target Server Version : 50624
  File Encoding         : 65001
 
- Date: 05/03/2019 00:21:59
+ Date: 05/03/2019 22:25:08
 */
 
 SET NAMES utf8mb4;
@@ -153,8 +153,7 @@ CREATE TABLE `esm_product`  (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '商品主键ID',
   `cate_id` int(11) NULL DEFAULT NULL COMMENT '分类ID',
   `main_title` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '商品主标题',
-  `
-sub_title` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '商品副标题',
+  `sub_title` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '商品副标题',
   `price` decimal(10, 2) NULL DEFAULT NULL COMMENT '价格',
   `old_price` decimal(10, 2) NULL DEFAULT NULL COMMENT '原价',
   `buy_count` bigint(20) NULL DEFAULT NULL COMMENT '购买数量',
@@ -167,7 +166,7 @@ sub_title` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT 
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `cate_id`(`cate_id`) USING BTREE,
   CONSTRAINT `esm_product_ibfk_1` FOREIGN KEY (`cate_id`) REFERENCES `esm_cate` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 88715767 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 88715773 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of esm_product
@@ -208,6 +207,12 @@ INSERT INTO `esm_product` VALUES (88715763, 25, '瑞彩祥云复古风汉服鞋�
 INSERT INTO `esm_product` VALUES (88715764, 25, '重回汉唐汉服配饰女鞋熙颜民族风刺绣平底弓鞋千层底手工绣花布鞋', '民族风刺绣平底弓鞋千层底手工绣花布鞋', 98.00, 108.00, 0, 'productimg\\2019\\3\\88715764\\TB2kGC_slsmBKNjSZFsXXaXSVXa_!!2835046187.jpg_430x430q90.jpg', '重回汉唐汉服配饰女鞋熙颜民族风刺绣平底弓鞋千层底手工绣花布鞋', 1, 1, 99, '2019-03-03 18:36:44');
 INSERT INTO `esm_product` VALUES (88715765, 26, '新复古民族风手工古装绣花鞋古代戏剧汉履汉服鞋千层底翘头履', '汉服鞋千层底翘头履', 138.00, 139.00, 0, 'productimg\\2019\\3\\88715765\\TB278_ka7ZmBKNjSZPiXXXFNVXa_!!3487945483.jpg_430x430q90.jpg', '新复古民族风手工古装绣花鞋古代戏剧汉履汉服鞋千层底翘头履', 1, 1, 99, '2019-03-03 18:43:31');
 INSERT INTO `esm_product` VALUES (88715766, 26, '简百莲绣花鞋新款古风日常改良弓鞋女汉服翘头内增高复古浅口布鞋', '日常改良弓鞋女汉服翘头内增高复古浅口布鞋', 56.00, 66.00, 0, 'productimg\\2019\\3\\88715766\\O1CN011TQhv8uSOQGVlFu_!!4014322377.jpg_430x430q90.jpg', '简百莲绣花鞋新款古风日常改良弓鞋女汉服翘头内增高复古浅口布鞋', 1, 1, 99, '2019-03-03 18:49:10');
+INSERT INTO `esm_product` VALUES (88715767, 25, '步瀛斋 女士绣花鞋 春夏季老北京布鞋女手工千层底 盘扣水墨民族风布鞋 古装鞋子女 汉服鞋 千底蓝印花盘扣女鞋蓝色', '步瀛斋 女士绣花鞋', 258.00, 298.00, 0, 'productimg\\2019\\3\\88715767\\5b0bad85Nc49b4ed5.jpg', '步瀛斋 女士绣花鞋 春夏季老北京布鞋女手工千层底 盘扣水墨民族风布鞋 古装鞋子女 汉服鞋 千底蓝印花盘扣女鞋蓝色 39', 1, 1, 99, '2019-03-05 20:37:44');
+INSERT INTO `esm_product` VALUES (88715768, 25, '古风鞋子白汉服鞋子女 布鞋民族风内增高系带坡跟绣花鞋女 五厘米仙鹤白系带 ', '民族风内增高系带坡跟绣花鞋女', 35.00, 60.00, 0, 'productimg\\2019\\3\\88715768\\5b72d3a6N4c0203aa.jpg', '古风鞋子白汉服鞋子女 布鞋民族风内增高系带坡跟绣花鞋女 五厘米仙鹤白系带 ', 1, 0, 99, '2019-03-05 20:48:23');
+INSERT INTO `esm_product` VALUES (88715769, 25, '【新品上市】新款汉服鞋子女鞋老北京布鞋古风民族风内增高坡跟百搭学生绣花鞋 竹叶红色', '北京布鞋古风民族风内增高坡跟百搭学生绣花鞋', 100.00, 150.00, 0, 'productimg\\2019\\3\\88715769\\1e608bf8654b0b18.jpg', '【新品上市】新款汉服鞋子女鞋老北京布鞋古风民族风内增高坡跟百搭学生绣花鞋 竹叶红色', 1, 1, 99, '2019-03-05 20:56:08');
+INSERT INTO `esm_product` VALUES (88715770, 26, '古风鞋子女汉服鞋平跟弓鞋翘头履汉服配鞋古装鞋软底中国风绣花鞋', '汉服配鞋古装鞋软底中国风绣花鞋', 75.00, 128.00, 0, 'productimg\\2019\\3\\88715770\\5bc4230aN1ce0c0f7.jpg', '古风鞋子女汉服鞋平跟弓鞋翘头履汉服配鞋古装鞋软底中国风绣花鞋', 1, 1, 99, '2019-03-05 21:03:43');
+INSERT INTO `esm_product` VALUES (88715771, 26, '汉服鞋古风鞋子女老北京布鞋弓鞋民族风学生平底系带绣花鞋千层底 浅紫色 星月翘头', '民族风学生平底系带绣花鞋千层底 浅紫色 星月翘头', 189.00, 289.00, 0, 'productimg\\2019\\3\\88715771\\5bf51520N01f22f38.jpg', '汉服鞋古风鞋子女老北京布鞋弓鞋民族风学生平底系带绣花鞋千层底 浅紫色 星月翘头', 1, 0, 99, '2019-03-05 21:10:02');
+INSERT INTO `esm_product` VALUES (88715772, 26, '古风鞋子女汉服鞋子女坡跟绣花鞋中国风女鞋民族风春夏季翘头履', '古风鞋子女汉服鞋子', 359.00, 389.00, 0, 'productimg\\2019\\3\\88715772\\98ec3e0e1fd73c9e.jpg', '古风鞋子女汉服鞋子女坡跟绣花鞋中国风女鞋民族风春夏季翘头履', 1, 0, 99, '2019-03-05 21:15:52');
 
 -- ----------------------------
 -- Table structure for esm_product_img
@@ -220,7 +225,7 @@ CREATE TABLE `esm_product_img`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `product_id`(`product_id`) USING BTREE,
   CONSTRAINT `esm_product_img_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `esm_product` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 191 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 223 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of esm_product_img
@@ -415,6 +420,38 @@ INSERT INTO `esm_product_img` VALUES (187, 88715766, 'productimg\\2019\\3\\88715
 INSERT INTO `esm_product_img` VALUES (188, 88715766, 'productimg\\2019\\3\\88715766\\O1CN011TQhv9NG1g13kvW_!!4014322377.jpg_430x430q90.jpg');
 INSERT INTO `esm_product_img` VALUES (189, 88715766, 'productimg\\2019\\3\\88715766\\O1CN011TQhv9SmEts8272_!!4014322377.jpg_430x430q90.jpg');
 INSERT INTO `esm_product_img` VALUES (190, 88715766, 'productimg\\2019\\3\\88715766\\O1CN0155hrHu1TQhv9lBv9l_!!0-item_pic.jpg_430x430q90.jpg');
+INSERT INTO `esm_product_img` VALUES (191, 88715767, 'productimg\\2019\\3\\88715767\\5b0bad85Nc49b4ed5.jpg');
+INSERT INTO `esm_product_img` VALUES (192, 88715767, 'productimg\\2019\\3\\88715767\\5ad707f2N64880ac2.jpg');
+INSERT INTO `esm_product_img` VALUES (193, 88715767, 'productimg\\2019\\3\\88715767\\59fc1a3dN3d368364.jpg');
+INSERT INTO `esm_product_img` VALUES (194, 88715767, 'productimg\\2019\\3\\88715767\\59fc1a3dNfa010535.jpg');
+INSERT INTO `esm_product_img` VALUES (195, 88715767, 'productimg\\2019\\3\\88715767\\59156f60N45def8f8.jpg');
+INSERT INTO `esm_product_img` VALUES (196, 88715767, 'productimg\\2019\\3\\88715767\\59156f62Na3905e32.jpg');
+INSERT INTO `esm_product_img` VALUES (197, 88715768, 'productimg\\2019\\3\\88715768\\5b72d3a6N4c0203aa.jpg');
+INSERT INTO `esm_product_img` VALUES (198, 88715768, 'productimg\\2019\\3\\88715768\\5b72d36aNdd0c0d39.jpg');
+INSERT INTO `esm_product_img` VALUES (199, 88715768, 'productimg\\2019\\3\\88715768\\5b72d365N0ad5ffe0.jpg');
+INSERT INTO `esm_product_img` VALUES (200, 88715768, 'productimg\\2019\\3\\88715768\\5b72d367Nf9c2341f.jpg');
+INSERT INTO `esm_product_img` VALUES (201, 88715768, 'productimg\\2019\\3\\88715768\\5b72d368N049dfef3.jpg');
+INSERT INTO `esm_product_img` VALUES (202, 88715768, 'productimg\\2019\\3\\88715768\\5b72d369Nfdd97343.jpg');
+INSERT INTO `esm_product_img` VALUES (203, 88715769, 'productimg\\2019\\3\\88715769\\1e608bf8654b0b18.jpg');
+INSERT INTO `esm_product_img` VALUES (204, 88715769, 'productimg\\2019\\3\\88715769\\6bf752aff3b43f27.jpg');
+INSERT INTO `esm_product_img` VALUES (205, 88715769, 'productimg\\2019\\3\\88715769\\8da8a7fd218e60b2.jpg');
+INSERT INTO `esm_product_img` VALUES (206, 88715769, 'productimg\\2019\\3\\88715769\\e9b4c1da0692347c.jpg');
+INSERT INTO `esm_product_img` VALUES (207, 88715770, 'productimg\\2019\\3\\88715770\\5bc4230aN1ce0c0f7.jpg');
+INSERT INTO `esm_product_img` VALUES (208, 88715770, 'productimg\\2019\\3\\88715770\\5bc42305N98fbb187.jpg');
+INSERT INTO `esm_product_img` VALUES (209, 88715770, 'productimg\\2019\\3\\88715770\\5bc42306N2db3b5cf.jpg');
+INSERT INTO `esm_product_img` VALUES (210, 88715770, 'productimg\\2019\\3\\88715770\\5bc42307Ne02ef1a0.jpg');
+INSERT INTO `esm_product_img` VALUES (211, 88715770, 'productimg\\2019\\3\\88715770\\5bc42308N1af32b97.jpg');
+INSERT INTO `esm_product_img` VALUES (212, 88715770, 'productimg\\2019\\3\\88715770\\9b0418af779db3b9.jpg');
+INSERT INTO `esm_product_img` VALUES (213, 88715771, 'productimg\\2019\\3\\88715771\\5bf51520N01f22f38.jpg');
+INSERT INTO `esm_product_img` VALUES (214, 88715771, 'productimg\\2019\\3\\88715771\\5bf51520Nd27e5c10.jpg');
+INSERT INTO `esm_product_img` VALUES (215, 88715771, 'productimg\\2019\\3\\88715771\\5bf51521N332ed4ca.jpg');
+INSERT INTO `esm_product_img` VALUES (216, 88715771, 'productimg\\2019\\3\\88715771\\5bf51522N4bc29bdd.jpg');
+INSERT INTO `esm_product_img` VALUES (217, 88715771, 'productimg\\2019\\3\\88715771\\5bf51526N8c189ff6.jpg');
+INSERT INTO `esm_product_img` VALUES (218, 88715772, 'productimg\\2019\\3\\88715772\\98ec3e0e1fd73c9e.jpg');
+INSERT INTO `esm_product_img` VALUES (219, 88715772, 'productimg\\2019\\3\\88715772\\243e9cc478a03ff3.jpg');
+INSERT INTO `esm_product_img` VALUES (220, 88715772, 'productimg\\2019\\3\\88715772\\269f1cb16a872875.jpg');
+INSERT INTO `esm_product_img` VALUES (221, 88715772, 'productimg\\2019\\3\\88715772\\0322b24908e34b96.jpg');
+INSERT INTO `esm_product_img` VALUES (222, 88715772, 'productimg\\2019\\3\\88715772\\33481ec5234843ac.jpg');
 
 -- ----------------------------
 -- Table structure for esm_property
@@ -515,7 +552,7 @@ CREATE TABLE `esm_propertyvalue`  (
   INDEX `property_id`(`property_id`) USING BTREE,
   CONSTRAINT `esm_propertyvalue_ibfk_2` FOREIGN KEY (`property_id`) REFERENCES `esm_property` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `esm_propertyvalue_ibfk_3` FOREIGN KEY (`product_id`) REFERENCES `esm_product` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 239 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 293 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of esm_propertyvalue
@@ -756,6 +793,60 @@ INSERT INTO `esm_propertyvalue` VALUES (235, 88715766, 66, '圆头');
 INSERT INTO `esm_propertyvalue` VALUES (236, 88715766, 67, '34 35 36 37 38 39 40');
 INSERT INTO `esm_propertyvalue` VALUES (237, 88715766, 68, '浅口 花朵');
 INSERT INTO `esm_propertyvalue` VALUES (238, 88715766, 69, ' 米白1(清荷) 浅蓝1(清荷) 白色2(碧游) 灰色2(碧游) 白色3(清欢) 粉色3(清欢)');
+INSERT INTO `esm_propertyvalue` VALUES (239, 88715767, 52, '步瀛斋');
+INSERT INTO `esm_propertyvalue` VALUES (240, 88715767, 53, '套脚');
+INSERT INTO `esm_propertyvalue` VALUES (241, 88715767, 54, '39');
+INSERT INTO `esm_propertyvalue` VALUES (242, 88715767, 55, '花纹');
+INSERT INTO `esm_propertyvalue` VALUES (243, 88715767, 56, '民族风');
+INSERT INTO `esm_propertyvalue` VALUES (244, 88715767, 57, '圆头');
+INSERT INTO `esm_propertyvalue` VALUES (245, 88715767, 58, '车缝线，绣花');
+INSERT INTO `esm_propertyvalue` VALUES (246, 88715767, 59, '平跟');
+INSERT INTO `esm_propertyvalue` VALUES (247, 88715767, 60, '千底蓝印花盘扣女鞋蓝色');
+INSERT INTO `esm_propertyvalue` VALUES (248, 88715767, 61, '2017秋季');
+INSERT INTO `esm_propertyvalue` VALUES (249, 88715767, 62, NULL);
+INSERT INTO `esm_propertyvalue` VALUES (250, 88715768, 52, '怡品堂');
+INSERT INTO `esm_propertyvalue` VALUES (251, 88715768, 53, '系带');
+INSERT INTO `esm_propertyvalue` VALUES (252, 88715768, 54, '大于40');
+INSERT INTO `esm_propertyvalue` VALUES (253, 88715768, 55, '花纹');
+INSERT INTO `esm_propertyvalue` VALUES (254, 88715768, 56, '民族风');
+INSERT INTO `esm_propertyvalue` VALUES (255, 88715768, 57, '圆头');
+INSERT INTO `esm_propertyvalue` VALUES (256, 88715768, 58, '绣花');
+INSERT INTO `esm_propertyvalue` VALUES (257, 88715768, 59, '内增高');
+INSERT INTO `esm_propertyvalue` VALUES (258, 88715768, 60, '白色');
+INSERT INTO `esm_propertyvalue` VALUES (259, 88715768, 61, '2018秋季');
+INSERT INTO `esm_propertyvalue` VALUES (260, 88715768, 62, NULL);
+INSERT INTO `esm_propertyvalue` VALUES (261, 88715769, 52, ' 驭驾者（YUJIAZHE）');
+INSERT INTO `esm_propertyvalue` VALUES (262, 88715769, 53, '套脚');
+INSERT INTO `esm_propertyvalue` VALUES (263, 88715769, 54, '37');
+INSERT INTO `esm_propertyvalue` VALUES (264, 88715769, 55, '花纹');
+INSERT INTO `esm_propertyvalue` VALUES (265, 88715769, 56, '民族风');
+INSERT INTO `esm_propertyvalue` VALUES (266, 88715769, 57, '圆头');
+INSERT INTO `esm_propertyvalue` VALUES (267, 88715769, 58, '绣花');
+INSERT INTO `esm_propertyvalue` VALUES (268, 88715769, 59, '内增高');
+INSERT INTO `esm_propertyvalue` VALUES (269, 88715769, 60, '竹叶蓝色');
+INSERT INTO `esm_propertyvalue` VALUES (270, 88715769, 61, '2019春季');
+INSERT INTO `esm_propertyvalue` VALUES (271, 88715769, 62, '棉布底');
+INSERT INTO `esm_propertyvalue` VALUES (272, 88715770, 63, '筎筠');
+INSERT INTO `esm_propertyvalue` VALUES (273, 88715770, 64, '2018秋季');
+INSERT INTO `esm_propertyvalue` VALUES (274, 88715770, 65, '复古');
+INSERT INTO `esm_propertyvalue` VALUES (275, 88715770, 66, '圆头');
+INSERT INTO `esm_propertyvalue` VALUES (276, 88715770, 67, '34，35，36，37，38，39，40');
+INSERT INTO `esm_propertyvalue` VALUES (277, 88715770, 68, '绣花');
+INSERT INTO `esm_propertyvalue` VALUES (278, 88715770, 69, '白色');
+INSERT INTO `esm_propertyvalue` VALUES (279, 88715771, 63, ' 四超健步（SICHAO）');
+INSERT INTO `esm_propertyvalue` VALUES (280, 88715771, 64, '2018秋季');
+INSERT INTO `esm_propertyvalue` VALUES (281, 88715771, 65, '民族风');
+INSERT INTO `esm_propertyvalue` VALUES (282, 88715771, 66, '圆头');
+INSERT INTO `esm_propertyvalue` VALUES (283, 88715771, 67, '34，35，36，37，38，39，40');
+INSERT INTO `esm_propertyvalue` VALUES (284, 88715771, 68, '绣花');
+INSERT INTO `esm_propertyvalue` VALUES (285, 88715771, 69, '粉色仙鹤');
+INSERT INTO `esm_propertyvalue` VALUES (286, 88715772, 63, '朝戈尔（CHAOGEER）');
+INSERT INTO `esm_propertyvalue` VALUES (287, 88715772, 64, '2018冬季');
+INSERT INTO `esm_propertyvalue` VALUES (288, 88715772, 65, '民族风');
+INSERT INTO `esm_propertyvalue` VALUES (289, 88715772, 66, '圆头');
+INSERT INTO `esm_propertyvalue` VALUES (290, 88715772, 67, '34，35，36，37，38，39，40');
+INSERT INTO `esm_propertyvalue` VALUES (291, 88715772, 68, '绣花');
+INSERT INTO `esm_propertyvalue` VALUES (292, 88715772, 69, '蓝色');
 
 -- ----------------------------
 -- Table structure for esm_review

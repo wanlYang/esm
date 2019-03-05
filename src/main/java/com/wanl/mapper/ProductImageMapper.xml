@@ -3,7 +3,7 @@
 <mapper namespace="com.wanl.mapper.ProductImageMapper">
 
     <select id="findImagesByProductId" resultMap="productImageResult">
-        SELECT * FROM esm_product_img WHERE product_id = #{productId} ORDER BY RAND() LIMIT 5
+        SELECT * FROM esm_product_img WHERE product_id = #{productId}
     </select>
 
     <resultMap id="productImageResult" type="productImage">

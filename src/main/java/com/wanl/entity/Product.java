@@ -46,6 +46,16 @@ public class Product {
 
     private List<ProductImage> productSingleImages;
 
+    private Integer reviewCount;
+
+    public Integer getReviewCount() {
+        return reviewCount;
+    }
+
+    public void setReviewCount(Integer reviewCount) {
+        this.reviewCount = reviewCount;
+    }
+
     public Integer getId() {
         return id;
     }
@@ -173,8 +183,8 @@ public class Product {
                 ", category=" + category +
                 ", mainTitle='" + mainTitle + '\'' +
                 ", subTitle='" + subTitle + '\'' +
-                ", price=" + price +
-                ", oldPrice=" + oldPrice +
+                ", price='" + price + '\'' +
+                ", oldPrice='" + oldPrice + '\'' +
                 ", buyCount=" + buyCount +
                 ", img='" + img + '\'' +
                 ", detail='" + detail + '\'' +
@@ -184,6 +194,7 @@ public class Product {
                 ", shelfTime=" + shelfTime +
                 ", firstProductImage=" + firstProductImage +
                 ", productSingleImages=" + productSingleImages +
+                ", reviewCount=" + reviewCount +
                 '}';
     }
 }

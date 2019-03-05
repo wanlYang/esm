@@ -54,4 +54,15 @@ public interface ProductService {
      * @return java.util.List<com.wanl.entity.Product>
      **/
 	List<Product> getBootiesProduct();
+
+	/**
+     * 根据ID获取商品
+	 * @Author YangBin
+	 * @Date 22:34 2019/3/5
+	 * @Param [id]
+     * @param id 商品ID
+	 * @version v1.0
+	 * @return com.wanl.entity.Product
+	 **/
+    Product getProduct(Integer id);
 }

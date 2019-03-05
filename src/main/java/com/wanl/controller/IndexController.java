@@ -26,6 +26,14 @@ public class IndexController {
     @Autowired
     private ProductService productService;
 
+    /**
+     * 首页
+     * @Author YangBin
+     * @Date 20:27 2019/3/5
+     * @Param []
+     * @version v1.0
+     * @return org.springframework.web.servlet.ModelAndView
+     **/
     @RequestMapping(value = "/",method = RequestMethod.GET)
     public ModelAndView index(){
         ModelAndView modelAndView = new ModelAndView();
@@ -33,6 +41,14 @@ public class IndexController {
         return modelAndView;
     }
 
+    /**
+     * 获取首页爆款商品
+     * @Author YangBin
+     * @Date 20:27 2019/3/5
+     * @Param []
+     * @version v1.0
+     * @return com.wanl.entity.Result
+     **/
     @RequestMapping(value = "/index/hot/product")
     @ResponseBody
     public Result getHotProduct(){
@@ -45,20 +61,27 @@ public class IndexController {
             e.printStackTrace();
         }
         result.setStatus(200);
-        result.setCount(0);
+        result.setCount(products.size());
         result.setData(products);
         return result;
     }
 
+    /**
+     * 获取襦裙
+     * @Author YangBin
+     * @Date 20:28 2019/3/5
+     * @Param []
+     * @version v1.0
+     * @return com.wanl.entity.Result
+     **/
     @RequestMapping(value = "/index/product/skirt")
     @ResponseBody
     public Result getSkirtProduct(){
         List<Product> products = productService.getSkirtProduct();
         Result result = new Result();
         result.setMessage("获取成功!");
-
         result.setStatus(200);
-        result.setCount(0);
+        result.setCount(products.size());
         result.setData(products);
         try {
             Thread.sleep(2000);
@@ -68,6 +91,14 @@ public class IndexController {
         return result;
     }
 
+    /**
+     * 获取衣裳
+     * @Author YangBin
+     * @Date 20:28 2019/3/5
+     * @Param []
+     * @version v1.0
+     * @return com.wanl.entity.Result
+     **/
     @RequestMapping(value = "/index/product/clothes")
     @ResponseBody
     public Result getClothesProduct(){
@@ -76,7 +107,7 @@ public class IndexController {
         result.setMessage("获取成功!");
         result.setData(products);
         result.setStatus(200);
-        result.setCount(0);
+        result.setCount(products.size());
         try {
             Thread.sleep(3000);
         } catch (InterruptedException e) {
@@ -84,7 +115,15 @@ public class IndexController {
         }
         return result;
     }
-    
+
+    /**
+     * 获取鞋靴
+     * @Author YangBin
+     * @Date 20:28 2019/3/5
+     * @Param []
+     * @version v1.0
+     * @return com.wanl.entity.Result
+     **/
     @RequestMapping(value = "/index/product/booties")
     @ResponseBody
     public Result getBootiesProduct(){
@@ -93,7 +132,7 @@ public class IndexController {
         result.setMessage("获取成功!");
         result.setData(products);
         result.setStatus(200);
-        result.setCount(0);
+        result.setCount(products.size());
         try {
             Thread.sleep(3000);
         } catch (InterruptedException e) {

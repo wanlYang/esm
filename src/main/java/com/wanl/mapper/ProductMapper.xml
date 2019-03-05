@@ -3,7 +3,10 @@
 <mapper namespace="com.wanl.mapper.ProductMapper">
 
     <select id="findHotProduct" resultMap="productResultMap">
-        SELECT * FROM esm_product WHERE is_hot = 1 ORDER BY RAND() LIMIT 8
+        SELECT id,cate_id,main_title,sub_title,price,old_price,buy_count,img,detail,`status`,is_hot,stock,shelf_time
+        FROM esm_product
+        WHERE is_hot = 1
+        ORDER BY RAND() LIMIT 8
 
     </select>
     <resultMap id="productResultMap" type="product">
@@ -22,9 +25,9 @@
         <association column="cate_id" property="category" select="com.wanl.mapper.CategoryMapper.findCateById"></association>
     </resultMap>
     <select id="findProductById" resultMap="productResultMap" parameterType="int">
-        SELECT * FROM esm_product WHERE id = #{id}
+        SELECT id,cate_id,main_title,sub_title,price,old_price,buy_count,img,detail,`status`,is_hot,stock,shelf_time FROM esm_product WHERE id = #{id}
     </select>
     <select id="findProductByCategoryId" resultMap="productResultMap">
-        SELECT * FROM esm_product WHERE cate_id = #{id}
+        SELECT id,cate_id,main_title,sub_title,price,old_price,buy_count,img,detail,`status`,is_hot,stock,shelf_time FROM esm_product WHERE cate_id = #{id}
     </select>
 </mapper>

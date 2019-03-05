@@ -564,6 +564,7 @@ body {overflow-y: scroll}
 	background:         linear-gradient(to right, #6dd5ed, #29abcc);
 }
 .floor-4 .floor-title {
+	cursor: default;
 	background: #ffb7d4;
 	background: -webkit-linear-gradient(to right, #ffb7d4, #f168a1);
 	background:    -moz-linear-gradient(to right, #ffb7d4, #f168a1);
@@ -578,6 +579,7 @@ body {overflow-y: scroll}
 	background:         linear-gradient(to right, #00cdac, #0aaab6);
 }
 .floor-6 .floor-title {
+	cursor: default;
 	background: #ffb2b2;
 	background: -webkit-linear-gradient(to right, #ffb2b2, #ff6666);
 	background:    -moz-linear-gradient(to right, #ffb2b2, #ff6666);

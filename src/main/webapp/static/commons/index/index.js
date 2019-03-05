@@ -220,7 +220,7 @@ layui.use(['form', 'layer','flow', 'jquery', "element",'carousel'], function () 
         }
     });
     
-    //获取衣裳分类商品
+    //获取鞋靴分类商品
     $.ajax({
         url: getRealPath() + "/index/product/booties",
         type: 'GET',

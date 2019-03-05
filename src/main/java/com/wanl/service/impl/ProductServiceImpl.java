@@ -7,6 +7,7 @@ import com.wanl.entity.ProductImage;
 import com.wanl.mapper.CategoryMapper;
 import com.wanl.mapper.ProductImageMapper;
 import com.wanl.mapper.ProductMapper;
+import com.wanl.mapper.ReviewMapper;
 import com.wanl.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,6 +35,9 @@ public class ProductServiceImpl implements ProductService {
 
     @Autowired
     private CategoryMapper categoryMapper;
+
+    @Autowired
+    private ReviewMapper reviewMapper;
     /**
      * 获取爆款商品
      *
@@ -137,6 +141,26 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public List<Product> getBootiesProduct() {
 		
-		return getCateProduct(EsmConstant.CATE_BOOTIES, 2);
+		return getCateProduct(EsmConstant.CATE_BOOTIES, 8);
 	}
+
+    /**
+     * 根据ID获取商品
+     *
+     * @param id 商品ID
+     * @return com.wanl.entity.Product
+     * @Author YangBin
+     * @Date 22:34 2019/3/5
+     * @Param [id]
+     * @version v1.0
+     **/
+    @Override
+    public Product getProduct(Integer id) {
+        Product product = productMapper.findProductById(id);
+        List<ProductImage> images = productImageMapper.findImagesByProductId(id);
+        product.setProductSingleImages(images);
+        product.setFirstProductImage(images.get(0));
+        product.setReviewCount(reviewMapper.getCount(id));
+        return product;
+    }
 }

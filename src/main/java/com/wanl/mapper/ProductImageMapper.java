@@ -19,6 +19,7 @@ public interface ProductImageMapper {
      * @Author YangBin
      * @Date 9:17 2019/3/1
      * @Param []
+     * @param productId ID
      * @version v1.0
      * @return java.util.List<com.wanl.entity.ProductImage>
      **/
@@ -29,6 +30,7 @@ public interface ProductImageMapper {
      * @Author YangBin
      * @Date 9:25 2019/3/1
      * @Param [id]
+     * @param id ID
      * @version v1.0
      * @return com.wanl.entity.ProductImage
      **/
