@@ -14,14 +14,6 @@ layui.use(['form', 'layer','flow', 'jquery', "element",'carousel'], function () 
         //,anim: 'updown' //切换动画方式
     });
 
-    // 新闻列表滚动
-    var notice_swiper = new Swiper('.notice-box .swiper-container', {
-        paginationClickable: true,
-        mousewheelControl: true,
-        direction: 'vertical',
-        slidesPerView: 10,
-        autoplay: 2e3,
-    });
     // 楼层导航自动 active
     $.scrollFloor();
     // 页面下拉固定楼层导航
@@ -201,6 +193,55 @@ layui.use(['form', 'layer','flow', 'jquery', "element",'carousel'], function () 
                     clothesProduct += '<div class="name ep" title="'+item.mainTitle+'">'+item.mainTitle+'</div>';
                 })
                 $("#clothesProduct").html(clothesProduct);
+            }
+        },
+        error: function () {
+            layer.msg("出现错误,请尝试刷新页面!");
+        }
+    });
+    //获取鞋靴子分类
+    $.ajax({
+        url: getRealPath() + "/category/list/booties",
+        type: 'GET',
+        complete: function (XMLHttpRequest, textStatus) {
+
+        },
+        success: function (result) {
+            if (result.status == 200){
+                var booties = '';
+                $.each(result.data,function (index,item) {
+                	booties += '<a href="category/' + item.id + '">' + item.title + '</a>';
+                })
+                $("#booties").html(booties);
+            }
+        },
+        error: function () {
+            layer.msg("出现错误,请尝试刷新页面!");
+        }
+    });
+    
+    //获取衣裳分类商品
+    $.ajax({
+        url: getRealPath() + "/index/product/booties",
+        type: 'GET',
+        complete: function (XMLHttpRequest, textStatus) {
+            $(".slice_booties_product").hide();
+        },
+        success: function (result) {
+            if (result.status == 200){
+                var bootiesProduct = '';
+                $.each(result.data,function (index,item) {
+                	bootiesProduct += '<a href="product/'+item.id+'" title="'+item.mainTitle+'" class="floor-item">';
+                    bootiesProduct += '<div class="item-img hot-img">';
+                    bootiesProduct += '<img src="'+item.firstProductImage.img+'" class="cover">';
+                    bootiesProduct += '</div>';
+                    bootiesProduct += '<div class="price clearfix">';
+                    bootiesProduct += '<span class="pull-left cr fz16">￥'+item.price+'</span>';
+                    bootiesProduct += '<span class="pull-right c6">进货价</span>';
+                    bootiesProduct += '</div>';
+                    bootiesProduct += '<div class="name ep" title="'+item.mainTitle+'">'+item.mainTitle+'</div>';
+                })
+                $("#bootiesProduct").html(bootiesProduct);
             }
         },
         error: function () {

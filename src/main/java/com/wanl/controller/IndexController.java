@@ -84,5 +84,22 @@ public class IndexController {
         }
         return result;
     }
+    
+    @RequestMapping(value = "/index/product/booties")
+    @ResponseBody
+    public Result getBootiesProduct(){
+        List<Product> products = productService.getBootiesProduct();
+        Result result = new Result();
+        result.setMessage("获取成功!");
+        result.setData(products);
+        result.setStatus(200);
+        result.setCount(0);
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
 
 }

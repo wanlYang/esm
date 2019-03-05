@@ -125,4 +125,18 @@ public class ProductServiceImpl implements ProductService {
         setProductImages(random);
         return random;
     }
+
+    /**
+     * 随机获取鞋靴类商品
+     * @Author YangBin
+     * @Date 0:12 2019/3/5
+     * @Param []
+     * @version v1.0
+     * @return java.util.List<com.wanl.entity.Product>
+     **/
+	@Override
+	public List<Product> getBootiesProduct() {
+		
+		return getCateProduct(EsmConstant.CATE_BOOTIES, 2);
+	}
 }

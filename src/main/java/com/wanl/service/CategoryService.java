@@ -44,4 +44,14 @@ public interface CategoryService {
      * @return java.util.List<com.wanl.entity.Category>
      **/
     List<Category> getClothes();
+
+    /**
+     * 获取鞋靴子分类
+     * @Author YangBin
+     * @Date 23:59 2019/3/5
+     * @Param []
+     * @version v1.0
+     * @return java.util.List<com.wanl.entity.Category>
+     **/
+	List<Category> getBooties();
 }

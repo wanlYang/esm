@@ -54,4 +54,13 @@ public class CateGoryController {
 
         return new Result(200,"获取成功!",0,categories);
     }
+    
+    
+    @ResponseBody
+    @RequestMapping(value = "/list/booties")
+    public Result getBooties(){
+        List<Category> categories = categoryService.getBooties();
+
+        return new Result(200,"获取成功!",0,categories);
+    }
 }

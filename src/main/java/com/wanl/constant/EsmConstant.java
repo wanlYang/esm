@@ -114,4 +114,5 @@ public interface EsmConstant {
     String USER_SESSION = "USER_SESSION";
     Integer CATE_SKIRT = 15;
     Integer CATE_CLOTHES = 21;
+	Integer CATE_BOOTIES = 5;
 }
