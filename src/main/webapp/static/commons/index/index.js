@@ -136,7 +136,7 @@ layui.use(['form', 'layer','flow', 'jquery', "element",'carousel'], function () 
                 $.each(result.data,function (index,item) {
                     skirtProduct += '<a href="product/'+item.id+'" title="'+item.mainTitle+'" class="floor-item">';
                     skirtProduct += '<div class="item-img hot-img">';
-                    skirtProduct += '<img src="'+item.firstProductImage.img+'" class="cover">';
+                    skirtProduct += '<img lay-src="'+item.firstProductImage.img+'" class="cover">';
                     skirtProduct += '</div>';
                     skirtProduct += '<div class="price clearfix">';
                     skirtProduct += '<span class="pull-left cr fz16">￥'+item.price+'</span>';
@@ -184,7 +184,7 @@ layui.use(['form', 'layer','flow', 'jquery', "element",'carousel'], function () 
                 $.each(result.data,function (index,item) {
                     clothesProduct += '<a href="product/'+item.id+'" title="'+item.mainTitle+'" class="floor-item">';
                     clothesProduct += '<div class="item-img hot-img">';
-                    clothesProduct += '<img src="'+item.firstProductImage.img+'" class="cover">';
+                    clothesProduct += '<img lay-src="'+item.firstProductImage.img+'" class="cover">';
                     clothesProduct += '</div>';
                     clothesProduct += '<div class="price clearfix">';
                     clothesProduct += '<span class="pull-left cr fz16">￥'+item.price+'</span>';
@@ -233,7 +233,7 @@ layui.use(['form', 'layer','flow', 'jquery', "element",'carousel'], function () 
                 $.each(result.data,function (index,item) {
                 	bootiesProduct += '<a href="product/'+item.id+'" title="'+item.mainTitle+'" class="floor-item">';
                     bootiesProduct += '<div class="item-img hot-img">';
-                    bootiesProduct += '<img src="'+item.firstProductImage.img+'" class="cover">';
+                    bootiesProduct += '<img lay-src="'+item.firstProductImage.img+'" class="cover">';
                     bootiesProduct += '</div>';
                     bootiesProduct += '<div class="price clearfix">';
                     bootiesProduct += '<span class="pull-left cr fz16">￥'+item.price+'</span>';
