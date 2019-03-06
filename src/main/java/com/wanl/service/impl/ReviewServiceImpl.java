@@ -35,6 +35,12 @@ public class ReviewServiceImpl implements ReviewService {
     @Override
     public List<Review> getReviews(Integer id) {
         List<Review> reviews = reviewMapper.findReviewList(id);
+        if (reviews != null){
+            for (Review review:reviews) {
+                String anonymousName = review.getUser().getAnonymousName();
+                review.getUser().setAnonymousName(anonymousName);
+            }
+        }
         return reviews;
     }
 }

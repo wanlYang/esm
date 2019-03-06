@@ -741,12 +741,12 @@ body {overflow-y: scroll}
 }
 .breadcrumb > li { display: inline-block }
 .breadcrumb > li a {color: #333;text-decoration: none}
-.breadcrumb > .active {color: #b31e22}
+.breadcrumb > .active {color: #b31e22;cursor: default}
 /* 商品详情 */
 .item-show__div > .pull-left {width: 1000px}
 .item-show__div > .pull-right {width: 200px}
 .item-show__head > .pull-right {height: 600px}
-.item-show__body > .pull-left {min-height: 800px}
+.item-show__body > .pull-left {min-height: 500px}
 .item-pic__box {
 	position: relative;
 	width: 360px;
@@ -822,8 +822,9 @@ body {overflow-y: scroll}
 .item-title {line-height: 2em}
 .item-title > .name {
 	font-size: 16px;
-	max-height: 40px;
+	min-height: 40px;
 	line-height: 20px;
+	cursor: default;
 }
 .item-price {
 	padding: 10px;
@@ -832,6 +833,7 @@ body {overflow-y: scroll}
 .item-price .price-panel {
 	height: 40px;
 	line-height: 40px;
+	cursor: default;
 }
 .item-price .price-panel .price{
 	font-size: 24px;
@@ -1042,6 +1044,13 @@ body {overflow-y: scroll}
 	position: relative;
 	width: 160px;height: 160px;
 }
+.picked-item-footer{
+	display: inline-block;
+	position: relative;
+	width: 160px;
+	height: 160px;
+	margin: 0 40px;
+}
 .look_price {
 	line-height: 20px;
 	position: absolute;
@@ -1071,7 +1080,7 @@ body {overflow-y: scroll}
 	float: left;
 }
 .item-nav-tabs .nav-tabs li:nth-child(2) {
-	border-left: 0;border-right: 0;
+	border-left: 0;border-right: 1;
 }
 .item-nav-tabs .nav-tabs li a, .evaluate-tabs .nav-tabs li a {
 	color: #666;
@@ -1091,7 +1100,7 @@ body {overflow-y: scroll}
 .tab-content > .tab-pane {display: none}
 .tab-content > .tab-pane.active{display: block}
 .item-detail__info {
-	width: 990px;
+	width: 1000px;
 	margin-top: 10px;
 	line-height: 36px;
 	padding: 12px 40px;
@@ -1157,7 +1166,7 @@ body {overflow-y: scroll}
 }
 .eval-content {
 	width: 800px;
-	padding-top: 10px;
+	padding-top: 22px;
 	border-bottom: 1px solid #e0e0e0;
 	display: -webkit-flex;
 	display: flex;
@@ -1282,7 +1291,7 @@ img.zoom-img {
 .dc-idsItem.selected a, .dc-idsItem a:hover {color: #c00}
 .dc-idsItem.selected .iconfont::before {content: "\e61b"}
 .recommends {
-	width: 990px;
+	width: 1000px;
 	height: 240px;
 	padding: 59px 19px 19px;
 	margin-top: 40px;

@@ -45,11 +45,31 @@ public class ProductController {
 
         Product product = productService.getProduct(id);
 
-        List<PropertyValue> propertyValue = propertyValueService.getPropertyValue(id);
+        List<PropertyValue> propertyValues = propertyValueService.getPropertyValue(id);
 
         List<Review> reviews = reviewService.getReviews(id);
-
+        modelAndView.setViewName("item_show");
+        modelAndView.addObject("product", product);
+        modelAndView.addObject("propertyValues", propertyValues);
+        modelAndView.addObject("reviews", reviews);
         return modelAndView;
+    }
+
+    @RequestMapping(value = "/recommend",method = RequestMethod.POST)
+    @ResponseBody
+    public Result getSkirtProduct(Integer id){
+        List<Product> products = productService.getRecommendProduct(id);
+        Result result = new Result();
+        result.setMessage("获取成功!");
+        result.setStatus(200);
+        result.setCount(products.size());
+        result.setData(products);
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return result;
     }
 
 }

@@ -65,4 +65,15 @@ public interface ProductService {
 	 * @return com.wanl.entity.Product
 	 **/
     Product getProduct(Integer id);
+
+    /**
+     * 获取推荐商品
+     * @Author YangBin
+     * @Date 23:27 2019/3/6
+     * @Param []
+     * @param id ID
+     * @version v1.0
+     * @return java.util.List<com.wanl.entity.Product>
+     **/
+    List<Product> getRecommendProduct(Integer id);
 }

@@ -24,6 +24,13 @@ public class User {
 
     private Integer age;
 
+    private String anonymousName;
+
+
+    public void setAnonymousName(String anonymousName) {
+        this.anonymousName = anonymousName;
+    }
+
     public String getId() {
         return id;
     }
@@ -91,5 +98,22 @@ public class User {
                 ", headImg='" + headImg + '\'' +
                 ", age=" + age +
                 '}';
+    }
+    public String getAnonymousName(){
+        if(null==username){
+            return null;
+        }
+        if(username.length()<=1){
+            return "*";
+        }
+        if(username.length()==2){
+            return username.substring(0,1) +"*";
+        }
+        char[] cs =username.toCharArray();
+        for (int i = 1; i < cs.length-1; i++) {
+            cs[i]='*';
+        }
+        return new String(cs);
+
     }
 }

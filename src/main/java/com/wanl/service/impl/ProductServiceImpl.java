@@ -163,4 +163,24 @@ public class ProductServiceImpl implements ProductService {
         product.setReviewCount(reviewMapper.getCount(id));
         return product;
     }
+
+    /**
+     * 获取推荐商品
+     *
+     * @param id ID
+     * @return java.util.List<com.wanl.entity.Product>
+     * @Author YangBin
+     * @Date 23:27 2019/3/6
+     * @Param []
+     * @version v1.0
+     **/
+    @Override
+    public List<Product> getRecommendProduct(Integer id) {
+        Product product = productMapper.findProductById(id);
+        Integer parentId = product.getCategory().getParentId();
+        if (parentId != 0){
+            return getCateProduct(parentId, 9);
+        }
+        return getCateProduct(EsmConstant.CATE_SKIRT, 9);
+    }
 }

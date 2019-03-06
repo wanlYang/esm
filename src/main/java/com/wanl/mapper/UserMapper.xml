@@ -10,7 +10,7 @@
     <select id="findUserByPhone" resultMap="userResultMap" parameterType="String">
       SELECT * FROM esm_user WHERE phone = #{phone};
     </select>
-    <select id="findUserById" resultMap="userResultMap" parameterType="int">
+    <select id="findUserById" resultMap="userResultMap">
       SELECT * FROM esm_user WHERE id = #{userId};
     </select>
     <select id="findUserByNamePass" resultMap="userResultMap">
