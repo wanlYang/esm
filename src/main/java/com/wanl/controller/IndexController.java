@@ -1,8 +1,11 @@
 package com.wanl.controller;
 
+import com.wanl.constant.EsmConstant;
 import com.wanl.entity.Product;
 import com.wanl.entity.Result;
+import com.wanl.entity.User;
 import com.wanl.service.ProductService;
+import com.wanl.service.ShopCartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
@@ -25,6 +29,9 @@ public class IndexController {
 
     @Autowired
     private ProductService productService;
+
+    @Autowired
+    private ShopCartService shopCartService;
 
     /**
      * 首页

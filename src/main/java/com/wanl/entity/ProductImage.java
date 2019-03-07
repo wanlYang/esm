@@ -1,5 +1,7 @@
 package com.wanl.entity;
 
+import java.io.Serializable;
+
 /**
  * 商品图片实体类
  * @ClassName: ProductImage
@@ -8,7 +10,7 @@ package com.wanl.entity;
  * @date:2019/2/28 9:39
  * @version:V1.0
  */
-public class ProductImage {
+public class ProductImage implements Serializable{
 
     private Integer id;
 

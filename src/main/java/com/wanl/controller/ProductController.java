@@ -7,6 +7,8 @@ import com.wanl.entity.Review;
 import com.wanl.service.ProductService;
 import com.wanl.service.PropertyValueService;
 import com.wanl.service.ReviewService;
+import com.wanl.utils.RegexUtils;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -41,13 +43,18 @@ public class ProductController {
     private ReviewService reviewService;
 
     @RequestMapping(value = "/{id}",method = RequestMethod.GET)
-    public ModelAndView detail(@PathVariable("id") Integer id, ModelAndView modelAndView){
+    public ModelAndView detail(@PathVariable("id") String id, ModelAndView modelAndView){
 
-        Product product = productService.getProduct(id);
+    	if(!RegexUtils.isNumber(id)) {
+    		modelAndView.setViewName("redirect:/");
+    		return modelAndView;
+    	}
+    	int parseInt = Integer.parseInt(id);
+        Product product = productService.getProduct(parseInt);
 
-        List<PropertyValue> propertyValues = propertyValueService.getPropertyValue(id);
+        List<PropertyValue> propertyValues = propertyValueService.getPropertyValue(parseInt);
 
-        List<Review> reviews = reviewService.getReviews(id);
+        List<Review> reviews = reviewService.getReviews(parseInt);
         modelAndView.setViewName("item_show");
         modelAndView.addObject("product", product);
         modelAndView.addObject("propertyValues", propertyValues);
@@ -57,8 +64,11 @@ public class ProductController {
 
     @RequestMapping(value = "/recommend",method = RequestMethod.POST)
     @ResponseBody
-    public Result getSkirtProduct(Integer id){
-        List<Product> products = productService.getRecommendProduct(id);
+    public Result getSkirtProduct(String id){
+    	if(!RegexUtils.isNumber(id)) {
+    		return new Result(-1, "参数异常!");
+    	}
+        List<Product> products = productService.getRecommendProduct(Integer.parseInt(id));
         Result result = new Result();
         result.setMessage("获取成功!");
         result.setStatus(200);

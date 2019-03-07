@@ -24,8 +24,8 @@
 				</p>
 			</div>
 			<div class="cart-box">
-				<a href="udai_shopcart.html" class="cart-but">
-					<i class="iconfont icon-shopcart cr fz16"></i> 购物车 0 件
+				<a th:href="@{/shopcart/list}" class="cart-but">
+					<i class="iconfont icon-shopcart cr fz16"></i> 购物车 <span id="cartAmount" th:text="${session.SHOP_CART_PIECE == null ? '请登录' : session.SHOP_CART_PIECE + ' 件'}">0</span>
 				</a>
 			</div>
 		</div>

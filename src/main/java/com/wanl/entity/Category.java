@@ -1,5 +1,6 @@
 package com.wanl.entity;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -10,7 +11,7 @@ import java.util.List;
  * @date:2019/2/26 8:28
  * @version:V1.0
  */
-public class Category {
+public class Category implements Serializable{
 
     /**
      * ID

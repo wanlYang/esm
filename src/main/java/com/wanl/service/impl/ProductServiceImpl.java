@@ -10,6 +10,7 @@ import com.wanl.mapper.ProductMapper;
 import com.wanl.mapper.ReviewMapper;
 import com.wanl.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -48,6 +49,7 @@ public class ProductServiceImpl implements ProductService {
      * @version v1.0
      **/
     @Override
+    @Cacheable(value = "index_hot_product",key="#root.methodName")
     public List<Product> getHotproduct() {
         List<Product> hotProducts = productMapper.findHotProduct();
         setProductImages(hotProducts);
@@ -82,6 +84,7 @@ public class ProductServiceImpl implements ProductService {
      * @version v1.0
      **/
     @Override
+    @Cacheable(value = "index_skirt_product",key="#root.methodName")
     public List<Product> getSkirtProduct() {
         return getCateProduct(EsmConstant.CATE_SKIRT, 8);
     }
@@ -115,6 +118,7 @@ public class ProductServiceImpl implements ProductService {
      * @version v1.0
      **/
     @Override
+    @Cacheable(value = "index_clothes_product",key="#root.methodName")
     public List<Product> getClothesProduct() {
         return getCateProduct(EsmConstant.CATE_CLOTHES, 8);
     }
@@ -139,6 +143,7 @@ public class ProductServiceImpl implements ProductService {
      * @return java.util.List<com.wanl.entity.Product>
      **/
 	@Override
+    @Cacheable(value = "index_booties_product",key="#root.methodName")
 	public List<Product> getBootiesProduct() {
 		
 		return getCateProduct(EsmConstant.CATE_BOOTIES, 8);
@@ -155,6 +160,7 @@ public class ProductServiceImpl implements ProductService {
      * @version v1.0
      **/
     @Override
+    @Cacheable(value = "product_detail",key="#root.args[0]")
     public Product getProduct(Integer id) {
         Product product = productMapper.findProductById(id);
         List<ProductImage> images = productImageMapper.findImagesByProductId(id);
@@ -174,6 +180,7 @@ public class ProductServiceImpl implements ProductService {
      * @Param []
      * @version v1.0
      **/
+    @Cacheable(value = "index_recommend_product",key="#root.args[0]")
     @Override
     public List<Product> getRecommendProduct(Integer id) {
         Product product = productMapper.findProductById(id);

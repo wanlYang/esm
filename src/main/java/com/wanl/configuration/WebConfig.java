@@ -1,15 +1,13 @@
 package com.wanl.configuration;
 
+import com.wanl.interceptor.AuthInterceptor;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.context.annotation.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
-import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
+import org.springframework.web.servlet.config.annotation.*;
 import org.thymeleaf.extras.springsecurity5.dialect.SpringSecurityDialect;
 import org.thymeleaf.spring5.SpringTemplateEngine;
 import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
@@ -132,4 +130,19 @@ public class WebConfig extends WebMvcConfigurationSupport {
         return commonsMultipartResolver;
     }
 
+    /**
+     * 注册拦截器
+     * @Author YangBin
+     * @Date 18:43 2019/3/7
+     * @Param [registry]
+     * @version v1.0
+     * @return void
+     **/
+    @Override
+    protected void addInterceptors(InterceptorRegistry registry) {
+        InterceptorRegistration interceptorRegistration = registry.addInterceptor(new AuthInterceptor());
+        interceptorRegistration.excludePathPatterns("/login","/regist");
+        interceptorRegistration.addPathPatterns("/shopcart/**");
+        super.addInterceptors(registry);
+    }
 }

@@ -80,7 +80,7 @@ layui.use(['form', 'layer','flow', 'jquery', "element",'carousel'], function () 
         complete: function (XMLHttpRequest, textStatus) {
             $(".slice_recommend_box").hide();
         },
-        data:{"id":id},
+        data:{"id":$("#productId").val()},
         success: function (result) {
             if (result.status == 200){
                 var foorHtml = '';
@@ -108,6 +108,47 @@ layui.use(['form', 'layer','flow', 'jquery', "element",'carousel'], function () 
         error: function () {
             layer.msg("出现错误,请尝试刷新页面!");
         }
+    });
+
+    var cur = $('#amount-input').val();
+    $('.amount-btn .amount-but').on('click',function(){
+        if($(this).hasClass('add')){
+            cur++;
+
+        }else{
+            if(cur > 1){
+                cur--;
+            }
+        }
+        $('#amount-input').val(cur)
+    })
+
+    form.on('submit(addCart)', function(data){
+
+        //添加购物车
+        $.ajax({
+            url: getRealPath() + "/shopcart/add",
+            type: 'POST',
+            complete: function (XMLHttpRequest, textStatus) {
+
+            },
+            data:data.field,
+            success: function (result) {
+                if (result.status != 200) {
+                    layer.msg(result.message);
+                    setTimeout(function() {
+                        location.href = getRealPath() + "/login";
+                    }, 1000);
+                }else{
+                    layer.msg(result.message);
+                    $("#cartAmount").html(result.count + " 件");
+                }
+            },
+            error: function () {
+                layer.msg("出现错误,请尝试刷新页面!");
+            }
+        });
+        return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
     });
     flow.lazyimg();
 })

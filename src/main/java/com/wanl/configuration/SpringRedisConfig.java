@@ -1,9 +1,17 @@
 package com.wanl.configuration;
 
+import java.time.Duration;
+
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cache.CacheManager;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.data.redis.cache.RedisCacheConfiguration;
+import org.springframework.data.redis.cache.RedisCacheManager;
+import org.springframework.data.redis.cache.RedisCacheWriter;
+import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.connection.RedisPassword;
 import org.springframework.data.redis.connection.RedisStandaloneConfiguration;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
@@ -23,6 +31,7 @@ import redis.clients.jedis.JedisPoolConfig;
  */
 @Configuration
 @PropertySource(value = {"classpath:redis.properties"})
+@EnableCaching
 public class SpringRedisConfig {
 
     /**
@@ -148,6 +157,7 @@ public class SpringRedisConfig {
         redisTemplate.setValueSerializer(valueSerializer);
         redisTemplate.setHashKeySerializer(keySerializer);
         redisTemplate.setHashValueSerializer(valueSerializer);
+        redisTemplate.setDefaultSerializer(valueSerializer);
         return redisTemplate;
     }
     
@@ -171,6 +181,14 @@ public class SpringRedisConfig {
         stringRedisTemplate.setKeySerializer(keySerializer);
         stringRedisTemplate.setValueSerializer(valueSerializer);
         return stringRedisTemplate;
+    }
+    @Bean
+    public CacheManager cacheManager(RedisConnectionFactory redisConnectionFactory) {
+        RedisCacheConfiguration redisCacheConfiguration = RedisCacheConfiguration.defaultCacheConfig()
+                .entryTtl(Duration.ofMinutes(1));
+        return RedisCacheManager
+                .builder(RedisCacheWriter.nonLockingRedisCacheWriter(redisConnectionFactory))
+                .cacheDefaults(redisCacheConfiguration).build();
     }
     
 }

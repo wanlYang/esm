@@ -481,7 +481,7 @@ body {overflow-y: scroll}
 /* 楼层样式 */
 .floor-nav {
 	z-index: 100;
-	width: 120px;
+	width: 80px;
 	padding: 10px;
 	position: absolute;
 }
@@ -733,6 +733,9 @@ body {overflow-y: scroll}
 	list-style: none;
 	margin-bottom: 0;
 	line-height: 50px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
 }
 .breadcrumb > li + li::before {
     padding: 0 5px;
@@ -827,6 +830,7 @@ body {overflow-y: scroll}
 	cursor: default;
 }
 .item-price {
+	margin-top: 10px;
 	padding: 10px;
 	margin-bottom: 20px;
 }
@@ -928,6 +932,7 @@ body {overflow-y: scroll}
 	padding: 5px 15px;
 	text-align: center;
 	border: 1px solid #b31e22;
+	cursor: default;
 }
 .amount-btn {
 	float: left;
@@ -959,6 +964,7 @@ body {overflow-y: scroll}
 }
 .amount-btn > a.add::before {width: 1px;height: 9px}
 .item-stock{
+	cursor: default;
 	height: 32px;
 	line-height: 32px;
 }
@@ -982,7 +988,7 @@ body {overflow-y: scroll}
 }
 .item-action__basket {
 	color: #fff !important;
-	float: right;
+	float: left;
 	background-color: #b31e22;
 	border: 1px solid #b31e22;
 }

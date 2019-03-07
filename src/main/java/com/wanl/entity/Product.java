@@ -1,5 +1,6 @@
 package com.wanl.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -11,7 +12,7 @@ import java.util.List;
  * @date:2019/2/28 9:31
  * @version:V1.0
  */
-public class Product {
+public class Product implements Serializable{
 
     /**
      * 商品ID

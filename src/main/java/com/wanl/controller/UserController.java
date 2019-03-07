@@ -3,6 +3,7 @@ package com.wanl.controller;
 import com.wanl.constant.EsmConstant;
 import com.wanl.entity.Result;
 import com.wanl.entity.User;
+import com.wanl.service.ShopCartService;
 import com.wanl.service.UserService;
 import com.wanl.utils.CookieUtil;
 import com.wanl.utils.redis.RedisCacheManager;
@@ -34,6 +35,9 @@ public class UserController {
     @Autowired
     private RedisCacheManager redisCacheManager;
 
+    @Autowired
+    private ShopCartService shopCartService;
+
     @RequestMapping(value = "/regist/submit",method = RequestMethod.POST)
     @ResponseBody
     public Result regist(User user, String phoneCode, String confirmPassword, HttpServletRequest request, HttpServletResponse response){
@@ -64,6 +68,11 @@ public class UserController {
         if (loginResult.getStatus().intValue() == EsmConstant.STATUS_OK){
             session.setAttribute(EsmConstant.USER_SESSION,loginResult.getData());
             session.setMaxInactiveInterval(60 * 10);
+            User user = (User)session.getAttribute(EsmConstant.USER_SESSION);
+            if (user!=null){
+                Result shopCartPiece = shopCartService.getShopCartPiece(user.getId());
+                session.setAttribute("SHOP_CART_PIECE",shopCartPiece.getData());
+            }
         }
 
         return loginResult;
@@ -73,7 +82,7 @@ public class UserController {
     public String logout(HttpSession session){
         session.removeAttribute(EsmConstant.USER_SESSION);
         session.invalidate();
-        return "index";
+        return "redirect:/";
     }
 
 }

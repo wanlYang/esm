@@ -29,6 +29,7 @@
     // $(document).ajaxSend(function (e, xhr, options) {
     //     xhr.setRequestHeader(header, token);
     // })
+
 })
 function getRealPath() {
     // 获取当前网址，如： http://localhost:8083/myproj/view/my.jsp
@@ -174,3 +175,4 @@ var HtmlUtil = {
          return s;  
    }
 };
+
