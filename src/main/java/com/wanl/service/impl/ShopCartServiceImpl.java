@@ -84,4 +84,14 @@ public class ShopCartServiceImpl implements ShopCartService {
 
         return new Result(200,"获取成功!",0,piece);
     }
+
+	@Override
+	public List<ShopCart> getShopCartList(String id) {
+		User user = userMapper.findUserById(id);
+		List<ShopCart> shopCarts = null;
+		if (user != null) {
+			shopCarts = shopCartMapper.getShopCarts(id);
+		}
+		return shopCarts;
+	}
 }

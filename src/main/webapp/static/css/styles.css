@@ -23,6 +23,9 @@ body {overflow-y: scroll}
 .tab-header a:hover {
 	color: #b31e22;
 }
+a{
+	text-decoration: none !important;
+}
 /* 头部搜索栏 */
 .top-search .inner, .top-user .inner {
 	height: 100px;
@@ -2799,17 +2802,14 @@ img.zoom-img {
 	line-height: 1.5em;
 }
 .shopcart-form__box .type {margin-top: 30px}
-.shopcart-form__box a {
-	color: #666;
-	text-decoration: none;
-}
-.shopcart-form__box a:hover {color: #b31e22}
+
 .cart-num__box input {
 	text-align: center;
 	vertical-align: middle;
 	display: inline-block;
 	background-color: #fff;
 	width: 24px;height: 24px;
+	line-height: 24px;
 	border: 1px solid #b5b5b5;
 }
 .cart-num__box input.val {width: 48px}

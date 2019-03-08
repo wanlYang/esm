@@ -1,6 +1,9 @@
 package com.wanl.service;
 
+import java.util.List;
+
 import com.wanl.entity.Result;
+import com.wanl.entity.ShopCart;
 import com.wanl.entity.User;
 
 /**
@@ -36,4 +39,15 @@ public interface ShopCartService {
      * @return com.wanl.entity.Result
      **/
     Result getShopCartPiece(String id);
+
+    /**
+     * 获取购物车
+     * @Author YangBin
+     * @Date 20:56 2019/3/8
+     * @Param []
+     * @param id 用户ID
+     * @version v1.0
+     * @return com.wanl.entity.Result
+     **/
+	public List<ShopCart> getShopCartList(String id);
 }

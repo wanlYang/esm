@@ -67,14 +67,13 @@ public class UserController {
         Result loginResult = userService.login(username,password);
         if (loginResult.getStatus().intValue() == EsmConstant.STATUS_OK){
             session.setAttribute(EsmConstant.USER_SESSION,loginResult.getData());
-            session.setMaxInactiveInterval(60 * 10);
             User user = (User)session.getAttribute(EsmConstant.USER_SESSION);
             if (user!=null){
                 Result shopCartPiece = shopCartService.getShopCartPiece(user.getId());
                 session.setAttribute("SHOP_CART_PIECE",shopCartPiece.getData());
             }
         }
-
+        session.setMaxInactiveInterval(60 * 10);
         return loginResult;
     }
 
