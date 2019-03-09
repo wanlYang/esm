@@ -5,6 +5,13 @@
     <insert id="addShopCart" parameterType="shopCart">
         INSERT INTO esm_cart(user_id,product_id,amount) VALUES (#{user.id},#{product.id},#{amount})
     </insert>
+    <delete id="del">
+        DELETE FROM esm_cart WHERE id = #{id}
+    </delete>
+    <delete id="clear">
+        DELETE FROM esm_cart WHERE user_id = #{id}
+
+    </delete>
     <select id="getShopCart" resultMap="shopCartResultMap">
         SELECT * FROM esm_cart WHERE product_id = #{id}
         

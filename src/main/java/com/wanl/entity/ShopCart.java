@@ -20,7 +20,7 @@ public class ShopCart {
 
     private Integer amount;
 
-    private String totalPrice;
+    private String subPrice;
 
     public Integer getId() {
         return id;
@@ -54,12 +54,12 @@ public class ShopCart {
         this.amount = amount;
     }
 
-    public String getTotalPrice() {
-        return totalPrice;
+    public String getSubPrice() {
+        return subPrice;
     }
 
-    public void setTotalPrice(String totalPrice) {
-        this.totalPrice = totalPrice;
+    public void setSubPrice(String subPrice) {
+        this.subPrice = subPrice;
     }
 
     @Override
@@ -69,7 +69,7 @@ public class ShopCart {
                 ", user=" + user +
                 ", product=" + product +
                 ", amount=" + amount +
-                ", totalPrice='" + totalPrice + '\'' +
+                ", subPrice='" + subPrice + '\'' +
                 '}';
     }
 }

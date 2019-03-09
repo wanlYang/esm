@@ -50,4 +50,38 @@ public interface ShopCartService {
      * @return com.wanl.entity.Result
      **/
 	public List<ShopCart> getShopCartList(String id);
+
+	/**
+     * 修改数量
+	 * @Author YangBin
+	 * @Date 15:45 2019/3/9
+	 * @Param [id, amount]
+     * @param id ID
+     * @param amount 数量
+	 * @version v1.0
+	 * @return java.lang.Integer
+	 **/
+    Result updateAmount(String id, String amount);
+
+    /**
+	 * 从购物车删除商品
+     * @Author YangBin
+     * @Date 16:27 2019/3/9
+     * @Param [id]
+	 * @param id id
+     * @version v1.0
+     * @return com.wanl.entity.Result
+     **/
+	Result delProduct(String id);
+
+	/**
+	 * 清空购物车
+	 * @Author YangBin
+	 * @Date 16:33 2019/3/9
+	 * @Param [id]
+	 * @param id 用户ID
+	 * @version v1.0
+	 * @return com.wanl.entity.Result
+	 **/
+	Result clear(String id);
 }

@@ -26,7 +26,7 @@ layui.use(['form', 'layer','flow', 'jquery', "element",'carousel','table'], func
 					align: "center",
 					style: 'cursor: pointer;',
 					templet:function(d){
-						return "<img height='100%' src='/"+d.product.img+"' class='cover'/>";
+						return "<img height='100%' title='点击预览' src='/"+d.product.img+"' class='cover'/>";
 					}
 				},
 				{
@@ -50,11 +50,11 @@ layui.use(['form', 'layer','flow', 'jquery', "element",'carousel','table'], func
 					align: 'center',
 					edit: 'text',
 					templet:function(d){
-						return d.amount;
+						return "<span title='点击修改数量'>"+d.amount+"</span>";
 					}
 				},
 				{
-					field: 'subTotal',
+					field: 'subPrice',
 					title: '小计',
 					align: 'center',
 					templet:function(d){
@@ -87,15 +87,65 @@ layui.use(['form', 'layer','flow', 'jquery', "element",'carousel','table'], func
 		switch(obj.event){
 			case 'getCheckData':
 				var data = checkStatus.data;
-				if (data.length == 0){
-					layer.msg("请选择商品!");
+				if (data.length > 0){
+					var total = 0;
+					var cartId = [];
+					for(var i in data) {
+						cartId.push(data[i].id);
+					}
+					for (var i = 0;i<data.length;i++){
+						total += data[i].product.price * data[i].amount;
+					}
+					layer.confirm('所选商品一共￥'+total+'确认下单?', function(index){
+						//修改数量
+						$.ajax({
+							url: getRealPath() + "/order/down",
+							type: 'POST',
+							complete: function (XMLHttpRequest, textStatus) {
+								layer.close(index);
+							},
+							data:JSON.stringify(cartId),
+							success: function (result) {
+								if (result.status == 200) {
+									layer.msg(result.message);
+									obj.del();
+								}else{
+									layer.msg(result.message);
+
+								}
+							},
+							error: function () {
+								layer.msg("出现错误,请尝试刷新页面!");
+							}
+						});
+					});
 					return;
+				}else{
+					layer.msg("请选择商品!");
 				}
 				//layer.alert(JSON.stringify(data));
 				break;
 			case 'clearShopCart':
-				var data = checkStatus.data;
+				//清空购物车
+				$.ajax({
+					url: getRealPath() + "/shopcart/clear",
+					type: 'POST',
+					complete: function (XMLHttpRequest, textStatus) {
 
+					},
+					success: function (result) {
+						if (result.status == 200) {
+							layer.msg(result.message);
+							tableIns.reload();
+						}else{
+							layer.msg(result.message);
+
+						}
+					},
+					error: function () {
+						layer.msg("出现错误,请尝试刷新页面!");
+					}
+				});
 				break;
 		};
 	});
@@ -103,28 +153,63 @@ layui.use(['form', 'layer','flow', 'jquery', "element",'carousel','table'], func
 	//监听行工具事件
 	table.on('tool(shopCart)', function(obj){
 		var data = obj.data;
-		//console.log(obj)
 		if(obj.event === 'del'){
-			layer.confirm('真的删除行么', function(index){
-				obj.del();
-				layer.close(index);
+			layer.confirm('确认删除该商品吗?', function(index){
+				//修改数量
+				$.ajax({
+					url: getRealPath() + "/shopcart/del/product",
+					type: 'POST',
+					complete: function (XMLHttpRequest, textStatus) {
+						layer.close(index);
+					},
+					data:{"id":obj.data.id},
+					success: function (result) {
+						if (result.status == 200) {
+							layer.msg(result.message);
+							obj.del();
+						}else{
+							layer.msg(result.message);
+
+						}
+					},
+					error: function () {
+						layer.msg("出现错误,请尝试刷新页面!");
+					}
+				});
 			});
 		} else if(obj.event === 'preview'){
+			//显示大图
 			preview_img("/"+obj.data.product.img);
 		}
 	});
 	table.on('edit(shopCart)', function(obj){
-		console.log(obj.value); //得到修改后的值
-		console.log(obj.field); //当前编辑的字段名
-		console.log(obj.data); //所在行的所有相关数据
-		var reg=/(^[1-9]{1,2}$)/;
-		if (!reg.test(obj.value)){
-			layer.msg("请输入1~99之间的数值!");
-			obj.update({
+		//修改数量
+		$.ajax({
+			url: getRealPath() + "/shopcart/change/amount",
+			type: 'POST',
+			complete: function (XMLHttpRequest, textStatus) {
 
-			});
-
-		}
+			},
+			data:{"id":obj.data.id,"amount":obj.value},
+			success: function (result) {
+				if (result.status == 200) {
+					layer.msg(result.message);
+					obj.update({
+						amount : result.data.amount,
+						subPrice: "￥"+result.data.subPrice
+					});
+				}else{
+					layer.msg(result.message);
+					obj.update({
+						amount : result.data.amount,
+						subPrice: "￥"+result.data.subPrice
+					});
+				}
+			},
+			error: function () {
+				layer.msg("出现错误,请尝试刷新页面!");
+			}
+		});
 
 
 	});

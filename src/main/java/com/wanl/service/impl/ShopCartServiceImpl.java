@@ -7,6 +7,7 @@ import com.wanl.mapper.ProductMapper;
 import com.wanl.mapper.ShopCartMapper;
 import com.wanl.mapper.UserMapper;
 import com.wanl.service.ShopCartService;
+import com.wanl.utils.RegexUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -94,4 +95,75 @@ public class ShopCartServiceImpl implements ShopCartService {
 		}
 		return shopCarts;
 	}
+
+    /**
+     * 修改数量
+     *
+     * @param id     ID
+     * @param amount 数量
+     * @return java.lang.Integer
+     * @Author YangBin
+     * @Date 15:45 2019/3/9
+     * @Param [id, amount]
+     * @version v1.0
+     **/
+    @Override
+    public Result updateAmount(String id, String amount) {
+        ShopCart shopCart = shopCartMapper.getShopCartById(Integer.parseInt(id));
+        if (!RegexUtils.isTwoNumber(amount)){
+            return new Result(-1,"请输入1~99之间数值!",0,shopCart);
+        }
+        shopCart.setAmount(Integer.parseInt(amount));
+        Integer integer = shopCartMapper.updateAmount(shopCart);
+        if (integer.intValue() <= 0){
+            return new Result(-2,"数据出错!",0,shopCart);
+        }
+        shopCart.setSubPrice(String.valueOf(shopCart.getAmount()*Double.parseDouble(shopCart.getProduct().getPrice())));
+        return new Result(200,"修改成功!",0,shopCart);
+    }
+
+    /**
+     * 从购物车删除商品
+     *
+     * @param id id
+     * @return com.wanl.entity.Result
+     * @Author YangBin
+     * @Date 16:27 2019/3/9
+     * @Param [id]
+     * @version v1.0
+     **/
+    @Override
+    public Result delProduct(String id) {
+        if (!StringUtils.isNotBlank(id)){
+            return new Result(-2,"数据出错!",0,0);
+        }
+        Integer row = shopCartMapper.del(id);
+        if (row <= 0){
+            return new Result(-2,"删除失败!",0,0);
+        }
+        return new Result(200,"删除成功!",0,0);
+    }
+
+    /**
+     * 清空购物车
+     *
+     * @param id 用户ID
+     * @return com.wanl.entity.Result
+     * @Author YangBin
+     * @Date 16:33 2019/3/9
+     * @Param [id]
+     * @version v1.0
+     **/
+    @Override
+    public Result clear(String id) {
+        if (!StringUtils.isNotBlank(id)){
+            return new Result(-2,"删除失败!",0,0);
+        }
+        User user = userMapper.findUserById(id);
+        Integer integer = shopCartMapper.clear(user.getId());
+        if (integer <= 0){
+            return new Result(-2,"删除失败!",0,0);
+        }
+        return new Result(200,"删除成功!",0,0);
+    }
 }

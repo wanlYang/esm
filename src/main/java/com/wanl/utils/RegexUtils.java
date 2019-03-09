@@ -190,10 +190,18 @@ public class RegexUtils {
  	    boolean rs = matcher.matches();
 		return rs;
 	}
+	public static boolean isTwoNumber(String number) {
+		String regEx = "^[1-9]{1,2}$";
+		Pattern pattern = Pattern.compile(regEx);
+		Matcher matcher = pattern.matcher(number);
+		boolean rs = matcher.matches();
+		return rs;
+
+	}
 	
 	public static void main(String[] args) {
 		
-		System.out.println(isNumber("1111111"));
+		System.out.println(isTwoNumber("0"));
 	}
 
 }

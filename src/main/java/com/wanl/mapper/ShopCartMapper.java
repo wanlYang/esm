@@ -80,4 +80,26 @@ public interface ShopCartMapper {
      * @return java.lang.Integer
      **/
     Integer getShopCartPiece(String id);
+
+    /**
+     * 删除商品
+     * @Author YangBin
+     * @Date 16:29 2019/3/9
+     * @Param [id]
+     * @param id ID
+     * @version v1.0
+     * @return java.lang.Integer
+     **/
+    Integer del(String id);
+
+    /**
+     * 清空购物车
+     * @Author YangBin
+     * @Date 16:36 2019/3/9
+     * @Param [id]
+     * @param id 用户ID
+     * @version v1.0
+     * @return java.lang.Integer
+     **/
+    Integer clear(String id);
 }
