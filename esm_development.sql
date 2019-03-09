@@ -11,7 +11,7 @@
  Target Server Version : 50624
  File Encoding         : 65001
 
- Date: 07/03/2019 22:24:31
+ Date: 09/03/2019 17:10:52
 */
 
 SET NAMES utf8mb4;
@@ -34,17 +34,6 @@ CREATE TABLE `esm_address`  (
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
--- Table structure for esm_admin
--- ----------------------------
-DROP TABLE IF EXISTS `esm_admin`;
-CREATE TABLE `esm_admin`  (
-  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',
-  `adminname` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '管理员用户名',
-  `password` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '管理员密码',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
-
--- ----------------------------
 -- Table structure for esm_cart
 -- ----------------------------
 DROP TABLE IF EXISTS `esm_cart`;
@@ -58,16 +47,7 @@ CREATE TABLE `esm_cart`  (
   INDEX `product_id`(`product_id`) USING BTREE,
   CONSTRAINT `esm_cart_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `esm_user` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `esm_cart_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `esm_product` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
-
--- ----------------------------
--- Records of esm_cart
--- ----------------------------
-INSERT INTO `esm_cart` VALUES (1, 'wanl2411096785', 88715749, 4);
-INSERT INTO `esm_cart` VALUES (2, 'wanl2411096785', 88715742, 10);
-INSERT INTO `esm_cart` VALUES (3, 'wanl2411096785', 88715757, 2);
-INSERT INTO `esm_cart` VALUES (4, 'wanl2411096785', 88715747, 1);
-INSERT INTO `esm_cart` VALUES (5, 'wanl2411096785', 88715766, 1);
+) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Table structure for esm_cate
