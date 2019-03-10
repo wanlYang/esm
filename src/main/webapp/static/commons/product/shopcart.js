@@ -109,9 +109,11 @@ layui.use(['form', 'layer','flow', 'jquery', "element",'carousel','table'], func
 								if (result.status == 200) {
 									layer.msg(result.message);
 									tableIns.reload();
+									setTimeout(function () {
+										location.href = getRealPath() + "/order/" + result.data;
+									},1000);
 								}else{
 									layer.msg(result.message);
-
 								}
 							},
 							error: function () {

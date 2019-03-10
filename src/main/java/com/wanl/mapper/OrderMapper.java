@@ -1,7 +1,10 @@
 package com.wanl.mapper;
 
+import com.wanl.entity.Address;
 import com.wanl.entity.Order;
 import com.wanl.entity.OrderItem;
+
+import java.util.List;
 
 /**
  * 订单mapper
@@ -36,5 +39,47 @@ public interface OrderMapper {
      **/
     Integer createOrderItem(OrderItem orderItem);
 
+    /**
+     * 获取订单
+     * @Author YangBin
+     * @Date 20:57 2019/3/10
+     * @Param [id]
+     * @param id 订单ID
+     * @version v1.0
+     * @return com.wanl.entity.Order
+     **/
+    Order getOrder(String id);
 
+    /**
+     * 获取地址
+     * @Author YangBin
+     * @Date 21:02 2019/3/10
+     * @Param [id]
+     * @param id ID
+     * @version v1.0
+     * @return com.wanl.entity.Address
+     **/
+    Address getAddress(String id);
+
+    /**
+     * 获取订单对应商品详情
+     * @Author YangBin
+     * @Date 21:06 2019/3/10
+     * @Param [id]
+     * @param id 订单ID
+     * @version v1.0
+     * @return java.util.List<com.wanl.entity.OrderItem>
+     **/
+    List<OrderItem> getOrderItem(String id);
+
+    /**
+     * 获取收获地址
+     * @Author YangBin
+     * @Date 21:27 2019/3/10
+     * @Param [id]
+     * @param id 用户ID
+     * @version v1.0
+     * @return java.util.List<com.wanl.entity.Address>
+     **/
+    List<Address> getAddressList(String id);
 }

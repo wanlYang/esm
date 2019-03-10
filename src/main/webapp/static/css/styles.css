@@ -2023,9 +2023,10 @@ img.zoom-img {
 .user-form-group input[type="radio"]:checked + .iconfont::before {content: "\e67b"}
 .user-form-group .btn {
 	color: #fff;
-	background-color: #b31e22;
+	background-color: #1ea5b3;
 }
-.user-form-group .btn:active {background-color: #931519}
+.user-form-group .btn:active {background-color: #2b8293
+}
 .user-form-group .datepicker {
 	width: 160px;
 	padding: 0 10px;
@@ -2827,7 +2828,7 @@ img.zoom-img {
 	line-height: 20px;
 	padding: 5px 30px;
 	display: inline-block;
-	background-color: #b31e22
+	background-color: #1ea5b3;
 }
 .addr-radio .radio-line {
 	line-height: 24px;
@@ -2874,11 +2875,11 @@ img.zoom-img {
 	line-height: 38px;
 	position: absolute;
 }
-.shopcart-form__box .add_addr a {color: #b31e22}
+.shopcart-form__box .add_addr a {color: #1ea5b3}
 .shopcart-form__box .add_addr {
 	display: block;
 	line-height: 40px;
-	padding-left: 80px;
+	padding-left: 110px;
 }
 .shop-order__detail .table {
 	margin-top: 10px;
@@ -2890,7 +2891,7 @@ img.zoom-img {
 .pay-mode__box {
 	padding: 18px;
 	margin-top: 10px;
-	border: 2px solid #b31e22;
+	border: 2px solid #1ea5b3;
 }
 .pay-mode__box .radio-line {
 	height: 40px;
@@ -2908,4 +2909,5 @@ img.zoom-img {
 	width: 120px;
 	float: right;
 	margin: 10px 0;
+    outline: none;
 }

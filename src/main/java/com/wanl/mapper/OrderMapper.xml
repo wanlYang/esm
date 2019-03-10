@@ -12,5 +12,45 @@
     <insert id="createOrderItem" parameterType="orderItem">
         INSERT INTO esm_orderitem(product_id,order_id,user_id,number) values (#{product.id},#{order.id},#{user.id},#{number})
     </insert>
-
+    <select id="getOrder" resultMap="orderResultMap">
+        SELECT * FROM esm_order where id = #{id}
+    </select>
+    <select id="getAddress" resultMap="addressResultMap">
+        SELECT * FROM esm_address WHERE id = #{id}
+    </select>
+    <select id="getOrderItem" resultMap="orderItemResultMap">
+        SELECT * FROM esm_orderitem WHERE order_id = #{id}
+    </select>
+    <select id="getAddressList" resultMap="addressResultMap">
+        SELECT * FROM esm_address WHERE user_id = #{id}
+    </select>
+    <resultMap id="orderItemResultMap" type="orderItem">
+        <id column="id" property="id"></id>
+        <result column="number" property="number"></result>
+        <association property="user" column="user_id" select="com.wanl.mapper.UserMapper.findUserById"></association>
+        <association property="order" column="order_id" select="com.wanl.mapper.OrderMapper.getOrder"></association>
+        <association property="product" column="product_id" select="com.wanl.mapper.ProductMapper.findProductById"></association>
+    </resultMap>
+    <resultMap id="orderResultMap" type="order">
+        <id column="id" property="id"></id>
+        <result column="create_date" property="createDate"></result>
+        <result column="pay_date" property="payDate"></result>
+        <result column="delivery_date" property="deliveryDate"></result>
+        <result column="confirm_date" property="confirmDate"></result>
+        <result column="status" property="status"></result>
+        <result column="ordertotal" property="orderTotal"></result>
+        <association property="user" column="user_id" select="com.wanl.mapper.UserMapper.findUserById"></association>
+        <association property="address" column="address_id" select="com.wanl.mapper.OrderMapper.getAddress"></association>
+    </resultMap>
+    <resultMap id="addressResultMap" type="address">
+        <id column="id" property="id"></id>
+        <result column="consignee" property="consignee"></result>
+        <result column="province" property="province"></result>
+        <result column="city" property="city"></result>
+        <result column="county" property="county"></result>
+        <result column="street" property="street"></result>
+        <result column="tel" property="tel"></result>
+        <result column="postcode" property="postcode"></result>
+        <association property="user" column="user_id" select="com.wanl.mapper.UserMapper.findUserById"></association>
+    </resultMap>
 </mapper>

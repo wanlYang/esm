@@ -8,6 +8,7 @@ import com.wanl.mapper.UserMapper;
 import com.wanl.service.OrderService;
 import com.wanl.utils.CreationNumber;
 import com.wanl.utils.UUIDUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -80,12 +81,54 @@ public class OrderServiceImpl implements OrderService {
             order.getOrderItems().add(orderItem);
         }
         order.setOrderTotal(total.toString());
-        Integer integer = orderMapper.create(order);
+        orderMapper.create(order);
         for (OrderItem o : order.getOrderItems()) {
-            Integer orderItem = orderMapper.createOrderItem(o);
+            orderMapper.createOrderItem(o);
 
         }
-
         return new Result(200, "创建成功!", 0, order.getId());
+    }
+
+    /**
+     * 获取订单详情
+     *
+     * @param id 订单ID
+     * @return com.wanl.entity.Result
+     * @Author YangBin
+     * @Date 20:56 2019/3/10
+     * @Param [id]
+     * @version v1.0
+     **/
+    @Override
+    public Result getOrderInfo(String id) {
+        if (!StringUtils.isNotBlank(id)){
+            return new Result(0, "数据有误!", 0, 0);
+        }
+        Order order = orderMapper.getOrder(id);
+        List<OrderItem> orderItems = orderMapper.getOrderItem(id);
+        Double total = 0.00;
+        for (OrderItem orderItem : orderItems) {
+            total += Integer.parseInt(orderItem.getNumber()) * Double.parseDouble(orderItem.getProduct().getPrice());
+        }
+        order.setOrderTotal(total.toString());
+        order.setOrderItems(orderItems);
+        return new Result(200, "数据成功!", 0, order);
+    }
+
+    /**
+     * 获取用户对应收获地址
+     *
+     * @param id 用户ID
+     * @return java.util.List<com.wanl.entity.Address>
+     * @Author YangBin
+     * @Date 21:25 2019/3/10
+     * @Param [id]
+     * @version v1.0
+     **/
+    @Override
+    public List<Address> getAddress(String id) {
+        List<Address> addresses = orderMapper.getAddressList(id);
+
+        return addresses;
     }
 }

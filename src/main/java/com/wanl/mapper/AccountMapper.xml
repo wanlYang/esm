@@ -6,4 +6,12 @@
       INSERT INTO esm_useraccount(id,user_id,balance) VALUES (#{id},#{user.id},#{balance})
 
     </insert>
+    <select id="get" resultMap="accountResultMap">
+        SELECT * FROM esm_useraccount WHERE user_id = #{id}
+    </select>
+    <resultMap id="accountResultMap" type="account">
+        <id column="id" property="id"></id>
+        <result column="balance" property="balance"></result>
+        <association property="user" column="user_id" select="com.wanl.mapper.UserMapper.findUserById"></association>
+    </resultMap>
 </mapper>

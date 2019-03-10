@@ -22,4 +22,15 @@ public interface AccountService {
      * @return java.lang.Integer
      **/
     Integer create(Account account);
+
+    /**
+     * 获取用户余额
+     * @Author YangBin
+     * @Date 22:18 2019/3/10
+     * @Param [id]
+     * @param id ID 用户
+     * @version v1.0
+     * @return com.wanl.entity.Account
+     **/
+    Account get(String id);
 }

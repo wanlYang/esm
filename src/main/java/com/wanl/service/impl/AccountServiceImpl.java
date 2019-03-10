@@ -38,4 +38,21 @@ public class AccountServiceImpl implements AccountService {
         }
         return accountMapper.create(account);
     }
+
+    /**
+     * 获取用户余额
+     *
+     * @param id ID 用户
+     * @return com.wanl.entity.Account
+     * @Author YangBin
+     * @Date 22:18 2019/3/10
+     * @Param [id]
+     * @version v1.0
+     **/
+    @Override
+    public Account get(String id) {
+
+        Account account = accountMapper.get(id);
+        return account;
+    }
 }

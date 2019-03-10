@@ -11,7 +11,7 @@
  Target Server Version : 50624
  File Encoding         : 65001
 
- Date: 10/03/2019 15:41:36
+ Date: 10/03/2019 22:26:29
 */
 
 SET NAMES utf8mb4;
@@ -55,7 +55,7 @@ CREATE TABLE `esm_cart`  (
   INDEX `product_id`(`product_id`) USING BTREE,
   CONSTRAINT `esm_cart_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `esm_user` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `esm_cart_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `esm_product` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of esm_cart
@@ -921,6 +921,6 @@ CREATE TABLE `esm_useraccount`  (
 -- ----------------------------
 -- Records of esm_useraccount
 -- ----------------------------
-INSERT INTO `esm_useraccount` VALUES ('ac9810163452', 'wanl2411096785', 0.00);
+INSERT INTO `esm_useraccount` VALUES ('ac9810163452', 'wanl2411096785', 9999.00);
 
 SET FOREIGN_KEY_CHECKS = 1;
