@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wanl.mapper.OrderMapper">
+
+
+    <insert id="create" parameterType="order">
+
+        INSERT INTO esm_order(id,user_id,create_date,pay_date,delivery_date,confirm_date,status,ordertotal,address_id)
+        VALUES (#{id},#{user.id},#{createDate},#{payDate},#{deliveryDate},#{confirmDate},#{status},#{orderTotal},#{address.id})
+
+    </insert>
+    <insert id="createOrderItem" parameterType="orderItem">
+        INSERT INTO esm_orderitem(product_id,order_id,user_id,number) values (#{product.id},#{order.id},#{user.id},#{number})
+    </insert>
+
+</mapper>

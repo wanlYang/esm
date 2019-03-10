@@ -97,7 +97,6 @@ layui.use(['form', 'layer','flow', 'jquery', "element",'carousel','table'], func
 						total += data[i].product.price * data[i].amount;
 					}
 					layer.confirm('所选商品一共￥'+total+'确认下单?', function(index){
-						//修改数量
 						$.ajax({
 							url: getRealPath() + "/order/down",
 							type: 'POST',
@@ -105,10 +104,11 @@ layui.use(['form', 'layer','flow', 'jquery', "element",'carousel','table'], func
 								layer.close(index);
 							},
 							data:JSON.stringify(cartId),
+							contentType: "application/json",
 							success: function (result) {
 								if (result.status == 200) {
 									layer.msg(result.message);
-									obj.del();
+									tableIns.reload();
 								}else{
 									layer.msg(result.message);
 
@@ -126,25 +126,27 @@ layui.use(['form', 'layer','flow', 'jquery', "element",'carousel','table'], func
 				//layer.alert(JSON.stringify(data));
 				break;
 			case 'clearShopCart':
-				//清空购物车
-				$.ajax({
-					url: getRealPath() + "/shopcart/clear",
-					type: 'POST',
-					complete: function (XMLHttpRequest, textStatus) {
+				layer.confirm('确认清空购物车吗?', function(index){
+					//清空购物车
+					$.ajax({
+						url: getRealPath() + "/shopcart/clear",
+						type: 'POST',
+						complete: function (XMLHttpRequest, textStatus) {
+							layer.close(index);
+						},
+						success: function (result) {
+							if (result.status == 200) {
+								layer.msg(result.message);
+								tableIns.reload();
+							}else{
+								layer.msg(result.message);
 
-					},
-					success: function (result) {
-						if (result.status == 200) {
-							layer.msg(result.message);
-							tableIns.reload();
-						}else{
-							layer.msg(result.message);
-
+							}
+						},
+						error: function () {
+							layer.msg("出现错误,请尝试刷新页面!");
 						}
-					},
-					error: function () {
-						layer.msg("出现错误,请尝试刷新页面!");
-					}
+					});
 				});
 				break;
 		};
@@ -213,6 +215,8 @@ layui.use(['form', 'layer','flow', 'jquery', "element",'carousel','table'], func
 
 
 	});
+
+	//显示大图方法
 	function preview_img(url) {
 		var img = new Image();
 		img.src = url;

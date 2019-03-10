@@ -93,6 +93,7 @@ public class ShopCartServiceImpl implements ShopCartService {
 		if (user != null) {
 			shopCarts = shopCartMapper.getShopCarts(id);
 		}
+
 		return shopCarts;
 	}
 

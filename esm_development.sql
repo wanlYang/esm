@@ -11,7 +11,7 @@
  Target Server Version : 50624
  File Encoding         : 65001
 
- Date: 09/03/2019 17:10:52
+ Date: 10/03/2019 15:41:36
 */
 
 SET NAMES utf8mb4;
@@ -30,8 +30,16 @@ CREATE TABLE `esm_address`  (
   `street` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '街道',
   `tel` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '电话',
   `postcode` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '邮编',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+  `user_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '用户',
+  PRIMARY KEY (`id`) USING BTREE,
+  INDEX `user_id`(`user_id`) USING BTREE,
+  CONSTRAINT `esm_address_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `esm_user` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of esm_address
+-- ----------------------------
+INSERT INTO `esm_address` VALUES (1, '杨彬', '陕西省', '西安市', '长安区', '东大街道', '18802927580', '710111', 'wanl2411096785');
 
 -- ----------------------------
 -- Table structure for esm_cart
@@ -47,7 +55,12 @@ CREATE TABLE `esm_cart`  (
   INDEX `product_id`(`product_id`) USING BTREE,
   CONSTRAINT `esm_cart_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `esm_user` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `esm_cart_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `esm_product` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of esm_cart
+-- ----------------------------
+INSERT INTO `esm_cart` VALUES (1, 'wanl2411096785', 88715766, 1);
 
 -- ----------------------------
 -- Table structure for esm_cate
@@ -106,7 +119,7 @@ CREATE TABLE `esm_order`  (
   `delivery_date` datetime(0) NULL DEFAULT NULL COMMENT '发货日期',
   `confirm_date` datetime(0) NULL DEFAULT NULL COMMENT '收获日期',
   `status` int(11) NULL DEFAULT NULL COMMENT '状态',
-  `ordertotal` decimal(10, 0) NULL DEFAULT NULL COMMENT '总价',
+  `ordertotal` decimal(10, 2) NULL DEFAULT NULL COMMENT '总价',
   `address_id` int(11) NULL DEFAULT NULL COMMENT '地址ID',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `user_id`(`user_id`) USING BTREE,
@@ -114,6 +127,11 @@ CREATE TABLE `esm_order`  (
   CONSTRAINT `esm_order_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `esm_user` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `esm_order_ibfk_2` FOREIGN KEY (`address_id`) REFERENCES `esm_address` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of esm_order
+-- ----------------------------
+INSERT INTO `esm_order` VALUES ('201903101541012369343410', 'wanl2411096785', '2019-03-10 15:41:01', NULL, NULL, NULL, 0, 149.00, NULL);
 
 -- ----------------------------
 -- Table structure for esm_orderitem
@@ -132,7 +150,12 @@ CREATE TABLE `esm_orderitem`  (
   CONSTRAINT `esm_orderitem_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `esm_user` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `esm_orderitem_ibfk_3` FOREIGN KEY (`order_id`) REFERENCES `esm_order` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `esm_orderitem_ibfk_4` FOREIGN KEY (`product_id`) REFERENCES `esm_product` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 20 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of esm_orderitem
+-- ----------------------------
+INSERT INTO `esm_orderitem` VALUES (19, 88715752, '201903101541012369343410', 'wanl2411096785', 1);
 
 -- ----------------------------
 -- Table structure for esm_product
