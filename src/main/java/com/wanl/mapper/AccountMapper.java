@@ -33,4 +33,15 @@ public interface AccountMapper {
      * @return com.wanl.entity.Account
      **/
     Account get(String id);
+
+    /**
+     * 更新账户
+     * @Author YangBin
+     * @Date 18:17 2019/3/11
+     * @Param [account]
+     * @param account 账户
+     * @version v1.0
+     * @return java.lang.Integer
+     **/
+    Integer update(Account account);
 }

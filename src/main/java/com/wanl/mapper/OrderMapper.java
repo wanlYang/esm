@@ -82,4 +82,15 @@ public interface OrderMapper {
      * @return java.util.List<com.wanl.entity.Address>
      **/
     List<Address> getAddressList(String id);
+
+    /**
+     * 更新订单
+     * @Author YangBin
+     * @Date 18:21 2019/3/11
+     * @Param [order]
+     * @param order 订单
+     * @version v1.0
+     * @return java.lang.Integer
+     **/
+    Integer update(Order order);
 }

@@ -12,6 +12,9 @@
     <insert id="createOrderItem" parameterType="orderItem">
         INSERT INTO esm_orderitem(product_id,order_id,user_id,number) values (#{product.id},#{order.id},#{user.id},#{number})
     </insert>
+    <update id="update" parameterType="order">
+        UPDATE esm_order SET status = #{status},address_id = #{address.id},pay_date = #{payDate},delivery_date = #{deliveryDate},confirm_date = #{confirmDate} WHERE id = #{id}
+    </update>
     <select id="getOrder" resultMap="orderResultMap">
         SELECT * FROM esm_order where id = #{id}
     </select>

@@ -115,4 +115,5 @@ public interface EsmConstant {
     Integer CATE_SKIRT = 15;
     Integer CATE_CLOTHES = 21;
 	Integer CATE_BOOTIES = 5;
+    String PAY_BALANCE = "020";
 }

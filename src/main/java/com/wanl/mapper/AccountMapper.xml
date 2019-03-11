@@ -6,6 +6,9 @@
       INSERT INTO esm_useraccount(id,user_id,balance) VALUES (#{id},#{user.id},#{balance})
 
     </insert>
+    <update id="update" parameterType="account">
+        UPDATE esm_useraccount SET balance = #{balance} WHERE id = #{id}
+    </update>
     <select id="get" resultMap="accountResultMap">
         SELECT * FROM esm_useraccount WHERE user_id = #{id}
     </select>

@@ -60,13 +60,13 @@ public class OrderController {
     @ResponseBody
     public ModelAndView orderDetail(@PathVariable("id") String id, ModelAndView modelAndView, HttpSession session){
         Result result = orderService.getOrderInfo(id);
+        User user = (User)session.getAttribute(EsmConstant.USER_SESSION);
         Order order = (Order)result.getData();
-        if (result.getStatus().intValue() == EsmConstant.STATUS_OK){
+        if (result.getStatus().intValue() == EsmConstant.STATUS_OK && user.getId().equals(order.getUser().getId())){
             List<Address> addresses = null;
             modelAndView.setViewName("order_info");
-            modelAndView.addObject("order",(Order)result.getData());
+            modelAndView.addObject("order",order);
             if (order.getStatus().intValue() == EsmConstant.ORDER_NOTPAY){
-                User user = (User)session.getAttribute(EsmConstant.USER_SESSION);
                 if (user != null) {
                     addresses = orderService.getAddress(user.getId());
                 }
@@ -79,5 +79,32 @@ public class OrderController {
         modelAndView.setViewName("order_info");
         modelAndView.addObject("order",result);
         return modelAndView;
+    }
+
+    /**
+     * 订单付款
+     * @Author YangBin
+     * @Date 18:53 2019/3/11
+     * @Param [address, paymode, orderId, session]
+     * @version v1.0
+     * @return com.wanl.entity.Result
+     **/
+    @RequestMapping(value = "/pay",method = RequestMethod.POST)
+    @ResponseBody
+    public Result pay(String address,String paymode, String orderId,HttpSession session){
+        User user = (User)session.getAttribute(EsmConstant.USER_SESSION);
+        if (paymode.equals(EsmConstant.PAY_BALANCE)){
+            Result result = orderService.payOrder(address,orderId);
+            return result;
+        }
+        return new Result(-1,"数据有误!");
+    }
+
+    @RequestMapping(value = "/confirm",method = RequestMethod.POST)
+    @ResponseBody
+    public Result confirm(String orderId,HttpSession session){
+        User user = (User)session.getAttribute(EsmConstant.USER_SESSION);
+        Result result = orderService.confirm(orderId);
+        return result;
     }
 }

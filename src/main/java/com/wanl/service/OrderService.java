@@ -1,6 +1,7 @@
 package com.wanl.service;
 
 import com.wanl.entity.Address;
+import com.wanl.entity.Order;
 import com.wanl.entity.Result;
 
 import java.util.List;
@@ -48,4 +49,27 @@ public interface OrderService {
      * @return java.util.List<com.wanl.entity.Address>
      **/
     List<Address> getAddress(String id);
+
+    /**
+     * 根据账户余额支付
+     * @Author YangBin
+     * @Date 18:07 2019/3/11
+     * @Param [address, orderId]
+     * @param address 地址ID
+     * @param orderId 订单ID
+     * @version v1.0
+     * @return com.wanl.entity.Result
+     **/
+    Result payOrder(String address, String orderId);
+
+    /**
+     * 确认订单
+     * @Author YangBin
+     * @Date 18:54 2019/3/11
+     * @Param [orderId]
+     * @param orderId 订单ID
+     * @version v1.0
+     * @return com.wanl.entity.Result
+     **/
+    Result confirm(String orderId);
 }
