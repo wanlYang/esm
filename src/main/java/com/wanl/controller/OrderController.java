@@ -4,6 +4,7 @@ import com.wanl.constant.EsmConstant;
 import com.wanl.entity.*;
 import com.wanl.service.AccountService;
 import com.wanl.service.OrderService;
+import com.wanl.service.ShopCartService;
 import com.wanl.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -31,6 +32,9 @@ public class OrderController {
     @Autowired
     private AccountService accountService;
 
+    @Autowired
+    private ShopCartService shopCartService;
+
     /**
      * 下单
      * @Author YangBin
@@ -41,10 +45,11 @@ public class OrderController {
      **/
     @RequestMapping(value = "/down",method = RequestMethod.POST)
     @ResponseBody
-    public Result orderDown(@RequestBody String[] cartId){
-
+    public Result orderDown(@RequestBody String[] cartId,HttpSession session){
+        User user = (User)session.getAttribute(EsmConstant.USER_SESSION);
         Result result = orderService.createOrder(cartId);
-
+        Result shopCartPiece = shopCartService.getShopCartPiece(user.getId());
+        session.setAttribute("SHOP_CART_PIECE",shopCartPiece.getData());
         return result;
     }
 
@@ -61,23 +66,28 @@ public class OrderController {
     public ModelAndView orderDetail(@PathVariable("id") String id, ModelAndView modelAndView, HttpSession session){
         Result result = orderService.getOrderInfo(id);
         User user = (User)session.getAttribute(EsmConstant.USER_SESSION);
-        Order order = (Order)result.getData();
-        if (result.getStatus().intValue() == EsmConstant.STATUS_OK && user.getId().equals(order.getUser().getId())){
-            List<Address> addresses = null;
-            modelAndView.setViewName("order_info");
-            modelAndView.addObject("order",order);
-            if (order.getStatus().intValue() == EsmConstant.ORDER_NOTPAY){
-                if (user != null) {
-                    addresses = orderService.getAddress(user.getId());
-                }
-                Account account = accountService.get(user.getId());
-                modelAndView.addObject("addresses",addresses);
-                modelAndView.addObject("account",account);
-            }
+        if (result.getStatus().intValue() == 0){
+            modelAndView.setViewName("info");
+            modelAndView.addObject("message","数据有误!");
             return modelAndView;
         }
+        Order order = (Order)result.getData();
+        if (result.getStatus().intValue() != EsmConstant.STATUS_OK && !user.getId().equals(order.getUser().getId())){
+            modelAndView.setViewName("info");
+            modelAndView.addObject("message","数据有误!");
+            return modelAndView;
+        }
+        List<Address> addresses = null;
         modelAndView.setViewName("order_info");
-        modelAndView.addObject("order",result);
+        modelAndView.addObject("order",order);
+        if (order.getStatus().intValue() == EsmConstant.ORDER_NOTPAY){
+            if (user != null) {
+                addresses = orderService.getAddress(user.getId());
+            }
+            Account account = accountService.get(user.getId());
+            modelAndView.addObject("addresses",addresses);
+            modelAndView.addObject("account",account);
+        }
         return modelAndView;
     }
 
@@ -100,6 +110,14 @@ public class OrderController {
         return new Result(-1,"数据有误!");
     }
 
+    /**
+     * 确认订单
+     * @Author YangBin
+     * @Date 10:40 2019/3/14
+     * @Param [orderId, session]
+     * @version v1.0
+     * @return com.wanl.entity.Result
+     **/
     @RequestMapping(value = "/confirm",method = RequestMethod.POST)
     @ResponseBody
     public Result confirm(String orderId,HttpSession session){
@@ -107,4 +125,29 @@ public class OrderController {
         Result result = orderService.confirm(orderId);
         return result;
     }
+
+    @RequestMapping(value = "/del",method = RequestMethod.POST)
+    @ResponseBody
+    public Result clear(String id,HttpSession session){
+        User user = (User)session.getAttribute(EsmConstant.USER_SESSION);
+        Result result = orderService.del(id);
+        return result;
+    }
+
+
+    @RequestMapping(value = "/list/table",method = RequestMethod.POST)
+    @ResponseBody
+    public Result list(String orderId,HttpSession session){
+        User user = (User)session.getAttribute(EsmConstant.USER_SESSION);
+        List<Order> orders = orderService.orderList(user.getId());
+
+        return new Result(200,"获取成功!",0,orders);
+    }
+
+    @RequestMapping(value = "/list",method = RequestMethod.GET)
+    public ModelAndView listView(ModelAndView modelAndView){
+        modelAndView.setViewName("order_list");
+        return modelAndView;
+    }
+
 }

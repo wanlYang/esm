@@ -40,8 +40,20 @@ public interface ProductMapper {
      * @Author YangBin
      * @Date 23:25 2019/3/4
      * @Param [id]
+     * @param id ID
      * @version v1.0
      * @return java.util.List<com.wanl.entity.Product>
      **/
     List<Product> findProductByCategoryId(Integer id);
+
+    /**
+     * 更新商品
+     * @Author YangBin
+     * @Date 10:55 2019/3/14
+     * @Param [product]
+     * @param product 商品
+     * @version v1.0
+     * @return java.lang.Integer
+     **/
+    Integer update(Product product);
 }

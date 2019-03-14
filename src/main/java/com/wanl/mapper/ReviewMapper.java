@@ -35,4 +35,15 @@ public interface ReviewMapper {
      * @return java.util.List<com.wanl.entity.Review>
      **/
     List<Review> findReviewList(Integer id);
+
+    /**
+     * 插入
+     * @Author YangBin
+     * @Date 13:10 2019/3/14
+     * @Param [review]
+     * @param review 评论
+     * @version v1.0
+     * @return java.lang.Integer
+     **/
+    Integer insert(Review review);
 }

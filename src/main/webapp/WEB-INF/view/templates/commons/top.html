@@ -10,7 +10,7 @@
             <div th:if="${session.USER_SESSION != null}">
                 <a th:href="@{/user/person/center}"><i class="layui-icon layui-icon-face-smile"></i>  我的婉碧</a>
                 <a th:href="@{/user/logout}">退出</a>
-                <a th:href="@{/user/person/order}">我的订单</a>
+                <a th:href="@{/order/list}">我的订单</a>
             </div>
             <div th:if="${session.USER_SESSION == null}">
                 <a th:href="@{/login}"><span class="cr" style="cursor: pointer !important;">登录</span></a>

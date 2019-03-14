@@ -2,10 +2,7 @@ package com.wanl.service.impl;
 
 import com.wanl.constant.EsmConstant;
 import com.wanl.entity.*;
-import com.wanl.mapper.AccountMapper;
-import com.wanl.mapper.OrderMapper;
-import com.wanl.mapper.ShopCartMapper;
-import com.wanl.mapper.UserMapper;
+import com.wanl.mapper.*;
 import com.wanl.service.OrderService;
 import com.wanl.utils.CreationNumber;
 import com.wanl.utils.UUIDUtils;
@@ -41,6 +38,9 @@ public class OrderServiceImpl implements OrderService {
 
     @Autowired
     private AccountMapper accountMapper;
+
+    @Autowired
+    private ProductMapper productMapper;
 
     /**
      * 下订单
@@ -171,6 +171,13 @@ public class OrderServiceImpl implements OrderService {
         orderMapper.update(order);
         account.setBalance(account.getBalance()-Double.parseDouble(order.getOrderTotal()));
         accountMapper.update(account);
+        List<OrderItem> orderItems = orderMapper.getOrderItem(orderId);
+        for (OrderItem orderItem : orderItems) {
+            Product product = orderItem.getProduct();
+            product.setBuyCount(Integer.parseInt(orderItem.getNumber()));
+            product.setStock(product.getStock() - Integer.parseInt(orderItem.getNumber()));
+            productMapper.update(product);
+        }
         return new Result(200,"付款成功!");
     }
 
@@ -195,5 +202,46 @@ public class OrderServiceImpl implements OrderService {
         order.setConfirmDate(new Date());
         orderMapper.update(order);
         return new Result(200,"确认成功!");
+    }
+
+    /**
+     * 获取订单列表
+     *
+     * @param id 用户ID
+     * @return java.util.List<com.wanl.entity.Order>
+     * @Author YangBin
+     * @Date 11:10 2019/3/14
+     * @Param [id]
+     * @version v1.0
+     **/
+    @Override
+    public List<Order> orderList(String id) {
+        List<Order> orders = orderMapper.getOrderList(id);
+
+        return orders;
+    }
+
+    /**
+     * 删除订单
+     *
+     * @param id 订单ID
+     * @return com.wanl.entity.Result
+     * @Author YangBin
+     * @Date 11:25 2019/3/14
+     * @Param [id]
+     * @version v1.0
+     **/
+    @Override
+    public Result del(String id) {
+        Result orderInfo = getOrderInfo(id);
+        if (orderInfo.getStatus().intValue() == 0){
+            return new Result(0, "数据有误!", 0, 0);
+        }
+        Order order = (Order)orderInfo.getData();
+        for (OrderItem o:order.getOrderItems()) {
+            orderMapper.delOrderItem(o.getId());
+        }
+        Integer row = orderMapper.del(id);
+        return new Result(200,"删除成功!");
     }
 }

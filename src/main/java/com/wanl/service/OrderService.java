@@ -72,4 +72,26 @@ public interface OrderService {
      * @return com.wanl.entity.Result
      **/
     Result confirm(String orderId);
+
+    /**
+     * 获取订单列表
+     * @Author YangBin
+     * @Date 11:10 2019/3/14
+     * @Param [id]
+     * @param id 用户ID
+     * @version v1.0
+     * @return java.util.List<com.wanl.entity.Order>
+     **/
+    List<Order> orderList(String id);
+
+    /**
+     * 删除订单
+     * @Author YangBin
+     * @Date 11:25 2019/3/14
+     * @Param [id]
+     * @param id 订单ID
+     * @version v1.0
+     * @return com.wanl.entity.Result
+     **/
+    Result del(String id);
 }

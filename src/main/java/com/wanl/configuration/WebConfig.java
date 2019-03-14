@@ -142,7 +142,7 @@ public class WebConfig extends WebMvcConfigurationSupport {
     protected void addInterceptors(InterceptorRegistry registry) {
         InterceptorRegistration interceptorRegistration = registry.addInterceptor(new AuthInterceptor());
         interceptorRegistration.excludePathPatterns("/login","/regist");
-        interceptorRegistration.addPathPatterns("/shopcart/**","/order/**");
+        interceptorRegistration.addPathPatterns("/shopcart/**","/order/**","/review/**");
         super.addInterceptors(registry);
     }
 }

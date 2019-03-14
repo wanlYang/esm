@@ -93,4 +93,37 @@ public interface OrderMapper {
      * @return java.lang.Integer
      **/
     Integer update(Order order);
+
+    /**
+     * 获取订单
+     * @Author YangBin
+     * @Date 11:11 2019/3/14
+     * @Param [id]
+     * @param id 用户ID
+     * @version v1.0
+     * @return java.util.List<com.wanl.entity.Order>
+     **/
+    List<Order> getOrderList(String id);
+
+    /**
+     * 删除订单项
+     * @Author YangBin
+     * @Date 11:28 2019/3/14
+     * @Param [id]
+     * @param id ID
+     * @version v1.0
+     * @return java.lang.Integer
+     **/
+    Integer delOrderItem(int id);
+
+    /**
+     * 删除订单
+     * @Author YangBin
+     * @Date 11:30 2019/3/14
+     * @Param [id]
+     * @param id 订单ID
+     * @version v1.0
+     * @return java.lang.Integer
+     **/
+    Integer del(String id);
 }

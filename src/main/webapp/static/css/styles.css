@@ -2821,6 +2821,7 @@ img.zoom-img {
 .shopcart-submit {
 	z-index: 100;
 	position: relative;
+	text-align: center;
 }
 .shop-title {
 	color: #fff;

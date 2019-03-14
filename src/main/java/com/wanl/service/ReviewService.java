@@ -25,4 +25,16 @@ public interface ReviewService {
      **/
     public List<Review> getReviews(Integer id);
 
+    /**
+     * 评论
+     * @Author YangBin
+     * @Date 13:06 2019/3/14
+     * @Param [productId, content, userId]
+     * @param productId 商品ID
+     * @param content 内容
+     * @param userId 用户ID
+     * @version v1.0
+     * @return java.lang.Integer
+     **/
+    Integer review(String productId, String content,String userId);
 }

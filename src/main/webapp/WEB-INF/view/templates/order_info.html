@@ -76,7 +76,12 @@
                                     <td th:text="'￥'+${orderItem.product.price}">¥20.0</td>
                                     <td th:text="${orderItem.number}">1</td>
                                     <td th:text="'￥0.0'">¥0.0</td>
-                                    <td th:text="'￥'+${orderItem.number} * ${orderItem.product.price}"></td>
+                                    <td>
+                                        <div class="layui-btn" th:text="'￥'+${orderItem.number} * ${orderItem.product.price}"></div>
+                                        <a th:if="${order.status == 4}" th:href="@{'/review/' + ${orderItem.product.id}}" class="layui-btn layui-btn-primary" style="margin-top: 20px;margin-right: 10px;">
+                                            去评价
+                                        </a>
+                                    </td>
                                 </tr>
                                 </tbody>
                             </table>

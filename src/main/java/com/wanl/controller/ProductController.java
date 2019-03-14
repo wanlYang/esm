@@ -44,7 +44,6 @@ public class ProductController {
 
     @RequestMapping(value = "/{id}",method = RequestMethod.GET)
     public ModelAndView detail(@PathVariable("id") String id, ModelAndView modelAndView){
-
     	if(!RegexUtils.isNumber(id)) {
     		modelAndView.setViewName("redirect:/");
     		return modelAndView;
