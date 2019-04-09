@@ -1,6 +1,7 @@
 package com.wanl.service.impl;
 
 import com.wanl.entity.Account;
+import com.wanl.entity.User;
 import com.wanl.mapper.AccountMapper;
 import com.wanl.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,7 @@ public class AccountServiceImpl implements AccountService {
 
     @Autowired
     private AccountMapper accountMapper;
+    
 
     /**
      * 创建账户
@@ -54,5 +56,25 @@ public class AccountServiceImpl implements AccountService {
 
         Account account = accountMapper.get(id);
         return account;
+    }
+
+    /**
+     * 账户充值
+     *
+     * @param user  用户
+     * @param money 金额
+     * @return java.lang.Integer
+     * @Author YangBin
+     * @Date 19:11 2019/4/9
+     * @Param [user, money]
+     * @version v1.0
+     **/
+    @Override
+    public Integer recharge(User user, Double money) {
+        Account account = accountMapper.get(user.getId());
+        account.setBalance(account.getBalance() + money);
+        Integer update = accountMapper.update(account);
+
+        return update;
     }
 }

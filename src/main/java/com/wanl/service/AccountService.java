@@ -1,6 +1,7 @@
 package com.wanl.service;
 
 import com.wanl.entity.Account;
+import com.wanl.entity.User;
 
 /**
  * 账户服务
@@ -33,4 +34,16 @@ public interface AccountService {
      * @return com.wanl.entity.Account
      **/
     Account get(String id);
+
+    /**
+     * 账户充值
+     * @Author YangBin
+     * @Date 19:11 2019/4/9
+     * @Param [user, money]
+     * @param user 用户
+     * @param money 金额
+     * @version v1.0
+     * @return java.lang.Integer
+     **/
+    Integer recharge(User user, Double money);
 }

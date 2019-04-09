@@ -126,4 +126,15 @@ public interface OrderMapper {
      * @return java.lang.Integer
      **/
     Integer del(String id);
+
+    /**
+     * 添加收获
+     * @Author YangBin
+     * @Date 18:07 2019/4/9
+     * @Param [address]
+     * @param address 地址
+     * @version v1.0
+     * @return java.lang.Integer
+     **/
+    Integer createAddress(Address address);
 }

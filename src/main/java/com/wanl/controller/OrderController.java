@@ -150,4 +150,23 @@ public class OrderController {
         return modelAndView;
     }
 
+    @RequestMapping(value = "/add/address",method = RequestMethod.GET)
+    public ModelAndView addAddressPage(ModelAndView modelAndView,String backUrl){
+        modelAndView.setViewName("add_address");
+        modelAndView.addObject("backUrl",backUrl);
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/add/address/submit",method = RequestMethod.POST)
+    @ResponseBody
+    public Result addAddress(Address address,String city,HttpSession session){
+        User user = (User)session.getAttribute(EsmConstant.USER_SESSION);
+        Integer row = orderService.addAddress(address,city,user.getId());
+        Result result = new Result();
+        result.setMessage("添加成功!");
+        result.setData(row);
+        result.setStatus(200);
+        return result;
+    }
+
 }

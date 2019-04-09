@@ -5,7 +5,11 @@ layui.use(['form', 'layer','flow', 'jquery', "element",'carousel'], function () 
         $ = layui.jquery,
         carousel = layui.carousel,
         flow = layui.flow;
+    form.on('radio(radio)', function(data){
+        $("#pay").removeAttr("disabled").removeClass("layui-disabled");
+    });
     form.on('submit(pay)',function (data) {
+        var temp = $(this).parent("div").html();
         $(this).html("请稍后...").attr("disabled", "disabled").addClass("layui-disabled");
         var index = layer.msg('支付中,请稍候', {
             icon: 16,
@@ -17,6 +21,7 @@ layui.use(['form', 'layer','flow', 'jquery', "element",'carousel'], function () 
             type: 'POST',
             complete: function (XMLHttpRequest, textStatus) {
                 layer.close(index);
+                $(".shopcart-submit").html(temp);
             },
             data:data.field,
             success: function (result) {
@@ -26,6 +31,12 @@ layui.use(['form', 'layer','flow', 'jquery', "element",'carousel'], function () 
                     setTimeout(function () {
                     location.reload();
                     },500);
+                }else if(result.status == -1){
+                    layer.msg(result.message);
+                    setTimeout(function () {
+                        location.href = getRealPath() + "/account/recharge?backUrl=" + window.location.href;
+                    },500);
+
                 }else{
                     layer.msg(result.message);
                 }

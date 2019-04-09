@@ -12,6 +12,10 @@
     <insert id="createOrderItem" parameterType="orderItem">
         INSERT INTO esm_orderitem(product_id,order_id,user_id,number) values (#{product.id},#{order.id},#{user.id},#{number})
     </insert>
+    <insert id="createAddress" parameterType="Address">
+        INSERT INTO esm_address(consignee,province,city,county,street,tel,postcode,user_id)
+        VALUES (#{consignee},#{province},#{city},#{county},#{street},#{tel},#{postcode},#{user.id})
+    </insert>
     <update id="update" parameterType="order">
         UPDATE esm_order SET status = #{status},address_id = #{address.id},pay_date = #{payDate},delivery_date = #{deliveryDate},confirm_date = #{confirmDate} WHERE id = #{id}
     </update>

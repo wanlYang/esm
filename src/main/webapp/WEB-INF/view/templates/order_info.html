@@ -23,10 +23,10 @@
             <section class="user-center inner clearfix">
                 <div class="user-content__box clearfix bgf">
                     <div class="title">
-                    	<span th:if="${order.status == 1}">购物车-订单详情-已支付</span> 
-                    	<span th:if="${order.status == 0}">购物车-订单详情-确认支付</span> 
-                    	<span th:if="${order.status == 3}">购物车-订单详情-已发货</span> 
-                    	<span th:if="${order.status == 4}">购物车-订单详情-已确认</span> 
+                    	<span th:if="${order.status == 1}">订单详情-已支付</span>
+                    	<span th:if="${order.status == 0}">订单详情-确认支付</span>
+                    	<span th:if="${order.status == 3}">订单详情-已发货</span>
+                    	<span th:if="${order.status == 4}">订单详情-已确认</span>
                     </div>
                     <div class="shop-title">收货地址</div>
                     <form method="post" class="shopcart-form__box layui-form">
@@ -34,11 +34,12 @@
                         <div class="addr-radio" th:if="${order.status == 0}">
                             <div class="layui-form-item" th:each="address,addressStatus:${addresses}">
                                 <div class="layui-input-block">
-                                    <input type="radio" name="address" th:checked="${addressStatus.index == 0 ? 'checked' : ''}" th:value="${address.id}"
+                                    <input type="radio" lay-filter="radio" name="address"  th:value="${address.id}"
                                            th:title="${address.province} +' '+ ${address.city} +' '+ ${address.county} +' '+ ${address.street}+' ('+ ${address.consignee}+' 收) '+ ${address.tel}">
                                 </div>
                             </div>
                         </div>
+                        <!--th:checked="${addressStatus.index == 0 ? 'checked' : ''}"-->
                         <div class="addr-radio" th:if="${order.status >= 1}">
                         	<div class="layui-form-item">
                                 <div class="layui-input-block">
@@ -48,7 +49,7 @@
                             </div>
                         </div>
                         <div class="add_addr" th:if="${order.status == 0}">
-                        	<a href="udai_address.html">添加新地址</a>
+                        	<a th:href="@{'/order/add/address?backUrl='+${#httpServletRequest.getRequestURL()}}">添加新地址</a>
                         </div>
                         <div class="add_addr" th:if="${order.status >= 1}">
                         	<a href="javascript:void(0)">已使用上面的地址付款</a>
@@ -121,8 +122,8 @@
                         <div class="shop-title">确认订单</div>
                         <div class="pay-mode__box" th:if="${order.status == 0}">
                             <select name="paymode" lay-verify="required">
-                                <option value="010">支付宝</option>
                                 <option value="020">余额(<span th:text="'￥'+${account.balance}"></span>)</option>
+                                <option value="010" disabled>支付宝</option>
                             </select>
                         </div>
                         <div class="pay-mode__box" th:if="${order.status >= 1}">
@@ -130,7 +131,7 @@
                             </blockquote>
                         </div>
                         <div class="user-form-group shopcart-submit" th:if="${order.status == 0}">
-                            <button class="layui-btn" lay-submit lay-filter="pay">继续支付<span th:text="'￥'+${order.orderTotal}"></span></button>
+                            <button class="layui-btn layui-disabled" id="pay" disabled lay-submit lay-filter="pay">继续支付<span th:text="'￥'+${order.orderTotal}"></span></button>
                         </div>
                         <div class="user-form-group shopcart-submit" th:if="${order.status == 3}">
                             <button class="layui-btn" lay-submit lay-filter="confirm">确认收货</button>

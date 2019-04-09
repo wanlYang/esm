@@ -161,7 +161,7 @@ public class OrderServiceImpl implements OrderService {
         Order order = (Order)orderInfo.getData();
         Account account = accountMapper.get(order.getUser().getId());
         if (account.getBalance() < Double.parseDouble(order.getOrderTotal())){
-            new Result(-1, "对不起余额不足!", 0, 0);
+            return new Result(-1, "对不起余额不足!", 0, 0);
         }
         Address orderAddress = orderMapper.getAddress(address);
         order.setAddress(orderAddress);
@@ -243,5 +243,32 @@ public class OrderServiceImpl implements OrderService {
         }
         Integer row = orderMapper.del(id);
         return new Result(200,"删除成功!");
+    }
+
+    /**
+     * 添加地址
+     *
+     * @param address 地址
+     * @param city    处理
+     * @param id      用户ID
+     * @return java.lang.Integer
+     * @Author YangBin
+     * @Date 18:00 2019/4/9
+     * @Param [address, city, id]
+     * @version v1.0
+     **/
+    @Override
+    public Integer addAddress(Address address, String city, String id) {
+        Integer row = 0;
+        if (address != null && StringUtils.isNotBlank(city) && StringUtils.isNotBlank(id)){
+            User user = userMapper.findUserById(id);
+            String[] split = city.split("/");
+            address.setProvince(split[0]);
+            address.setCity(split[1]);
+            address.setCounty(split[2]);
+            address.setUser(user);
+            row = orderMapper.createAddress(address);
+        }
+        return row;
     }
 }

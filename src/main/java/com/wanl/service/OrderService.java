@@ -94,4 +94,17 @@ public interface OrderService {
      * @return com.wanl.entity.Result
      **/
     Result del(String id);
+
+    /**
+     * 添加地址
+     * @Author YangBin
+     * @Date 18:00 2019/4/9
+     * @Param [address, city, id]
+     * @param id 用户ID
+     * @param address 地址
+     * @param city 处理
+     * @version v1.0
+     * @return java.lang.Integer
+     **/
+    Integer addAddress(Address address, String city, String id);
 }
