@@ -11,7 +11,7 @@
  Target Server Version : 50624
  File Encoding         : 65001
 
- Date: 10/04/2019 13:01:49
+ Date: 10/04/2019 19:02:57
 */
 
 SET NAMES utf8mb4;
@@ -56,7 +56,12 @@ CREATE TABLE `esm_cart`  (
   INDEX `product_id`(`product_id`) USING BTREE,
   CONSTRAINT `esm_cart_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `esm_user` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `esm_cart_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `esm_product` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of esm_cart
+-- ----------------------------
+INSERT INTO `esm_cart` VALUES (2, 'wanl5482617103', 88715757, 1);
 
 -- ----------------------------
 -- Table structure for esm_cate
@@ -181,7 +186,7 @@ CREATE TABLE `esm_product`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `cate_id`(`cate_id`) USING BTREE,
   CONSTRAINT `esm_product_ibfk_1` FOREIGN KEY (`cate_id`) REFERENCES `esm_cate` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 88715773 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 96323152 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of esm_product
@@ -240,7 +245,7 @@ CREATE TABLE `esm_product_img`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `product_id`(`product_id`) USING BTREE,
   CONSTRAINT `esm_product_img_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `esm_product` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 223 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 228 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of esm_product_img
