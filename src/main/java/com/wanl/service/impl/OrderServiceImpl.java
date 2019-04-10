@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -270,5 +271,13 @@ public class OrderServiceImpl implements OrderService {
             row = orderMapper.createAddress(address);
         }
         return row;
+    }
+
+    public static void main(String []args){
+
+        String a = "北京市";
+        String[] split = a.split("/");
+        System.out.println(Arrays.toString(split));
+
     }
 }

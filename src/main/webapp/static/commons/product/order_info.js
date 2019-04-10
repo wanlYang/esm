@@ -5,6 +5,10 @@ layui.use(['form', 'layer','flow', 'jquery', "element",'carousel'], function () 
         $ = layui.jquery,
         carousel = layui.carousel,
         flow = layui.flow;
+    var val=$('input:radio[name="address"]:checked').val();
+    if (val != null){
+        $("#pay").removeAttr("disabled").removeClass("layui-disabled");
+    }
     form.on('radio(radio)', function(data){
         $("#pay").removeAttr("disabled").removeClass("layui-disabled");
     });
