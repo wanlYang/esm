@@ -21,7 +21,7 @@
         <result column="username" property="username"></result>
         <result column="password" property="password"></result>
         <result column="phone" property="phone"></result>
-        <result column="email" property="bindemail"></result>
+        <result column="email" property="email"></result>
         <result column="headimg" property="headImg"></result>
         <result column="age" property="age"></result>
     </resultMap>
