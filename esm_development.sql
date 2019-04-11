@@ -11,7 +11,7 @@
  Target Server Version : 50624
  File Encoding         : 65001
 
- Date: 10/04/2019 19:02:57
+ Date: 11/04/2019 17:55:31
 */
 
 SET NAMES utf8mb4;
@@ -186,11 +186,12 @@ CREATE TABLE `esm_product`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `cate_id`(`cate_id`) USING BTREE,
   CONSTRAINT `esm_product_ibfk_1` FOREIGN KEY (`cate_id`) REFERENCES `esm_cate` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 96323152 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 88715773 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of esm_product
 -- ----------------------------
+INSERT INTO `esm_product` VALUES (49738838, 18, '【逆水寒限量版服装】', '逆水寒限量版服装', 199.00, 299.00, 0, 'productimg/2019/4/48966716/20190411162028677.png', '【逆水寒限量版服装】发售中', 1, 1, 99, '2019-04-11 16:20:40');
 INSERT INTO `esm_product` VALUES (82522957, 16, '钟灵记般若齐胸襦裙对襟齐腰汉服女改良春夏秋冬装传统绿重工大摆', '对襟齐腰汉服女改良春夏秋冬装传统绿重工大摆', 188.00, 288.00, 1, 'productimg/2019/3/82522957/TB2LfR1ceSSBuNjy0FlXXbBpVXa_!!411005513.jpg', '钟灵记般若齐胸襦裙对襟齐腰汉服女改良春夏秋冬装传统绿重工大摆', 1, 1, 98, '2019-03-02 19:57:33');
 INSERT INTO `esm_product` VALUES (82522958, 20, '如梦霓裳汉服女装交领襦裙翎羽大袖孔雀绣花春夏季原创日常新款', '女装交领襦裙翎羽大袖孔雀绣花', 189.00, 259.00, 0, 'productimg/2019/3/82522958/O1CN01EnfbZP1IuVwGs11zG_!!4194630953.jpg_430x430q90.jpg', '如梦霓裳汉服女装交领襦裙翎羽大袖孔雀绣花春夏季原创日常新款', 1, 1, 99, '2019-03-21 20:49:00');
 INSERT INTO `esm_product` VALUES (82522959, 20, '重回汉唐汉服女 襦裙行香子传统日常交领齐腰襦裙民族风绣花春装', '交领齐腰襦裙民族风绣花春装', 136.00, 189.00, 0, 'productimg/2019/3/82522959/O1CN01ZiO0Lm1vZgvtURT4Z_!!0-item_pic.jpg_430x430q90.jpg', '重回汉唐汉服女 襦裙行香子传统日常交领齐腰襦裙民族风绣花春装', 1, 1, 99, '2019-03-02 21:02:38');
@@ -245,7 +246,7 @@ CREATE TABLE `esm_product_img`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `product_id`(`product_id`) USING BTREE,
   CONSTRAINT `esm_product_img_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `esm_product` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 228 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 243 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of esm_product_img
@@ -472,6 +473,11 @@ INSERT INTO `esm_product_img` VALUES (219, 88715772, 'productimg/2019/3/88715772
 INSERT INTO `esm_product_img` VALUES (220, 88715772, 'productimg/2019/3/88715772/269f1cb16a872875.jpg');
 INSERT INTO `esm_product_img` VALUES (221, 88715772, 'productimg/2019/3/88715772/0322b24908e34b96.jpg');
 INSERT INTO `esm_product_img` VALUES (222, 88715772, 'productimg/2019/3/88715772/33481ec5234843ac.jpg');
+INSERT INTO `esm_product_img` VALUES (238, 49738838, 'productimg/2019/4/48966716/20190411162028677.png');
+INSERT INTO `esm_product_img` VALUES (239, 49738838, 'productimg/2019/4/49738838/20190411162028677.png');
+INSERT INTO `esm_product_img` VALUES (240, 49738838, 'productimg/2019/4/49738838/20190411173344692.png');
+INSERT INTO `esm_product_img` VALUES (241, 49738838, 'productimg/2019/4/49738838/20190411173344690.png');
+INSERT INTO `esm_product_img` VALUES (242, 49738838, 'productimg/2019/4/49738838/20190411173344678.png');
 
 -- ----------------------------
 -- Table structure for esm_property
@@ -572,7 +578,7 @@ CREATE TABLE `esm_propertyvalue`  (
   INDEX `property_id`(`property_id`) USING BTREE,
   CONSTRAINT `esm_propertyvalue_ibfk_2` FOREIGN KEY (`property_id`) REFERENCES `esm_property` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `esm_propertyvalue_ibfk_3` FOREIGN KEY (`product_id`) REFERENCES `esm_product` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 293 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 299 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of esm_propertyvalue
@@ -867,6 +873,12 @@ INSERT INTO `esm_propertyvalue` VALUES (289, 88715772, 66, '圆头');
 INSERT INTO `esm_propertyvalue` VALUES (290, 88715772, 67, '34，35，36，37，38，39，40');
 INSERT INTO `esm_propertyvalue` VALUES (291, 88715772, 68, '绣花');
 INSERT INTO `esm_propertyvalue` VALUES (292, 88715772, 69, '蓝色');
+INSERT INTO `esm_propertyvalue` VALUES (293, 49738838, 19, '婉碧凤殇');
+INSERT INTO `esm_propertyvalue` VALUES (294, 49738838, 20, 'X,XL,XML');
+INSERT INTO `esm_propertyvalue` VALUES (295, 49738838, 21, '青色，蓝色');
+INSERT INTO `esm_propertyvalue` VALUES (296, 49738838, 22, 'HSDI4656');
+INSERT INTO `esm_propertyvalue` VALUES (297, 49738838, 23, '2019年夏季');
+INSERT INTO `esm_propertyvalue` VALUES (298, 49738838, 24, '100%');
 
 -- ----------------------------
 -- Table structure for esm_review
