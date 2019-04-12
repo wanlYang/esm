@@ -11,7 +11,7 @@
  Target Server Version : 50624
  File Encoding         : 65001
 
- Date: 11/04/2019 17:55:31
+ Date: 12/04/2019 12:11:05
 */
 
 SET NAMES utf8mb4;
@@ -34,13 +34,7 @@ CREATE TABLE `esm_address`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `user_id`(`user_id`) USING BTREE,
   CONSTRAINT `esm_address_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `esm_user` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
-
--- ----------------------------
--- Records of esm_address
--- ----------------------------
-INSERT INTO `esm_address` VALUES (1, '杨彬', '陕西省', '西安市', '长安区', '东大街道', '18802927580', '710111', 'wanl2411096785');
-INSERT INTO `esm_address` VALUES (6, '广绣', '陕西省', '西安市', '长安区', '东大街道北石村', '18802927580', '', 'wanl5482617103');
+) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Table structure for esm_cart
@@ -56,12 +50,7 @@ CREATE TABLE `esm_cart`  (
   INDEX `product_id`(`product_id`) USING BTREE,
   CONSTRAINT `esm_cart_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `esm_user` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `esm_cart_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `esm_product` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
-
--- ----------------------------
--- Records of esm_cart
--- ----------------------------
-INSERT INTO `esm_cart` VALUES (2, 'wanl5482617103', 88715757, 1);
+) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Table structure for esm_cate
@@ -74,7 +63,7 @@ CREATE TABLE `esm_cate`  (
   `description` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '分类描述',
   `display` int(11) NULL DEFAULT 1 COMMENT '是否显示',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 30 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 32 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of esm_cate
@@ -94,6 +83,8 @@ INSERT INTO `esm_cate` VALUES (25, 5, '布鞋', '挑一双好看的绣花鞋，�
 INSERT INTO `esm_cate` VALUES (26, 5, '翘头履', '我国古代鞋子款式以鞋头上翘为常见，其样式是为了防止踩到身前下裙，多称为“翘头履”。', 1);
 INSERT INTO `esm_cate` VALUES (27, 0, '大袖裙', '美丽,广袖', 1);
 INSERT INTO `esm_cate` VALUES (29, 27, '广袖裙', '仙剑奇侠传', 1);
+INSERT INTO `esm_cate` VALUES (30, 27, '裙装', '裙装', 1);
+INSERT INTO `esm_cate` VALUES (31, 27, '绣裙', '大袖', 1);
 
 -- ----------------------------
 -- Table structure for esm_collection
@@ -132,13 +123,6 @@ CREATE TABLE `esm_order`  (
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
--- Records of esm_order
--- ----------------------------
-INSERT INTO `esm_order` VALUES ('201903141338503497109770', 'wanl2411096785', '2019-03-14 13:38:51', '2019-03-14 13:39:08', '2019-03-14 13:39:08', '2019-03-14 13:39:20', 4, 277.00, 1);
-INSERT INTO `esm_order` VALUES ('201904071325314993644360', 'wanl2411096785', '2019-04-07 13:25:32', '2019-04-07 13:25:43', '2019-04-07 13:25:43', '2019-04-07 13:27:17', 4, 198.00, 1);
-INSERT INTO `esm_order` VALUES ('2019041012512912358002240', 'wanl5482617103', '2019-04-10 12:51:30', '2019-04-10 13:00:43', '2019-04-10 13:00:43', '2019-04-10 13:00:52', 4, 226.00, 6);
-
--- ----------------------------
 -- Table structure for esm_orderitem
 -- ----------------------------
 DROP TABLE IF EXISTS `esm_orderitem`;
@@ -155,15 +139,7 @@ CREATE TABLE `esm_orderitem`  (
   CONSTRAINT `esm_orderitem_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `esm_user` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `esm_orderitem_ibfk_3` FOREIGN KEY (`order_id`) REFERENCES `esm_order` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `esm_orderitem_ibfk_4` FOREIGN KEY (`product_id`) REFERENCES `esm_product` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 26 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
-
--- ----------------------------
--- Records of esm_orderitem
--- ----------------------------
-INSERT INTO `esm_orderitem` VALUES (22, 88715761, '201903141338503497109770', 'wanl2411096785', 1);
-INSERT INTO `esm_orderitem` VALUES (23, 82522957, '201903141338503497109770', 'wanl2411096785', 1);
-INSERT INTO `esm_orderitem` VALUES (24, 88715736, '201904071325314993644360', 'wanl2411096785', 1);
-INSERT INTO `esm_orderitem` VALUES (25, 88715740, '2019041012512912358002240', 'wanl5482617103', 1);
+) ENGINE = InnoDB AUTO_INCREMENT = 34 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Table structure for esm_product
@@ -191,12 +167,11 @@ CREATE TABLE `esm_product`  (
 -- ----------------------------
 -- Records of esm_product
 -- ----------------------------
-INSERT INTO `esm_product` VALUES (49738838, 18, '【逆水寒限量版服装】', '逆水寒限量版服装', 199.00, 299.00, 0, 'productimg/2019/4/48966716/20190411162028677.png', '【逆水寒限量版服装】发售中', 1, 1, 99, '2019-04-11 16:20:40');
 INSERT INTO `esm_product` VALUES (82522957, 16, '钟灵记般若齐胸襦裙对襟齐腰汉服女改良春夏秋冬装传统绿重工大摆', '对襟齐腰汉服女改良春夏秋冬装传统绿重工大摆', 188.00, 288.00, 1, 'productimg/2019/3/82522957/TB2LfR1ceSSBuNjy0FlXXbBpVXa_!!411005513.jpg', '钟灵记般若齐胸襦裙对襟齐腰汉服女改良春夏秋冬装传统绿重工大摆', 1, 1, 98, '2019-03-02 19:57:33');
 INSERT INTO `esm_product` VALUES (82522958, 20, '如梦霓裳汉服女装交领襦裙翎羽大袖孔雀绣花春夏季原创日常新款', '女装交领襦裙翎羽大袖孔雀绣花', 189.00, 259.00, 0, 'productimg/2019/3/82522958/O1CN01EnfbZP1IuVwGs11zG_!!4194630953.jpg_430x430q90.jpg', '如梦霓裳汉服女装交领襦裙翎羽大袖孔雀绣花春夏季原创日常新款', 1, 1, 99, '2019-03-21 20:49:00');
 INSERT INTO `esm_product` VALUES (82522959, 20, '重回汉唐汉服女 襦裙行香子传统日常交领齐腰襦裙民族风绣花春装', '交领齐腰襦裙民族风绣花春装', 136.00, 189.00, 0, 'productimg/2019/3/82522959/O1CN01ZiO0Lm1vZgvtURT4Z_!!0-item_pic.jpg_430x430q90.jpg', '重回汉唐汉服女 襦裙行香子传统日常交领齐腰襦裙民族风绣花春装', 1, 1, 99, '2019-03-02 21:02:38');
-INSERT INTO `esm_product` VALUES (86626581, 16, '钟灵记【绯烟】日常汉服女对襟上襦改良齐腰襦裙吊带中国风春夏秋', '齐腰襦裙吊带中国风春夏秋', 115.00, 198.00, 0, 'productimg/2019/3/O1CN01kxDaD71qb00nTJNEL_!!0-item_pic.jpg', '钟灵记【绯烟】日常汉服女对襟上襦改良齐腰襦裙吊带中国风春夏秋', 1, 0, 99, '2019-02-28 09:12:16');
-INSERT INTO `esm_product` VALUES (87754945, 16, '雀灵汉服齐腰襦裙广袖大袖衫刺绣孔雀古装仙女裙大学生春夏秋冬装', '雀灵汉服齐腰襦裙广袖大袖衫刺绣孔雀古装仙女裙大学生春夏秋冬装', 148.00, 256.00, 0, 'productimg/2019/3/O1CN01GXZnzl1b673yDgh7R_!!1766643415.jpg', '雀灵汉服齐腰襦裙广袖大袖衫刺绣孔雀古装仙女裙大学生春夏秋冬装', 1, 0, 99, '2019-03-15 19:41:45');
+INSERT INTO `esm_product` VALUES (86626581, 16, '钟灵记【绯烟】日常汉服女对襟上襦改良齐腰襦裙吊带中国风春夏秋', '齐腰襦裙吊带中国风春夏秋', 115.00, 198.00, 1, 'productimg/2019/3/O1CN01kxDaD71qb00nTJNEL_!!0-item_pic.jpg', '钟灵记【绯烟】日常汉服女对襟上襦改良齐腰襦裙吊带中国风春夏秋', 1, 0, 98, '2019-02-28 09:12:16');
+INSERT INTO `esm_product` VALUES (87754945, 16, '雀灵汉服齐腰襦裙广袖大袖衫刺绣孔雀古装仙女裙大学生春夏秋冬装', '雀灵汉服齐腰襦裙广袖大袖衫刺绣孔雀古装仙女裙大学生春夏秋冬装', 148.00, 256.00, 1, 'productimg/2019/3/O1CN01GXZnzl1b673yDgh7R_!!1766643415.jpg', '雀灵汉服齐腰襦裙广袖大袖衫刺绣孔雀古装仙女裙大学生春夏秋冬装', 1, 0, 98, '2019-03-15 19:41:45');
 INSERT INTO `esm_product` VALUES (88715736, 16, '钟灵记原创雀灵汉服女齐胸襦裙仙女裙齐腰吊带非 古风春夏秋冬款', '原创雀灵汉服女齐胸襦裙仙女裙齐腰吊带', 198.00, 245.00, 1, 'productimg/2019/3/O1CN01ZCTDIk1qb00nuS2CM_!!0-item_pic.jpg', '灵记原创雀灵汉服女齐胸襦裙仙女裙齐腰吊带非 古风春夏秋冬款', 1, 1, 97, '2019-03-02 19:34:37');
 INSERT INTO `esm_product` VALUES (88715737, 20, '传统汉服男女款魏晋风大袖衫交领襦裙广袖齐腰襦裙绣花古装女套装', '大袖衫交领襦裙广袖齐腰襦裙绣花古装', 100.00, 165.00, 1, 'productimg/2019/3/88715737/O1CN01nv5THS1pgCsGxo1dU_!!4122985389.jpg_430x430q90.jpg', '传统汉服男女款魏晋风大袖衫交领襦裙广袖齐腰襦裙绣花古装女套装', 1, 0, 98, '2019-03-03 11:48:43');
 INSERT INTO `esm_product` VALUES (88715738, 20, '汉尚华莲雾影仙传统汉服女装交领大袖襦裙齐腰双层套装日常春夏款', '汉尚华莲雾影仙传统汉服女装', 468.00, 569.00, 0, 'productimg/2019/3/88715738/O1CN01CXavn52Ccl4sveZm9_!!0-item_pic.jpg_430x430q90.jpg', '汉尚华莲雾影仙传统汉服女装交领大袖襦裙齐腰双层套装日常春夏款', 1, 0, 99, '2019-03-03 11:56:01');
@@ -204,13 +179,13 @@ INSERT INTO `esm_product` VALUES (88715739, 19, '绒莲绿篱花灯节汉服女�
 INSERT INTO `esm_product` VALUES (88715740, 19, '都城南庄原创齐腰袒领襦裙绣花半臂印花渐变下裙袒领汉服丹尘子', '齐腰袒领襦裙绣花半臂印花', 226.00, 346.00, 1, 'productimg/2019/3/88715740/TB1tlLzhLuSBuNkHFqDYXFfhVXa_M2.SS2_250x250.jpg_.webp.jpg', '都城南庄原创齐腰袒领襦裙绣花半臂印花渐变下裙袒领汉服丹尘子', 1, 0, 98, '2019-03-03 12:25:20');
 INSERT INTO `esm_product` VALUES (88715741, 19, '流烟昔泠清霜 秋款传统汉服破裙绣花坦领襦裙半臂非古装', '秋款传统汉服破裙绣花坦领襦裙半臂', 89.00, 156.00, 0, 'productimg/2019/3/88715741/O1CN01bXLEaj1f965IsqdLi_!!0-item_pic.jpg_430x430q90.jpg', '流烟昔泠清霜 秋款传统汉服破裙绣花坦领襦裙半臂非古装', 1, 0, 99, '2019-03-03 12:34:54');
 INSERT INTO `esm_product` VALUES (88715742, 19, '钟灵记原创【碧桃香】汉服交领襦裙女款对襟半臂齐腰非改良春夏秋', '【碧桃香】汉服交领襦裙女款对襟半臂齐腰', 120.00, 199.00, 0, 'productimg/2019/3/88715742/TB2dnrUn90mpuFjSZPiXXbssVXa_!!411005513.jpg', '钟灵记原创【碧桃香】汉服交领襦裙女款对襟半臂齐腰非改良春夏秋', 1, 1, 99, '2019-03-03 12:41:34');
-INSERT INTO `esm_product` VALUES (88715743, 18, '汉服女菩提雪妙上齐胸襦裙女装秋古装服装仙女飘逸清新淡雅中国风', '齐胸襦裙女装秋古装服装', 78.00, 138.00, 0, 'productimg/2019/3/88715743/O1CN01Wkjnen1ghHGeti6e5_!!0-item_pic.jpg_430x430q90.jpg', '汉服女菩提雪妙上齐胸襦裙女装秋古装服装仙女飘逸清新淡雅中国风', 1, 1, 99, '2019-03-03 12:49:25');
+INSERT INTO `esm_product` VALUES (88715743, 18, '汉服女菩提雪妙上齐胸襦裙女装秋古装服装仙女飘逸清新淡雅中国风', '齐胸襦裙女装秋古装服装', 78.00, 138.00, 1, 'productimg/2019/3/88715743/O1CN01Wkjnen1ghHGeti6e5_!!0-item_pic.jpg_430x430q90.jpg', '汉服女菩提雪妙上齐胸襦裙女装秋古装服装仙女飘逸清新淡雅中国风', 1, 1, 98, '2019-03-03 12:49:25');
 INSERT INTO `esm_product` VALUES (88715744, 18, '汉尚华莲周年店庆款传统汉服龙母齐胸襦裙内衬6米摆高腰重工绣花', '传统汉服龙母齐胸襦裙内衬6米摆高腰重工绣花', 888.00, 1088.00, 0, 'productimg/2019/3/88715744/O1CN01n4gxoU2Ccl3yVXXzl_!!0-item_pic.jpg_430x430q90.jpg', '汉尚华莲周年店庆款传统汉服龙母齐胸襦裙内衬6米摆高腰重工绣花', 1, 0, 99, '2019-03-03 12:56:42');
-INSERT INTO `esm_product` VALUES (88715745, 18, '新款汉服释妙仙仙鹤刺绣齐胸襦裙汉元素古装改良日常清新淡雅秋冬', '妙仙仙鹤刺绣齐胸襦裙', 78.00, 189.00, 0, 'productimg/2019/3/88715745/TB1Req0oruWBuNjSszgXXb8jVXa_!!0-item_pic.jpg_430x430q90.jpg', '新款汉服释妙仙仙鹤刺绣齐胸襦裙汉元素古装改良日常清新淡雅秋冬', 1, 1, 99, '2019-03-03 13:02:32');
+INSERT INTO `esm_product` VALUES (88715745, 18, '新款汉服释妙仙仙鹤刺绣齐胸襦裙汉元素古装改良日常清新淡雅秋冬', '妙仙仙鹤刺绣齐胸襦裙', 78.00, 189.00, 1, 'productimg/2019/3/88715745/TB1Req0oruWBuNjSszgXXb8jVXa_!!0-item_pic.jpg_430x430q90.jpg', '新款汉服释妙仙仙鹤刺绣齐胸襦裙汉元素古装改良日常清新淡雅秋冬', 1, 1, 98, '2019-03-03 13:02:32');
 INSERT INTO `esm_product` VALUES (88715746, 18, '重回汉唐原创汉服女燕燕于飞日常古中国风对襟齐胸襦裙套装春夏季', '重回汉唐原创汉服女燕燕于飞日常', 125.00, 235.00, 0, 'productimg/2019/3/88715746/TB2iSxot98YBeNkSnb4XXaevFXa_!!2835046187.jpg_430x430q90.jpg', '重回汉唐原创汉服女燕燕于飞日常古中国风对襟齐胸襦裙套装春夏季', 1, 0, 99, '2019-03-03 13:09:14');
 INSERT INTO `esm_product` VALUES (88715747, 17, '汉尚华莲锦宫传统汉服女高腰刺绣齐胸襦裙3米内摆日常显瘦春夏装', '汉服女高腰刺绣齐胸襦裙3米', 528.00, 635.00, 2, 'productimg/2019/3/88715747/O1CN01kOj2y22Ccl4qLoXmz_!!3358098495.jpg_430x430q90.jpg', '汉尚华莲锦宫传统汉服女高腰刺绣齐胸襦裙3米内摆日常显瘦春夏装', 1, 1, 97, '2019-03-03 13:19:20');
 INSERT INTO `esm_product` VALUES (88715748, 17, '汉尚华莲十周年店庆款鲛人泪花嫁传统汉服女高腰齐胸襦裙大袖衫秋', '鲛人泪花嫁传统汉服女高腰齐胸襦裙', 338.00, 538.00, 0, 'productimg/2019/3/88715748/TB2NMCoqJcnBKNjSZR0XXcFqFXa_!!124896744.jpg_250x250.jpg_.webp.jpg', '汉尚华莲十周年店庆款鲛人泪花嫁传统汉服女高腰齐胸襦裙大袖衫秋', 1, 0, 99, '2019-03-03 13:27:14');
-INSERT INTO `esm_product` VALUES (88715749, 17, '汉尚华莲传统汉服女重工锦鲤绣花唐制齐胸襦裙高腰多片春夏大摆裙', '汉服女重工锦鲤绣花唐制齐胸襦裙高腰', 538.00, 688.00, 0, 'productimg/2019/3/88715749/TB2aX8YicLJ8KJjy0FnXXcFDpXa_!!124896744.jpg', '汉尚华莲传统汉服女重工锦鲤绣花唐制齐胸襦裙高腰多片春夏大摆裙', 1, 0, 99, '2019-03-03 13:35:08');
+INSERT INTO `esm_product` VALUES (88715749, 17, '汉尚华莲传统汉服女重工锦鲤绣花唐制齐胸襦裙高腰多片春夏大摆裙', '汉服女重工锦鲤绣花唐制齐胸襦裙高腰', 538.00, 688.00, 1, 'productimg/2019/3/88715749/TB2aX8YicLJ8KJjy0FnXXcFDpXa_!!124896744.jpg', '汉尚华莲传统汉服女重工锦鲤绣花唐制齐胸襦裙高腰多片春夏大摆裙', 1, 0, 98, '2019-03-03 13:35:08');
 INSERT INTO `esm_product` VALUES (88715750, 17, '陛下兰他惜春夏新款古风改良日常汉服襦裙珍珠网纱蓬蓬仙女连衣裙', '陛下兰他惜春夏新款古风改良日常汉服襦裙珍珠网纱蓬蓬仙女连衣裙', 358.00, 167.00, 0, 'productimg/2019/3/88715750/TB1EBz1b9tYBeNjSspaXXaOOFXa_!!0-item_pic.jpg_430x430q90.jpg', '陛下兰他惜春夏新款古风改良日常汉服襦裙珍珠网纱蓬蓬仙女连衣裙', 1, 1, 99, '2019-03-03 13:42:44');
 INSERT INTO `esm_product` VALUES (88715751, 22, '6068+6069汉服毕业成人礼服运动会开幕式演出玄端男女情侣 绣龙凤', '成人礼服运动会开幕式演出玄端男女情侣 绣龙凤', 140.00, 350.00, 0, 'productimg/2019/3/88715751/O1CN01ODiDaI1DTQRmnu9rS_!!2242500217.jpg_430x430q90.jpg', '6068+6069汉服毕业成人礼服运动会开幕式演出玄端男女情侣 绣龙凤', 1, 0, 99, '2019-03-03 16:48:24');
 INSERT INTO `esm_product` VALUES (88715752, 22, '【七年老店原创】汉唐之梦汉服男玄端成人礼非古装情侣龙凤套装女', '汉唐之梦汉服男玄端成人礼非古装情侣龙凤套装女', 149.00, 189.00, 0, 'productimg/2019/3/88715752/O1CN01DuS4nu2HmRWXMvG6I_!!55739193.jpg', '汉唐之梦汉服男玄端成人礼非古装情侣龙凤套装女', 1, 1, 99, '2019-03-03 16:55:26');
@@ -222,7 +197,7 @@ INSERT INTO `esm_product` VALUES (88715757, 23, '流烟昔泠 溯洄 秋款传�
 INSERT INTO `esm_product` VALUES (88715758, 23, '改良新款交领怀楚原创长中长半臂短打裋褐上衣汉服男绣花日常春秋', '短打裋褐上衣汉服男绣花日常春秋', 56.00, 89.00, 0, 'productimg/2019/3/88715758/O1CN01ewJLcJ1fQV9pCQPGb_!!2104704001.jpg', '短打裋褐上衣汉服男绣花日常春秋', 1, 0, 99, '2019-03-03 17:45:41');
 INSERT INTO `esm_product` VALUES (88715759, 24, '重回汉唐汉服男装铭乐古传统日常民族风刺绣半臂原创交领衣裳春秋', '日常民族风刺绣半臂原创交领衣裳春秋', 218.00, 315.00, 0, 'productimg/2019/3/88715759/TB2dufyrv5TBuNjSspmXXaDRVXa_!!2835046187.jpg_430x430q90.jpg', '日常民族风刺绣半臂原创交领衣裳春秋', 1, 1, 99, '2019-03-03 17:51:15');
 INSERT INTO `esm_product` VALUES (88715760, 24, '重回汉唐汉服女装千枝日常中国风刺绣半臂交领上襦齐腰破裙春夏装', '女装千枝日常中国风刺绣半臂交领上襦齐腰破裙春夏装', 98.00, 156.00, 0, 'productimg/2019/3/88715760/TB1tW5IrYwrBKNjSZPcXXXpapXa_!!0-item_pic.jpg_430x430q90.jpg', '重回汉唐汉服女装千枝日常中国风刺绣半臂交领上襦齐腰破裙春夏装', 1, 0, 99, '2019-03-03 17:57:05');
-INSERT INTO `esm_product` VALUES (88715761, 24, '【流烟昔泠 锦书】春款传统汉服情侣男女CP款绣花半臂衣裳非古装', '绣花半臂衣裳非古装', 89.00, 98.00, 1, 'productimg/2019/3/88715761/O1CN011wMCXm22Agd7iEMWM_!!1766737080.jpg_250x250.jpg_.webp.jpg', '【流烟昔泠 锦书】春款传统汉服情侣男女CP款绣花半臂衣裳非古装', 1, 1, 98, '2019-03-03 18:03:32');
+INSERT INTO `esm_product` VALUES (88715761, 24, '【流烟昔泠 锦书】春款传统汉服情侣男女CP款绣花半臂衣裳非古装', '绣花半臂衣裳非古装', 89.00, 98.00, 1, 'productimg/2019/3/88715761/O1CN011wMCXm22Agd7iEMWM_!!1766737080.jpg_250x250.jpg_.webp.jpg', '【流烟昔泠 锦书】春款传统汉服情侣男女CP款绣花半臂衣裳非古装', 1, 1, 97, '2019-03-03 18:03:32');
 INSERT INTO `esm_product` VALUES (88715762, 24, '沐汉风奉瑞汉元素男装改良汉服唐风直领半臂中国风半袖短外套春装', '汉元素男装改良汉服唐风直领半臂中国风半袖短外套春装', 156.00, 189.00, 0, 'productimg/2019/3/88715762/O1CN01JVrY7Q1QqriPuezpx_!!0-item_pic.jpg_250x250.jpg_.webp.jpg', '沐汉风奉瑞汉元素男装改良汉服唐风直领半臂中国风半袖短外套春装', 1, 0, 99, '2019-03-03 18:09:49');
 INSERT INTO `esm_product` VALUES (88715763, 25, '瑞彩祥云复古风汉服鞋亚麻中式布鞋平跟中国风绣花鞋民族风布鞋女', '布鞋平跟中国风绣花鞋民族风布鞋女', 89.00, 123.00, 0, 'productimg/2019/3/88715763/O1CN01khPBhF1vYmAJ7eDXP_!!679246185.jpg_430x430q90.jpg', '瑞彩祥云复古风汉服鞋亚麻中式布鞋平跟中国风绣花鞋民族风布鞋女', 1, 1, 99, '2019-03-03 18:29:43');
 INSERT INTO `esm_product` VALUES (88715764, 25, '重回汉唐汉服配饰女鞋熙颜民族风刺绣平底弓鞋千层底手工绣花布鞋', '民族风刺绣平底弓鞋千层底手工绣花布鞋', 98.00, 108.00, 0, 'productimg/2019/3/88715764/TB2kGC_slsmBKNjSZFsXXaXSVXa_!!2835046187.jpg_430x430q90.jpg', '重回汉唐汉服配饰女鞋熙颜民族风刺绣平底弓鞋千层底手工绣花布鞋', 1, 1, 99, '2019-03-03 18:36:44');
@@ -246,7 +221,7 @@ CREATE TABLE `esm_product_img`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `product_id`(`product_id`) USING BTREE,
   CONSTRAINT `esm_product_img_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `esm_product` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 243 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 253 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of esm_product_img
@@ -473,11 +448,6 @@ INSERT INTO `esm_product_img` VALUES (219, 88715772, 'productimg/2019/3/88715772
 INSERT INTO `esm_product_img` VALUES (220, 88715772, 'productimg/2019/3/88715772/269f1cb16a872875.jpg');
 INSERT INTO `esm_product_img` VALUES (221, 88715772, 'productimg/2019/3/88715772/0322b24908e34b96.jpg');
 INSERT INTO `esm_product_img` VALUES (222, 88715772, 'productimg/2019/3/88715772/33481ec5234843ac.jpg');
-INSERT INTO `esm_product_img` VALUES (238, 49738838, 'productimg/2019/4/48966716/20190411162028677.png');
-INSERT INTO `esm_product_img` VALUES (239, 49738838, 'productimg/2019/4/49738838/20190411162028677.png');
-INSERT INTO `esm_product_img` VALUES (240, 49738838, 'productimg/2019/4/49738838/20190411173344692.png');
-INSERT INTO `esm_product_img` VALUES (241, 49738838, 'productimg/2019/4/49738838/20190411173344690.png');
-INSERT INTO `esm_product_img` VALUES (242, 49738838, 'productimg/2019/4/49738838/20190411173344678.png');
 
 -- ----------------------------
 -- Table structure for esm_property
@@ -578,7 +548,7 @@ CREATE TABLE `esm_propertyvalue`  (
   INDEX `property_id`(`property_id`) USING BTREE,
   CONSTRAINT `esm_propertyvalue_ibfk_2` FOREIGN KEY (`property_id`) REFERENCES `esm_property` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `esm_propertyvalue_ibfk_3` FOREIGN KEY (`product_id`) REFERENCES `esm_product` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 299 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 309 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of esm_propertyvalue
@@ -873,12 +843,6 @@ INSERT INTO `esm_propertyvalue` VALUES (289, 88715772, 66, '圆头');
 INSERT INTO `esm_propertyvalue` VALUES (290, 88715772, 67, '34，35，36，37，38，39，40');
 INSERT INTO `esm_propertyvalue` VALUES (291, 88715772, 68, '绣花');
 INSERT INTO `esm_propertyvalue` VALUES (292, 88715772, 69, '蓝色');
-INSERT INTO `esm_propertyvalue` VALUES (293, 49738838, 19, '婉碧凤殇');
-INSERT INTO `esm_propertyvalue` VALUES (294, 49738838, 20, 'X,XL,XML');
-INSERT INTO `esm_propertyvalue` VALUES (295, 49738838, 21, '青色，蓝色');
-INSERT INTO `esm_propertyvalue` VALUES (296, 49738838, 22, 'HSDI4656');
-INSERT INTO `esm_propertyvalue` VALUES (297, 49738838, 23, '2019年夏季');
-INSERT INTO `esm_propertyvalue` VALUES (298, 49738838, 24, '100%');
 
 -- ----------------------------
 -- Table structure for esm_review
@@ -895,20 +859,7 @@ CREATE TABLE `esm_review`  (
   INDEX `product_id`(`product_id`) USING BTREE,
   CONSTRAINT `esm_review_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `esm_user` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `esm_review_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `esm_product` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
-
--- ----------------------------
--- Records of esm_review
--- ----------------------------
-INSERT INTO `esm_review` VALUES (1, 'wanl2411096785', 82522957, '第一次买，很不错', '2019-03-06 21:09:21');
-INSERT INTO `esm_review` VALUES (5, 'wanl2411096785', 88715747, '很漂亮!', '2019-03-14 13:35:52');
-INSERT INTO `esm_review` VALUES (6, 'wanl2411096785', 88715747, '追加评论，很棒!', '2019-03-14 13:36:42');
-INSERT INTO `esm_review` VALUES (7, 'wanl2411096785', 88715747, '第三次追加评论!很漂亮!', '2019-03-14 13:38:01');
-INSERT INTO `esm_review` VALUES (8, 'wanl2411096785', 88715761, '很棒的，给朋友买的!', '2019-03-14 13:39:44');
-INSERT INTO `esm_review` VALUES (9, 'wanl2411096785', 82522957, '很鲜美!', '2019-03-14 13:40:04');
-INSERT INTO `esm_review` VALUES (10, 'wanl2411096785', 88715736, '很棒！穿着很仙美！', '2019-04-07 13:27:52');
-INSERT INTO `esm_review` VALUES (11, 'wanl5482617103', 88715757, '很仙美！', '2019-04-09 19:34:27');
-INSERT INTO `esm_review` VALUES (12, 'wanl5482617103', 88715740, '很棒！！！', '2019-04-10 13:01:03');
+) ENGINE = InnoDB AUTO_INCREMENT = 18 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Table structure for esm_user
@@ -932,7 +883,6 @@ CREATE TABLE `esm_user`  (
 -- Records of esm_user
 -- ----------------------------
 INSERT INTO `esm_user` VALUES ('wanl2411096785', '婉碧凤殇', 'MjVmOWU3OTQzMjNiNDUzODg1ZjUxODFmMWI2MjRkMGI=', '18802927580', '344295704@qq.com', '/static/images/01460b57e4a6fa0000012e7ed75e83.png', 0);
-INSERT INTO `esm_user` VALUES ('wanl5482617103', '广绣人缘', 'OTQxZDc1ZjlhZjRiM2IwNGU4MjMzZjFjZTI0NTI0NzE=', '15102915122', NULL, '/static/images/01460b57e4a6fa0000012e7ed75e83.png', 0);
 
 -- ----------------------------
 -- Table structure for esm_useraccount
@@ -950,7 +900,6 @@ CREATE TABLE `esm_useraccount`  (
 -- ----------------------------
 -- Records of esm_useraccount
 -- ----------------------------
-INSERT INTO `esm_useraccount` VALUES ('ac7928310465', 'wanl5482617103', 1908.00);
-INSERT INTO `esm_useraccount` VALUES ('ac9810163452', 'wanl2411096785', 8114.00);
+INSERT INTO `esm_useraccount` VALUES ('ac9810163452', 'wanl2411096785', 16790.00);
 
 SET FOREIGN_KEY_CHECKS = 1;

@@ -20,7 +20,7 @@
     <select id="findHotProduct" resultMap="productResultMap">
         SELECT id,cate_id,main_title,sub_title,price,old_price,buy_count,img,detail,`status`,is_hot,stock,shelf_time
         FROM esm_product
-        WHERE is_hot = 1
+        WHERE is_hot = 1 AND status = 1
         ORDER BY RAND() LIMIT 8
 
     </select>
@@ -43,6 +43,6 @@
         SELECT id,cate_id,main_title,sub_title,price,old_price,buy_count,img,detail,`status`,is_hot,stock,shelf_time FROM esm_product WHERE id = #{id}
     </select>
     <select id="findProductByCategoryId" resultMap="productResultMap">
-        SELECT id,cate_id,main_title,sub_title,price,old_price,buy_count,img,detail,`status`,is_hot,stock,shelf_time FROM esm_product WHERE cate_id = #{id}
+        SELECT id,cate_id,main_title,sub_title,price,old_price,buy_count,img,detail,`status`,is_hot,stock,shelf_time FROM esm_product WHERE cate_id = #{id} AND status = 1
     </select>
 </mapper>

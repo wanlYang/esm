@@ -88,9 +88,14 @@
 
 								</div>
 							</div>
-							<div class="item-action clearfix bgf5">
+							<div class="item-action clearfix bgf5" th:if="${product.status == 1}">
 								<a href="javascript:;" rel="nofollow" lay-submit lay-filter="addCart" data-addfastbuy="true" role="button" class="item-action__basket">
 									<i class="iconfont icon-shopcart"></i> 加入购物车
+								</a>
+							</div>
+							<div class="item-action clearfix bgf5" th:if="${product.status == 0}">
+								<a href="javascript:;" class="item-action__basket">
+									商品异常,可能被删除
 								</a>
 							</div>
 						</div>
